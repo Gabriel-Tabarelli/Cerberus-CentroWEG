@@ -1,0 +1,131 @@
+
+.container-cabecalho {
+    display: flex;
+    justify-content: space-between;
+    background-color: #00579D;
+    width: 100%;
+    height: 88px;
+    align-items: center;
+}
+
+
+.container-cabecalho section {
+    height: 100%;
+}
+
+.container-logo {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.container-doubleGrid{
+    display: flex;
+    align-items: center;
+}
+
+
+.container-pesquisa{
+    display: flex;
+    align-items: center;
+    width: 40%;
+    margin: 0 1.7%;
+}
+
+
+.div-inputPesquisa {
+    height: 40%;
+    border-radius: 10px;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.div-inputPesquisa > input{
+    font-size: 15px;
+    border: none;
+    width: calc(100% - 50px);
+    background-color: transparent;
+    outline:none
+}
+
+.linhaNaBarraDePesquisa {
+    background-color: #00579D;
+    border-radius: 50px;
+    height: 20px;
+    width: 1px;
+}
+
+.container-fraseLogin { 
+    height: 100%;
+    width: 140px;
+    font-family: sans-serif;
+}
+
+.div-fraseLogin {   
+    width: 135px;
+    height: 100%;
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    color: white;
+}
+
+.div-fraseLogin > h1 {
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.div-fraseLogin  a {
+    color: white;
+    align-items: center;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.div-inputPesquisa > img {
+    /* width: 5.5%; */
+    width: 25px;
+    float: left;
+}
+
+.container-carrinho {
+    display: flex;
+    align-items: center;
+    width: 5%;
+}
+
+.container-carrinho > img{
+    height: 30px;
+ }
+
+ .container-linguagem {
+    width: 6%;
+    display: flex;
+    align-items: center;
+    margin: 0 0.5%;
+ }
+
+ .container-linguagem > img{
+    width: 38px;
+ }
+
+ .container-linguagem > img ~img{
+    width: 24px;
+    rotate: 90deg;
+ }
+
+ @media screen and (max-width:850px) {
+
+.container-doubleGrid {
+    display: none;
+}
+
+.container-pesquisa {
+    width: auto;
+}
+    
+}

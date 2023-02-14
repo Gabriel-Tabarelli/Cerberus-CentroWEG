@@ -1,0 +1,279 @@
+
+.Container-Cadastro-Cpf {
+    width: 1258px;
+    height: 511px;
+    background-color: #D9D9D9;
+    border-radius: 40px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* --------------------------------------- */
+.Container-Cadastro_Texto {
+    height: 15%;
+    width: 100%;
+    justify-content: center;
+
+    font-family: sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 35px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #000;
+}
+
+/* --------------------------------------- */
+.Container-Botoes_Cpf_Juridica {
+    height: 10%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.Custom-Radio {
+    /* width: 15%; */
+    width: 145px;
+    /* margin-left: 3%; */
+    margin-left: 35px;
+}
+
+.Custom-Radio input {
+    display: none;
+}
+
+.Custom-Radio input+label::before {
+    content: '';
+    height: 20px;
+    /* width: 10%; */
+    width: 20px;
+    border-radius: 50%;
+    background-color: white;
+    display: inline-block;
+    border: 4px solid white;
+    vertical-align: middle;
+    margin-right: 5%;
+}
+
+.Custom-Radio input:checked+label::before {
+    background-color: #0090C5;
+}
+
+.Custom-Radio>label {
+    font-family: sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+}
+
+/* --------------------------------------- */
+.Container-Inputs-Esquerdo {
+    height: 60%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.Input-Medio {
+    display: flex;
+    flex-wrap: wrap;
+    width: 93%;
+    /* height: 20%; */
+    height: 60px;
+}
+
+.Input-Medio>input {
+    width: 100%;
+    height: 50%;
+    border-radius: 5px;
+    border: none;
+}
+
+.Input-Medio>label {
+    font-family: sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17.5px;
+    line-height: 21px;
+    margin-left: 3%;
+}
+
+.Container-Input-Pequeno {
+    width: 93%;
+    /* height: 20%; */
+    height: 60px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.Input-Pequeno {
+    display: flex;
+    flex-wrap: wrap;
+    width: 48%;
+    height: 100%;
+}
+
+.Input-Pequeno > input {
+    width: 100%;
+    height: 50%;
+    border-radius: 5px;
+    border: none;
+}
+
+.Input-Pequeno>label {
+    font-family: sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17.5px;
+    line-height: 21px;
+    margin-left: 6%;
+}
+
+
+/* ------------------- */
+.Container-Inputs-Direito {
+    height: 60%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.Container-Input-Extra_Pequeno {
+    width: 93%;
+    /* height: 20%; */
+    height: 60px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.Input-Extra_Pequeno {
+    display: flex;
+    flex-wrap: wrap;
+    width: 30.5%;
+    height: 100%;
+}
+
+.Input-Extra_Pequeno>input {
+    width: 100%;
+    height: 50%;
+    border-radius: 5px;
+    border: none;
+}
+
+.Input-Extra_Pequeno>label {
+    font-family: sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17.5px;
+    line-height: 21px;
+    margin-left: 9%;
+}
+
+/* --------------------------------------- */
+.Container-Botao_Enviar {
+    height: 15%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Container-Botao_Entrar {
+    width: 193px;
+    height: 38.5px;
+    font-family: sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+    justify-content: flex-start;
+    background-color: rgba(211, 211, 211, 0);
+    border: none;
+}
+
+.Container-Botao_Entrar-Seta {
+    background: #006B92;
+    border-radius: 7px 0px 0px 7px;
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.Container-Botao_Entrar-Seta:hover~div {
+    background: #006B92;
+}
+
+.Container-Botao_Entrar-Texto {
+    background: #0090C5;
+    border-radius: 0px 7px 7px 0px;
+    width: 80%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+
+.Container-Botao_Entrar-Texto:hover {
+    background: #006B92;
+}
+
+input {
+    padding: 0px 10px 0px 10px;
+}
+
+@media screen and (max-width: 1280px) {
+
+.Container-Cadastro-Cpf {
+    display: block;
+    width: auto;
+    height: auto;
+}
+
+.Container-Inputs-Esquerdo,
+.Container-Inputs-Direito {
+    width: 100%;
+}
+
+.Container-Inputs-Esquerdo > div,
+.Container-Inputs-Direito > div {
+    margin-top: 20px;
+}
+
+form {
+    padding: 10px 30px;
+}
+
+form > section:not( :is(.Container-Inputs-Esquerdo, .Container-Inputs-Direito) ) {
+    margin: 20px;
+}
+
+.Input-Medio, .Container-Input-Pequeno, .Container-Input-Extra_Pequeno {
+    width: -webkit-fill-available;
+}
+
+:is(.Input-Medio, .Container-Input-Pequeno, .Container-Input-Extra_Pequeno) label {
+    margin-left: 20px;
+}
+
+}

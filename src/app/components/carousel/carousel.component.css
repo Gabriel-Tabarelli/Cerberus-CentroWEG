@@ -1,0 +1,104 @@
+
+section {
+    width: 100vw;
+    height: 420px;
+}
+
+/* Carousel */
+
+#carousel {
+    position: relative;
+    /* height: 520px; */
+    height: 420px;
+    user-select: none;
+}
+
+#carousel-inner {
+    display: flex;
+    width: 100vw;
+    /* height: 500px; */
+    height: 400px;
+    position: relative;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+}
+
+.carousel-item {
+    position: relative;
+    width: 100vw;
+    height: inherit;
+    transition: transform .6s ease-in-out;
+    scroll-snap-align: center;
+    display: flex;
+    align-items: center;
+}
+
+.carousel-item :is(video, img) {
+    width: 100vw;
+}
+
+#buttons {
+    display: flex;
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    margin: 34px;
+}
+
+#buttons .button {
+    display: flex;
+    width: 56px;
+    height: 56px;
+    background: #d9d9d9;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: 0;
+}
+
+#buttons .button img {
+    width: 34px;
+}
+
+#buttons #previous {
+    position: absolute;
+    left: 0;
+}
+
+#buttons #previous img {
+    transform: rotateZ(180deg);
+}
+
+#buttons #next {
+    position: absolute;
+    right: 0;
+}
+
+#slide-status {
+    width: 100vw;
+    height: 12px;
+    display: flex;
+    justify-content: center;
+    margin: 6px 0 2px 0;
+}
+
+#slide-status div {
+    display: flex;
+}
+
+#slide-status div .slide {
+    width: 12px;
+    height: 12px;
+    border-radius: 100%;
+    background: #d9d9d9;
+    margin: 0 3px;
+}
+
+#slide-status div .active {
+    background: #00569d;
+}
