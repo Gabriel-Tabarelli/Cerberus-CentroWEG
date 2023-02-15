@@ -28,7 +28,7 @@ export class CadastroComponent {
   senha:string;
   //---
   submit() {
-    this.lista.push(new user(this.nome, this.cpf, this.estado, this.cidade, this.bairro, this.endereco, this.numero, this.cep, this.telefone, this.nomeContato, this.email, this.senha))
+    this.lista.push(new user(this.nome, this.cpf, this.estado, this.cidade, this.bairro, this.endereco, this.numero, this.cep, this.telefone, this.nomeContato, this.email, this.senha, !this.boolean))
     console.log(this.lista)
   }
   // --------end---------
@@ -64,8 +64,9 @@ class user{
   nomeContato:string;
   email:string;
   senha:string;
+  empresa:boolean;
 
-  constructor(nome:string, cpf:string, estado:string, cidade:string, bairro:string, endereco:string, numero:number, cep:string, telefone:number, nomeContato:string, email:string, senha:string) {
+  constructor(nome:string, cpf:string, estado:string, cidade:string, bairro:string, endereco:string, numero:number, cep:string, telefone:number, nomeContato:string, email:string, senha:string, empresa:boolean) {
       this.nome = nome;
       this.cpf = cpf;
       this.estado = estado;
@@ -78,5 +79,6 @@ class user{
       this.nomeContato = nomeContato;
       this.email = email;
       this.senha = senha;
+      this.empresa = empresa;
   }
 }
