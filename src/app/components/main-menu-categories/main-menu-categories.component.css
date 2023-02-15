@@ -1,7 +1,7 @@
 
 .container-category {
     width: 100vw;
-    height: 134px;
+    height: fit-content;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,6 +13,8 @@
     height: fit-content;
     width: -moz-fit-content;
     height: -moz-fit-content;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .item-category {

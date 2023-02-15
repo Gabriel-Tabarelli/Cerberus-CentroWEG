@@ -60,6 +60,7 @@ main {
     background-position: 24vw;
     background-repeat: no-repeat;
     background-size: 17%;
+    padding-left: 10px;
 }
 
 .Container-Senha {
@@ -93,6 +94,7 @@ main {
     background-position: 25vw;
     background-repeat: no-repeat;
     background-size: 10%;
+    padding-left: 10px;
 }
 
 /* ------------------------------------------------------------------------------------------------------- */
