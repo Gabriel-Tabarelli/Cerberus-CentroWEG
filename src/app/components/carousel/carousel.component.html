@@ -1,0 +1,29 @@
+<section id="carousel" #container>
+    <div id="carousel-inner" #innerContainer>
+        <div class="carousel-item">
+            <video loop oncanplay="this.play()" onloadeddata="this.muted = true">
+                <source src="/assets/carousel/media/video/tomorrow-video.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="carousel-item">
+            <video loop oncanplay="this.play()" onloadeddata="this.muted = true">
+                <source src="/assets/carousel/media/video/products-video.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="carousel-item">
+            <img src="/assets/carousel/media/image/wegcast.jpg">
+        </div>
+    </div>
+    <div id="buttons">
+        <button class="button" id="next" (click)="next()"><img src="/assets/carousel/media/image/seta.png"></button>
+        <button class="button" id="previous" (click)="previous()"><img
+                src="/assets/carousel/media/image/seta.png"></button>
+    </div>
+    <div id="slide-status">
+        <div #slide_status_container>
+            <div class="slide active"></div>
+            <div class="slide"></div>
+            <div class="slide"></div>
+        </div>
+    </div>
+</section>

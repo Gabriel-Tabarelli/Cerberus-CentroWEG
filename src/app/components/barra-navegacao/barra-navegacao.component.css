@@ -1,0 +1,60 @@
+.container-navbar {
+    height: 38px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.linha-navbar {
+    align-self: flex-end;
+    width: 92%;
+    height: 1.5px;
+    background-color: #00579D;
+}
+
+.navegacao-navbar {
+    align-self: center;
+    background-color: white;
+    width: 90%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.div-for {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.textoLink-normal {
+    text-decoration: none;
+    color: black;
+    font-size: 11px;
+    font-weight: 400;
+    font-family: sans-serif;
+}
+
+.textoLink-ultima {
+    text-decoration: none;
+    height: 100%;
+    color: black;
+    font-size: 11px;
+    font-weight: 600;
+    font-family: sans-serif;
+    display: flex;
+    align-items: center;
+}
+
+.barra-normal {
+    height: 100%;
+    margin-left: 17px;
+    margin-right: 17px;
+    display: flex;
+    align-items: center;
+}
+
+.barra-ultima {
+    display: none;
+}

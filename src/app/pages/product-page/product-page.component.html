@@ -1,0 +1,36 @@
+<app-page>
+    <app-header-component header></app-header-component>
+    <app-barra-navegacao [links]='links'></app-barra-navegacao>
+
+    <div class="display-item-div">
+        <div class="prod-img-div">
+            <img [src]="product.url" alt="">
+            <p>Imagem meramente ilustrativas</p>
+        </div>
+        <div class="box-txt-div">
+            <div class="box">
+                <div class="layoult title-div">
+                    <h1>W22</h1>
+                </div>
+                <div class="line-div"></div>
+                <div class="layoult description-div">
+                    <p>{{product.description}}</p>
+                </div>
+                <div class="layoult buttons-div">
+                    <button>Entrar em contato conosco</button>
+                    <button>Adicionar no carrinho</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="break-line-div" *ngIf="!product.specificationList; else sobreProduto">
+        <div class="break-line"></div>
+    </div>
+    <ng-template #sobreProduto>
+        <div class="sobre-produto-div">
+            <p>Sobre o produto</p>
+            <p>></p>
+        </div>
+    </ng-template>
+    <div class="aaaa"></div>
+</app-page>

@@ -1,0 +1,60 @@
+<app-header-component header></app-header-component>
+<app-barra-navegacao [links]='[{link:"/home-page", nomeLink: "home"}, {link:"/category-page", nomeLink: "motores elétricos"}]'></app-barra-navegacao>
+<div id="recomendation-container">
+    <div id="label-container">
+        <div>
+            <div>
+                <div class="img-container">
+                    <img src="/assets/icons/motorEletricoIcon.png" alt="">
+                </div>
+                <h2> Motores Elétricos</h2>
+            </div>
+            <div></div>
+        </div>
+    </div>
+    <div id="recomendations">
+        <div class="frame-container">
+            <app-item-frame>
+                <div class="frame-content" item_frame_container>
+                    <div class="img-container">
+                        <img src="/assets/homeImages/quadro_de_distribuicao.png">
+                    </div>
+                    <div class="label-container">
+                            <p>Quadro de Distribuição QDW</p>
+                            <span>Saiba mais</span>
+                    </div>
+                </div>
+            </app-item-frame>
+        </div>
+        <div class="frame-container">
+            <app-item-frame>
+                <div class="frame-content" item_frame_container>
+                    <div class="img-container">
+                        <img src="/assets/homeImages/quadro_de_distribuicao.png">
+                    </div>
+                    <div class="label-container">
+                            <p>Quadro de Distribuição QDW</p>
+                            <span>Saiba mais</span>
+                    </div>
+                </div>
+            </app-item-frame>
+        </div>
+        <div class="frame-container">
+            <app-item-frame>
+                <div class="frame-content" item_frame_container>
+                    <div class="img-container">
+                        <img src="/assets/homeImages/quadro_de_distribuicao.png">
+                    </div>
+                    <div class="label-container">
+                            <p>Quadro de Distribuição QDW</p>
+                            <span>Saiba mais</span>
+                    </div>
+                </div>
+            </app-item-frame>
+        </div>
+        <div class="popup-div">
+            <p>Não encontrou o seu produto? Consulte o antigo catálogo eletrônico.</p>
+        </div>
+    </div>
+</div>
+<app-footer-component></app-footer-component>
