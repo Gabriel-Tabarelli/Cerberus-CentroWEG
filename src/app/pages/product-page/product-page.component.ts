@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { PathBar} from 'src/app/interfaces/PathBar';
 import { Product } from 'src/app/interfaces/Product';
@@ -7,9 +7,13 @@ import { Product } from 'src/app/interfaces/Product';
   templateUrl: './product-page.component.html',
   styleUrls: ['./product-page.component.css']
 })
-export class ProductPageComponent implements OnInit {
+export class ProductPageComponent implements OnInit, AfterViewInit {
 
   constructor(private route: ActivatedRoute) { }
+  
+  ngAfterViewInit(): void {
+    window.scrollTo(0,0)
+  }
 
   links: PathBar[] = [
     {link:"/home-page", nomeLink: "home"},

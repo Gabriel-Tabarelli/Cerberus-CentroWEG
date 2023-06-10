@@ -104,7 +104,7 @@
 }
 
 .container-carrinho > img{
-    height: 30px;
+    height: 40%;
  }
 
  .container-linguagem {
@@ -145,7 +145,7 @@
 }
 
 .div-iconeLogado > img {
-    width: 40%;
+    width: 30%;
 }
 .div-iconeLogado > img ~img  {
     rotate: 90deg;

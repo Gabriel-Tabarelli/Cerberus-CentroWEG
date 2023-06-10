@@ -1,5 +1,4 @@
 <app-page>
-    <app-header-component header></app-header-component>
     <app-barra-navegacao [links]='links'></app-barra-navegacao>
 
     <div class="display-item-div">
@@ -23,7 +22,7 @@
             </div>
         </div>
     </div>
-    <div class="break-line-div" *ngIf="!product.specificationList; else sobreProduto">
+    <div class="break-line-div" *ngIf="product.specificationList; else sobreProduto">
         <div class="break-line"></div>
     </div>
     <ng-template #sobreProduto>

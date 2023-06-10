@@ -18,6 +18,7 @@ import { SignupPageComponent } from './pages/signup-page/signup-page.component';
 import { BarraNavegacaoComponent } from './components/barra-navegacao/barra-navegacao.component';
 import { SigninPageComponent } from './pages/signin-page/signin-page.component';
 import { ProductPageComponent } from './pages/product-page/product-page.component';
+import { HeaderLogadoComponentComponent } from './components/header-logado-component/header-logado-component.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ProductPageComponent } from './pages/product-page/product-page.componen
     SignupPageComponent,
     BarraNavegacaoComponent,
     SigninPageComponent,
-    ProductPageComponent
+    ProductPageComponent,
+    HeaderLogadoComponentComponent
   ],
   imports: [
     BrowserModule,
