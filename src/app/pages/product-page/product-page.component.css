@@ -103,6 +103,7 @@
 
 .aaaa {
     height: 500px;
+    background-color: #0090C5;
 }
 
 .sobre-produto-div {
@@ -113,6 +114,7 @@
     justify-content: space-between;
     background-color: #00579D;
     color: #fff;
+    cursor: pointer;
 }
 
 .sobre-produto-div > p {
@@ -120,7 +122,38 @@
     font-size: 1.3rem;
 }
 
-.sobre-produto-div > p:last-child { 
+.seta-img{ 
+    padding: 0 90px 0 90px;
+    width: 25px;
     rotate: 90deg;
-    font-size: 2rem;
+    transition-duration: .4s;
+}
+
+.seta-img.open {
+    rotate: -90deg;
+}
+
+.more-info-div {
+    max-height: 0;
+    padding: 0 90px;
+    overflow: hidden;
+    opacity: 0;
+    transition-duration: .4s;
+  }
+  
+  .more-info-div.open {
+    max-height: 500px;
+    padding: 20px 90px;
+    opacity: 1;
+    width: 70%;
+    transition-duration: .4s;
+  }
+
+.more-info-div > h4 {
+    color: #00579D;
+}
+
+.more-info-div > h4,
+.more-info-div > ul > li {
+    padding: 5px 0 5px 0;
 }
