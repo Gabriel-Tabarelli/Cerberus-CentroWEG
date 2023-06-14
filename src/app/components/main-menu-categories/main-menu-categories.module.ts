@@ -1,12 +1,14 @@
 
 import { NgModule } from "@angular/core";
 import { MainMenuCategoriesComponent } from "./main-menu-categories.component";
+import { AppRoutingModule } from "src/app/app-routing.module";
 
 @NgModule({
     declarations: [
         MainMenuCategoriesComponent
     ],
-    imports: [],
+    imports: [
+        AppRoutingModule],
     exports: [
         MainMenuCategoriesComponent
     ]

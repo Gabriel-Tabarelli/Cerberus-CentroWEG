@@ -19,31 +19,33 @@ import { BarraNavegacaoComponent } from './components/barra-navegacao/barra-nave
 import { SigninPageComponent } from './pages/signin-page/signin-page.component';
 import { ProductPageComponent } from './pages/product-page/product-page.component';
 import { HeaderLogadoComponentComponent } from './components/header-logado-component/header-logado-component.component';
+import { HeaderLogadoComponentModule } from './components/header-logado-component/header-logado-component.module';
+import { CategoryPageModule } from './pages/category-page/category-page.module';
+import { BarraNavegacaoModule } from './components/barra-navegacao/barra-navegacao.module';
+import { ItemFrameModule } from './components/item-frame/item-frame.module';
+import { HomePageModule } from './pages/home-page/home-page.module';
+import { ProductPageModule } from './pages/product-page/product-page.module';
+import { SigninPageModule } from './pages/signin-page/signin-page.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponentComponent,
-    PageComponent,
     HeaderLoginComponentComponent,
-    MainMenuCategoriesComponent,
-    ItemFrameComponent,
-    LoginComponent,
-    HomePageComponent,
-    CategoryPageComponent,
-    SignupPageComponent,
-    BarraNavegacaoComponent,
-    SigninPageComponent,
-    ProductPageComponent,
-    HeaderLogadoComponentComponent
+    SignupPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CadastroModule,
     CarouselModule,
-    FooterModule
-  ],
+    FooterModule,
+    HeaderLogadoComponentModule,
+    CategoryPageModule,
+    HomePageModule,
+    ProductPageModule,
+    SigninPageModule
+  ], 
   providers: [],
   bootstrap: [AppComponent]
 })

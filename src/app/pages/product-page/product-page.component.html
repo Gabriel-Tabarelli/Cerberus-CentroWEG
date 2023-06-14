@@ -1,43 +1,41 @@
-<app-page>
-    <app-barra-navegacao [links]='links'></app-barra-navegacao>
+<app-barra-navegacao [links]='links'></app-barra-navegacao>
 
-    <div class="display-item-div">
-        <div class="prod-img-div">
-            <img [src]="product.url" alt="">
-            <p>Imagem meramente ilustrativas</p>
-        </div>
-        <div class="box-txt-div">
-            <div class="box">
-                <div class="layoult title-div">
-                    <h1>{{product.productName}}</h1>
-                </div>
-                <div class="line-div"></div>
-                <div class="layoult description-div">
-                    <p>{{product.description}}</p>
-                </div>
-                <div class="layoult buttons-div">
-                    <button>Entrar em contato conosco</button>
-                    <button>Adicionar no carrinho</button>
-                </div>
+<div class="display-item-div">
+    <div class="prod-img-div">
+        <img [src]="product.url" alt="">
+        <p>Imagem meramente ilustrativas</p>
+    </div>
+    <div class="box-txt-div">
+        <div class="box">
+            <div class="layoult title-div">
+                <h1>{{product.productName}}</h1>
+            </div>
+            <div class="line-div"></div>
+            <div class="layoult description-div">
+                <p>{{product.description}}</p>
+            </div>
+            <div class="layoult buttons-div">
+                <button>Entrar em contato conosco</button>
+                <button>Adicionar no carrinho</button>
             </div>
         </div>
     </div>
-    <div class="break-line-div" *ngIf="product.specificationList.length == 0; else sobreProduto">
-        <div class="break-line"></div>
+</div>
+<div class="break-line-div" *ngIf="product.specificationList.length == 0; else sobreProduto">
+    <div class="break-line"></div>
+</div>
+<ng-template #sobreProduto>
+    <div class="sobre-produto-div" (click)="openMoreInfo()">
+        <p>Sobre o produto</p>
+        <img src="/assets/icons/setaIcon.png" alt="" [ngClass]="{'open' : moreInfo}" class="seta-img">
     </div>
-    <ng-template #sobreProduto>
-        <div class="sobre-produto-div" (click)="openMoreInfo()">
-            <p>Sobre o produto</p>
-            <img src="/assets/icons/setaIcon.png" alt="" [ngClass]="{'open' : moreInfo}" class="seta-img">
-          </div>
-          
-          <div class="more-info-div" [ngClass]="{ 'open': moreInfo }">
-            <h4>Características Técnicas</h4>
-            <ul>
-              <li *ngFor="let item of product.specificationList">{{ item }}</li>
-            </ul>
-          </div>
-          
-    </ng-template>
-    <div class="aaaa"></div>
-</app-page>
+
+    <div class="more-info-div" [ngClass]="{ 'open': moreInfo }">
+        <h4>Características Técnicas</h4>
+        <ul>
+            <li *ngFor="let item of product.specificationList">{{ item }}</li>
+        </ul>
+    </div>
+
+</ng-template>
+<div class="aaaa"></div>
