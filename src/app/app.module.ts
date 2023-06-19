@@ -33,7 +33,8 @@ import { SignupPageModule } from './pages/signup-page/signup-page.module';
     HomePageModule,
     ProductPageModule,
     SigninPageModule,
-    SignupPageModule
+    SignupPageModule,
+    CategoryPageModule
   ], 
   providers: [],
   bootstrap: [AppComponent]

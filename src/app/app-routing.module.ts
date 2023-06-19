@@ -4,6 +4,16 @@ import { Route, RouterModule } from '@angular/router';
 const routes: Route[] = [
   {
     path: '',
+    redirectTo: 'home-page',
+    pathMatch: 'full'
+  },
+  {
+    path: "**",
+    redirectTo: 'home-page',
+    pathMatch: 'full'
+  },
+  {
+    path: 'home-page',
     loadChildren: () => import('./pages/home-page/home-page.module').then(m => m.HomePageModule)
   },
   {
@@ -23,8 +33,8 @@ const routes: Route[] = [
     loadChildren: () => import('./pages/product-page/product-page.module').then(m => m.ProductPageModule)
   },
   {
-    path: '**',
-    loadChildren: () => import('./pages/home-page/home-page.module').then(m => m.HomePageModule)
+    path: 'cart-page',
+    loadChildren: () => import('./pages/cart-page/cart-page.module').then(m => m.CartPageModule)
   }
 ];
 
