@@ -1,36 +1,31 @@
 import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
-import { CategoryPageComponent } from './pages/category-page/category-page.component';
-import { HomePageComponent } from './pages/home-page/home-page.component';
-import { SigninPageComponent } from './pages/signin-page/signin-page.component';
-import { SignupPageComponent } from './pages/signup-page/signup-page.component';
-import { ProductPageComponent } from './pages/product-page/product-page.component';
 
 const routes: Route[] = [
   {
     path: '',
-    component: HomePageComponent
-  },
-  {
-    path: 'home-page',
-    component: HomePageComponent
+    loadChildren: () => import('./pages/home-page/home-page.module').then(m => m.HomePageModule)
   },
   {
     path: 'category-page',
-    component: CategoryPageComponent
+    loadChildren: () => import('./pages/category-page/category-page.module').then(m => m.CategoryPageModule)
   },
   {
     path: 'signup-page',
-    component: SignupPageComponent
+    loadChildren: () => import('./pages/signup-page/signup-page.module').then(m => m.SignupPageModule)
   },
   {
     path: 'signin-page',
-    component: SigninPageComponent
+    loadChildren: () => import('./pages/signin-page/signin-page.module').then(m => m.SigninPageModule)
   },
   {
     path: 'product-page/:id',
-    component: ProductPageComponent
+    loadChildren: () => import('./pages/product-page/product-page.module').then(m => m.ProductPageModule)
   },
+  {
+    path: '**',
+    loadChildren: () => import('./pages/home-page/home-page.module').then(m => m.HomePageModule)
+  }
 ];
 
 @NgModule({

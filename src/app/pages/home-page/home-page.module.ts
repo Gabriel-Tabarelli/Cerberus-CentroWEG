@@ -5,7 +5,7 @@ import { ItemFrameModule } from 'src/app/components/item-frame/item-frame.module
 import { FooterModule } from 'src/app/components/footer-component/footer.module';
 import { MainMenuCategoriesModule } from 'src/app/components/main-menu-categories/main-menu-categories.module';
 import { CarouselModule } from 'src/app/components/carousel/carousel.module';
-import { AppRoutingModule } from 'src/app/app-routing.module';
+import { HomePageRoutingModule } from './home-page-routing.module';
 
 
 
@@ -15,7 +15,7 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
   ],
   imports: [
     CommonModule,
-    AppRoutingModule,
+    HomePageRoutingModule,
     ItemFrameModule,
     FooterModule,
     CarouselModule,

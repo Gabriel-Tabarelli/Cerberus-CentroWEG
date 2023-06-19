@@ -4,8 +4,7 @@ import { CategoryPageComponent } from './category-page.component';
 import { BarraNavegacaoModule } from 'src/app/components/barra-navegacao/barra-navegacao.module';
 import { ItemFrameModule } from 'src/app/components/item-frame/item-frame.module';
 import { FooterModule } from 'src/app/components/footer-component/footer.module';
-import { ItemFrameComponent } from 'src/app/components/item-frame/item-frame.component';
-import { RouterModule } from '@angular/router';
+import { CategoryPageRoutingModule } from './category-page-routing.module';
 
 
 
@@ -17,7 +16,8 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     BarraNavegacaoModule,
     ItemFrameModule,
-    FooterModule
+    FooterModule,
+    CategoryPageRoutingModule
   ],
   exports: [
     CategoryPageComponent
