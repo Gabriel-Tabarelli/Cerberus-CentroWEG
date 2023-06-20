@@ -14,15 +14,16 @@
     </section>
     <section class="container-fraseLogin">
         <div class="div-iconeLogado">
-            <img src="/assets/images/logoLogado.png" >
-            <img src="/assets/images/setaLinguagem.png" >
+            <img src="/assets/images/logoLogado.png">
+            <img src="/assets/images/setaLinguagem.png">
         </div>
     </section>
     <section class="container-carrinho">
-        <img src="/assets/images/carrinhoWEG.png" alt="">
+        <img (click)="toggleModal()" src="/assets/images/carrinhoWEG.png" alt="">
     </section>
     <section class="container-linguagem">
         <img src="/assets/images/bandeiraBrasil.png">
-        <img src="/assets/images/setaLinguagem.png" >
+        <img src="/assets/images/setaLinguagem.png">
     </section>
+    <app-cart-component [isOpen]="isOpen"></app-cart-component>
 </header>

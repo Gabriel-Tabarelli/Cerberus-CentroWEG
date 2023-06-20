@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HeaderComponentComponent } from '../header-component/header-component.component';
 import { HeaderLogadoComponentComponent } from './header-logado-component.component';
+import { CartComponentModule } from '../cart-component/cart-component.module';
 
 
 
@@ -10,7 +10,8 @@ import { HeaderLogadoComponentComponent } from './header-logado-component.compon
     HeaderLogadoComponentComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    CartComponentModule
   ],
   exports: [
     HeaderLogadoComponentComponent

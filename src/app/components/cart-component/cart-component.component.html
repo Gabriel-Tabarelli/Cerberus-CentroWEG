@@ -1,0 +1,3 @@
+<div class="carrinho" [ngClass]="{'carrinho-opened': isOpen, 'carrinho-closed': !isOpen}">
+</div>
+<div class="shadow" *ngIf="isOpen" (click)="closeCart()"></div>  

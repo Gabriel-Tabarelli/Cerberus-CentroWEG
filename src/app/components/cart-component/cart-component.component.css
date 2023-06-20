@@ -1,0 +1,49 @@
+.carrinho {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background-color: #ffffff;
+    height: 100%;
+    z-index: 12;
+    position: fixed;
+}
+
+.shadow {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 11;
+}
+
+@keyframes carrinhoOpened {
+    0% {
+        width: 0%;
+    }
+
+    100% {
+        width: 30%;
+    }
+}
+
+@keyframes carrinhoClosed {
+    0% {
+        width: 30%;
+    }
+
+    100% {
+        width: 0%;
+    }
+}
+
+.carrinho-opened {
+    width: 30%;
+    animation: carrinhoOpened 300ms ease-in;
+}
+
+.carrinho-closed {
+    animation: carrinhoClosed 300ms ease-in;
+    display: none;
+}

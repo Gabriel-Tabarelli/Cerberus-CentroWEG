@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-header-logado-component',
   templateUrl: './header-logado-component.component.html',
   styleUrls: ['./header-logado-component.component.css']
 })
-export class HeaderLogadoComponentComponent implements OnInit {
+export class HeaderLogadoComponentComponent {
 
-  constructor() { }
+  isOpen = false;
 
-  ngOnInit(): void {
+  toggleModal() {
+    this.isOpen = !this.isOpen;
   }
 
 }
