@@ -15,12 +15,12 @@ import { HomePageModule } from './pages/home-page/home-page.module';
 import { ProductPageModule } from './pages/product-page/product-page.module';
 import { SigninPageModule } from './pages/signin-page/signin-page.module';
 import { SignupPageModule } from './pages/signup-page/signup-page.module';
+import { HeaderModule } from './components/header-component/header.module';
+import { HeaderLoginModule } from './components/header-login-component/header-login.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HeaderComponentComponent,
-    HeaderLoginComponentComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +34,9 @@ import { SignupPageModule } from './pages/signup-page/signup-page.module';
     ProductPageModule,
     SigninPageModule,
     SignupPageModule,
-    CategoryPageModule
+    CategoryPageModule,
+    HeaderModule,
+    HeaderLoginModule
   ], 
   providers: [],
   bootstrap: [AppComponent]

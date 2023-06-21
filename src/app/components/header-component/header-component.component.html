@@ -21,11 +21,13 @@
         </div>
     </section>
     <section class="container-carrinho">
-        <img src="/assets/images/carrinhoWEG.png" alt="">
+        <img (click)="cartShow()" src="/assets/images/carrinhoWEG.png" alt="">
     </section>
     <section class="container-linguagem">
 
         <img src="/assets/images/bandeiraBrasil.png">
         <img src="/assets/images/setaLinguagem.png" >
     </section>
+    
+    <app-cart-component [isOpen]="isOpen" (closeCartEvent)="cartShow()"></app-cart-component> <!-- Cart -->
 </header>

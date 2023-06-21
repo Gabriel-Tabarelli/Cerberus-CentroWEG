@@ -100,7 +100,12 @@
     align-items: center;
     width: 5%;
     user-select: none;
+    cursor: pointer;
+    transition-duration: .1s;
+}
 
+.container-carrinho:hover {
+    scale: 1.1;
 }
 
 .container-carrinho > img{

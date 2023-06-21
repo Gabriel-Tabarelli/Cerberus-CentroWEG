@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-header-logado-component',
@@ -7,9 +7,9 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class HeaderLogadoComponentComponent {
 
-  isOpen = false;
+  isOpen: boolean = false;
 
-  toggleModal() {
+  cartShow() {
     this.isOpen = !this.isOpen;
   }
 

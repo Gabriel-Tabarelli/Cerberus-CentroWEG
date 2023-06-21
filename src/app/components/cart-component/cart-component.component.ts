@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-cart-component',
@@ -8,8 +8,10 @@ import { Component, Input } from '@angular/core';
 export class CartComponentComponent {
 
   @Input() isOpen: boolean;
+  @Output() closeCartEvent = new EventEmitter();
 
   closeCart() {
     this.isOpen = !this.isOpen
+    this.closeCartEvent.emit();
   }
 }
