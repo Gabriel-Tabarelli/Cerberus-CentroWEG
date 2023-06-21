@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CartComponentComponent } from './cart-component.component';
-
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -9,7 +9,8 @@ import { CartComponentComponent } from './cart-component.component';
     CartComponentComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatIconModule
   ],
   exports: [
     CartComponentComponent

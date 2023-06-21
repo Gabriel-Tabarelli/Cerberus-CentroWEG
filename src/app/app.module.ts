@@ -17,6 +17,7 @@ import { SigninPageModule } from './pages/signin-page/signin-page.module';
 import { SignupPageModule } from './pages/signup-page/signup-page.module';
 import { HeaderModule } from './components/header-component/header.module';
 import { HeaderLoginModule } from './components/header-login-component/header-login.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { HeaderLoginModule } from './components/header-login-component/header-lo
     SignupPageModule,
     CategoryPageModule,
     HeaderModule,
-    HeaderLoginModule
+    HeaderLoginModule,
+    BrowserAnimationsModule
   ], 
   providers: [],
   bootstrap: [AppComponent]

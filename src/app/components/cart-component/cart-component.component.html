@@ -1,3 +1,33 @@
-<div class="carrinho" [ngClass]="{'carrinho-opened': isOpen, 'carrinho-closed': !isOpen}">
+<div class="carrinho">
+    <!-- [ngClass]="{'carrinho-opened': isOpen, 'carrinho-closed': !isOpen}" -->
+    <section class="container-header">
+        <div class="blue-bar"></div>
+        <div class="label-container">
+            <div>
+                <p>CARRINHO</p>
+                <div></div>
+            </div>
+        </div>
+        <div>
+            X
+        </div>
+    </section>
+
+    <section class="container-body">
+        <section class="container-product">
+            <img src="" alt="">
+            <div>
+                Nome do produto
+            </div>
+            <mat-icon>delete</mat-icon>
+        </section>
+    </section>
+
+    <section class="container-footer">
+        <div>
+            <button>Ir para carrinho</button>
+        </div>
+        <div class="blue-bar"></div>
+    </section>
 </div>
-<div class="shadow" *ngIf="isOpen" (click)="closeCart()"></div>  
+<div class="shadow" *ngIf="isOpen" (click)="closeCart()"></div>
