@@ -8,11 +8,6 @@ const routes: Route[] = [
     pathMatch: 'full'
   },
   {
-    path: "**",
-    redirectTo: 'home-page',
-    pathMatch: 'full'
-  },
-  {
     path: 'home-page',
     loadChildren: () => import('./pages/home-page/home-page.module').then(m => m.HomePageModule)
   },
@@ -35,6 +30,11 @@ const routes: Route[] = [
   {
     path: 'cart-page',
     loadChildren: () => import('./pages/cart-page/cart-page.module').then(m => m.CartPageModule)
+  },
+  {
+    path: "**",
+    redirectTo: 'home-page',
+    pathMatch: 'full'
   }
 ];
 

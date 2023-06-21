@@ -2,13 +2,16 @@
 import { NgModule } from "@angular/core";
 import { BarraNavegacaoComponent } from "./barra-navegacao.component";
 import { RouterModule } from "@angular/router";
+import { CommonModule } from "@angular/common";
 
 @NgModule({
     declarations: [
         BarraNavegacaoComponent
     ],
     imports: [
-        RouterModule],
+        RouterModule,
+        CommonModule
+    ],
     exports: [
         BarraNavegacaoComponent
     ]
