@@ -6,6 +6,7 @@
     height: 100%;
     z-index: 12;
     position: fixed;
+    width: 30%;
 }
 
 .shadow {
@@ -46,4 +47,133 @@
 .carrinho-closed {
     animation: carrinhoClosed 300ms ease-in;
     display: none;
+}
+
+/* Corpo do carrinho */
+
+/* header */
+.container-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    font-size: 1.3rem;
+    width: 100%;
+    height: 10%;
+    font-family: sans-serif;
+}
+
+.container-header > div:first-child {
+    align-self: flex-start;
+}
+
+.label-container {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.label-container > div {
+    width: 30%;
+}
+
+.label-container > div > p {
+    font-size: 18px;
+    font-family: sans-serif;
+    font-weight: 500;
+    text-align: center;
+}
+
+.label-container > div > div  {
+    width: 100%;
+    height: 3px;
+    background: #00579D;
+    border-radius: 10px;
+}
+
+.container-header > div:last-child {
+    position: absolute;
+    right: 25px;
+}
+
+.container-header > div:last-child >:hover {
+    transition-duration: .1s;
+    cursor: pointer;
+}
+
+.container-header > div:last-child >:hover {
+    scale: 1.1;
+}
+
+.blue-bar {
+    width: 100%;
+    height: 10px;
+    background-color: #00579D;
+}
+
+/* body */
+.container-body {
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap;
+    overflow: auto;
+}
+
+.container-product {
+    height: 20%;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.container-product > img {
+    width: 30%;
+    justify-self: flex-start;
+}
+
+.product-name {
+    width: 50%;
+}
+
+.container-product > div:last-child {
+    cursor: pointer;
+    transition-duration: .1s;
+}
+
+.container-product > div:last-child:hover {
+    scale: 1.1;
+}
+
+/* footer */
+.container-footer {
+    height: 10%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+}
+
+.container-footer > div:first-child {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button {
+    border: none;
+    color: white;
+    height: 30px;
+    border-radius: 10px;
+    width: 40%;
+    font-size: .85rem;
+    background-color: #00579D;
+}
+
+.container-footer > div:last-child {
+    align-self: flex-end;
 }
