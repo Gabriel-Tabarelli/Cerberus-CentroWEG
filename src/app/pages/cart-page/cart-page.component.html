@@ -1,6 +1,37 @@
-<div id="label-container">
-    <div>
-        <h2>CARRINHO DE COMPRAS</h2>
-        <div></div>
+<div class="recomendation-container">
+    <div class="label-container">
+        <div>
+            <h2>CARRINHO DE COMPRAS</h2>
+            <div></div>
+        </div>
+    </div>
+    <div class="recomendations">
+        <div class="lado-produtos">
+            <div class="header-div">
+                <app-item-frame item_frame_container>
+                    <div class="lista-produtos-header" item_frame_container>
+                        <h2>Lista de Produtos</h2>
+                        <button class="botao-limpar-carrinho">Remover todos os produtos</button>
+                    </div>
+                </app-item-frame>
+            </div>
+            <div class="lista-produtos-div">
+                <div class="produtos-div" *ngFor="let produto of listaDeProdutos">    
+                    <app-item-frame>
+                        <div class="container-item" item_frame_container>
+                            <img [src]="produto.url" alt="" class="foto-prod">
+                            <h2 class="nome-produto">{{produto.productName}}</h2>
+                            <mat-icon class="delete-icon">delete_outline</mat-icon>
+                        </div>
+                    </app-item-frame>
+                </div>
+            </div>
+        </div>
+        <div class="resumo-div">
+            <h2>RESUMO</h2> 
+            <h2>Quantidade de produtos: {{2}}</h2>
+            <button>Entrar em contato</button>
+            <button>Continuar navegando</button>
+        </div>
     </div>
 </div>

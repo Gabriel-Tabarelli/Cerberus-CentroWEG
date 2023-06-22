@@ -1,0 +1,153 @@
+.recomendation-container {
+    margin-top: 25px;
+}
+
+.recomendation-container .label-container {
+    width: fit-content;
+    padding-left: 90px;
+}
+
+
+h2  {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.recomendation-container .label-container h2 {
+    padding: 0 10px 5px 10px;
+}
+
+.recomendation-container .label-container>div>div {
+    width: 100%;
+    height: 5px;
+    background: #0090c5;
+    border-radius: 10px;
+}
+
+.recomendations {
+    display: flex;
+    min-height: 72vh;
+    background: #90c1e3;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    justify-content: space-evenly;
+}
+
+.lado-produtos {
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.lista-produtos-header {
+    width: 100%;
+    height: 80px;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.lista-produtos-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px;
+}
+
+.botao-limpar-carrinho { 
+    margin-right: 20px;
+    cursor: pointer; 
+    padding: 12px;
+    border: 2px solid #fe4747;
+    color: #fe4747;
+    border-radius: 10px;
+}
+
+.lista-produtos-div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.lista-produtos-header > h2 { 
+    margin-left: 20px;
+}
+
+.resumo-div {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    height: 100%;
+    background-color: #fff;
+    padding: 20px;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.resumo-div  h2 {
+    text-align: center;
+}
+
+.resumo-div > button {
+    border: none;
+    color: white;
+    padding: 12px 22px;
+    border-radius: 10px;
+    width: 80%;
+    font-size: 0.9rem;
+    background-color: #00579D;
+    margin-bottom: 30px;
+}
+
+
+.resumo-div > button:last-child {
+    margin-bottom: 0px;
+    background-color: #0090c5;
+}
+
+.resumo-div > h2{
+    margin-bottom: 30px;
+}
+
+
+.container-item { 
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 10px;
+    width: 100%;
+    height: 140px;
+    justify-content: space-between;
+}
+
+.foto-prod {
+    width: 100px;
+    margin-left: 20px;
+}
+.header-div {
+    width: 100%;
+    margin-bottom: 20px;
+}   
+
+.produtos-div {
+    margin-bottom: 20px;
+}
+
+.delete-icon {
+    margin-right: 20px;
+}
+.nome-produto {
+    width: 70%;
+}
+
+@media screen and (max-width:850px) {
+
+   .recomendations{
+    flex-direction: column;
+    align-items: center;
+   }
+
+   .resumo-div {
+    width: 50%;
+   }
+}
