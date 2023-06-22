@@ -1,5 +1,4 @@
-<div class="carrinho">
-    <!-- [ngClass]="{'carrinho-opened': isOpen, 'carrinho-closed': !isOpen}" -->
+<div class="carrinho" [ngClass]="{'carrinho-opened': isOpen, 'carrinho-closed': !isOpen}">
     <section class="container-header">
         <div class="blue-bar"></div>
         <div class="label-container">
@@ -9,17 +8,19 @@
             </div>
         </div>
         <div>
-            X
+            <mat-icon (click)="closeCart()">close</mat-icon>
         </div>
     </section>
 
     <section class="container-body">
-        <section class="container-product">
-            <img src="" alt="">
-            <div>
-                Nome do produto
+        <section class="container-product" *ngFor="let produto of produtos">
+            <img [src]="produto.img" alt="">
+            <div class="product-name">
+                {{ produto.nome }} 
             </div>
-            <mat-icon>delete</mat-icon>
+            <div>
+                <mat-icon (click)="deleteProduct()">delete_outline</mat-icon>
+            </div>
         </section>
     </section>
 

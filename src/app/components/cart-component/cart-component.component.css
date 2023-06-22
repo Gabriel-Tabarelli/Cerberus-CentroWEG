@@ -80,7 +80,7 @@
 }
 
 .label-container > div > p {
-    font-size: 1.3rem;
+    font-size: 18px;
     font-family: sans-serif;
     font-weight: 500;
     text-align: center;
@@ -88,14 +88,23 @@
 
 .label-container > div > div  {
     width: 100%;
-    height: 5px;
+    height: 3px;
     background: #00579D;
     border-radius: 10px;
 }
 
 .container-header > div:last-child {
     position: absolute;
-    right: 5px;
+    right: 25px;
+}
+
+.container-header > div:last-child >:hover {
+    transition-duration: .1s;
+    cursor: pointer;
+}
+
+.container-header > div:last-child >:hover {
+    scale: 1.1;
 }
 
 .blue-bar {
@@ -109,6 +118,9 @@
     height: 80%;
     display: flex;
     justify-content: center;
+    width: 100%;
+    flex-wrap: wrap;
+    overflow: auto;
 }
 
 .container-product {
@@ -116,11 +128,25 @@
     width: 80%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 .container-product > img {
     width: 30%;
+    justify-self: flex-start;
+}
+
+.product-name {
+    width: 50%;
+}
+
+.container-product > div:last-child {
+    cursor: pointer;
+    transition-duration: .1s;
+}
+
+.container-product > div:last-child:hover {
+    scale: 1.1;
 }
 
 /* footer */
@@ -128,6 +154,7 @@
     height: 10%;
     display: flex;
     flex-wrap: wrap;
+    align-items: flex-end;
 }
 
 .container-footer > div:first-child {
@@ -140,10 +167,10 @@
 button {
     border: none;
     color: white;
-    height: 35px;
+    height: 30px;
     border-radius: 10px;
     width: 40%;
-    font-size: 1rem;
+    font-size: .85rem;
     background-color: #00579D;
 }
 
