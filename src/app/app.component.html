@@ -14,12 +14,21 @@
 <!-- <app-signin-page></app-signin-page> -->
 <!-- <app-barra-navegacao [links]='[{link:"texte", nomeLink: "motor"}, {link:"texte", nomeLink: "motor"}]'></app-barra-navegacao> -->
 <!-- teste -->
+
+
 <app-header-component *ngIf="!usuarioLogado && !naPaginaLogin()"></app-header-component>
 <app-header-login-component *ngIf="naPaginaLogin()"></app-header-login-component>
 <app-header-logado-component *ngIf="usuarioLogado && !naPaginaLogin()"></app-header-logado-component>
+
 <main>
     <router-outlet></router-outlet>
 </main>
 
+<div *ngIf="testeLogado()"> 
+    <p>AAAAA</p>
+    <p>AAAAA</p>
+    <p>AAAAA</p>
+    <p>AAAAA</p>
+</div>
 
 
