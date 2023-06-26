@@ -1,11 +1,13 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-cart-component',
   templateUrl: './cart-component.component.html',
   styleUrls: ['./cart-component.component.css']
 })
 export class CartComponentComponent {
+
+  constructor(private route: Router){}
   
   @Input() isOpen: boolean;
   @Output() closeCartEvent = new EventEmitter();
@@ -44,5 +46,10 @@ export class CartComponentComponent {
 
   deleteProduct() {
     console.log("aaaaa")
+  }
+
+  navigateTo() {
+    this.closeCart()
+    this.route.navigate(["cart-page"])
   }
 }

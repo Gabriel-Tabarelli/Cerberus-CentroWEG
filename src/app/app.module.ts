@@ -15,7 +15,6 @@ import { SignupPageModule } from './pages/signup-page/signup-page.module';
 import { HeaderModule } from './components/header-component/header.module';
 import { HeaderLoginModule } from './components/header-login-component/header-login.module';
 import { CartPageModule } from './pages/cart-page/cart-page.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -36,8 +35,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CategoryPageModule,
     HeaderModule,
     HeaderLoginModule,
-    CartPageModule,
-    BrowserAnimationsModule
+    CartPageModule
   ], 
   providers: [],
   bootstrap: [AppComponent]
