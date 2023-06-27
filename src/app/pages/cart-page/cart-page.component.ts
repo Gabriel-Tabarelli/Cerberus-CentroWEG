@@ -23,9 +23,14 @@ export class CartPageComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.product)
     for (let i = 0; i < 5; i ++){
+      this.product.id = i; // Arrumar remoção de produtos do carrinho
       this.listaDeProdutos.push(this.product)
     }
     console.log(this.listaDeProdutos)
+  }
+
+  removeProduto(id: number) {
+    this.listaDeProdutos = this.listaDeProdutos.filter(produto => produto.id !== id);
   }
 
 }

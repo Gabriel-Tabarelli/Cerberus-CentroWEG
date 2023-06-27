@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, ActivatedRouteSnapshot, Router } from '@angular/router';
 import { SessionStorageService } from 'src/app/services/session-storage.service';
 import { UserStatusService } from 'src/app/services/user-state.service';
 
@@ -11,7 +11,10 @@ import { UserStatusService } from 'src/app/services/user-state.service';
 
 export class LoginComponent {
 
-  constructor(private router: Router, private sessionService: SessionStorageService, private userState: UserStatusService){}
+  constructor(private router: Router,
+     private sessionService: SessionStorageService,
+     private userState: UserStatusService,
+     private routeSnap: ActivatedRoute){}
 
   email: string
   senha: string
@@ -26,7 +29,8 @@ export class LoginComponent {
      console.log(usuario)
     this.sessionService.setItem("usuario", usuario);
     this.userState.setUserLoggedIn();
-    this.router.navigate(["home/page"])
+    const returnUrl = this.routeSnap.snapshot.queryParams['returnUrl'] || '/';
+    this.router.navigateByUrl(returnUrl);
   }
 
 }

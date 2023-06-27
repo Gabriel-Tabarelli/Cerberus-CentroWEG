@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
+import { AuthenticationGuard } from './guards/authentication.guard';
 
 const routes: Route[] = [
   {
@@ -29,7 +30,8 @@ const routes: Route[] = [
   },
   {
     path: 'cart-page',
-    loadChildren: () => import('./pages/cart-page/cart-page.module').then(m => m.CartPageModule)
+    loadChildren: () => import('./pages/cart-page/cart-page.module').then(m => m.CartPageModule),
+    canActivate: [AuthenticationGuard]
   },
   {
     path: "**",
