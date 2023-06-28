@@ -11,7 +11,7 @@
                 <app-item-frame item_frame_container>
                     <div class="lista-produtos-header" item_frame_container>
                         <h2>Lista de Produtos</h2>
-                        <button class="botao-limpar-carrinho">Remover todos os produtos</button>
+                        <button class="botao-limpar-carrinho" (click)="limparCarrinho()">Remover todos os produtos</button>
                     </div>
                 </app-item-frame>
             </div>
@@ -21,7 +21,7 @@
                         <div class="container-item" item_frame_container>
                             <img [src]="produto.url" alt="" class="foto-prod">
                             <h2 class="nome-produto">{{produto.productName}}</h2>
-                            <mat-icon class="delete-icon" (click)="removeProduto(produto.id)">delete_outline</mat-icon>
+                            <mat-icon class="delete-icon" (click)="removeProduto(produto)">delete_outline</mat-icon>
                         </div>
                     </app-item-frame>
                 </div>
@@ -31,7 +31,7 @@
             <h2>RESUMO</h2> 
             <h2>Quantidade de produtos: {{listaDeProdutos.length}}</h2>
             <button class="first-button">Entrar em contato</button>
-            <button>Continuar navegando</button>
+            <button routerLink="/home-page">Continuar navegando</button>
         </div>
     </div>
 </div>

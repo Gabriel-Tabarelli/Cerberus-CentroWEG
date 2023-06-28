@@ -63,6 +63,10 @@ h2  {
     border-radius: 10px;
 }
 
+.botao-limpar-carrinho:focus-visible {
+    outline: none;
+}
+
 .lista-produtos-div {
     display: flex;
     flex-direction: column;
@@ -82,6 +86,11 @@ h2  {
     padding: 20px;
     align-items: center;
     border-radius: 10px;
+
+    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, .25);
+    border-radius: 15px;
+    border-right: 3px solid #0090C5;
+    border-bottom: 5px solid #0090C5;
 }
 
 .resumo-div  h2 {
@@ -135,6 +144,14 @@ h2  {
 
 .delete-icon {
     margin-right: 20px;
+    transition-duration: .3s;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.delete-icon:hover {
+    transition-duration: .3s;
+    scale: 1.2;
 }
 .nome-produto {
     width: 70%;

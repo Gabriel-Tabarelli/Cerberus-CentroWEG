@@ -2,6 +2,7 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { PathBar } from 'src/app/interfaces/PathBar';
 import { Product } from 'src/app/interfaces/Product';
+import { CartService } from 'src/app/services/cart.service';
 import { UserStatusService } from 'src/app/services/user-state.service';
 @Component({
   selector: 'app-product-page',
@@ -10,19 +11,11 @@ import { UserStatusService } from 'src/app/services/user-state.service';
 })
 export class ProductPageComponent implements OnInit, AfterViewInit {
 
-  constructor(private routeSnap: ActivatedRoute, private userStatusService: UserStatusService, private router: Router) { }
 
-  ngAfterViewInit(): void {
-    window.scrollTo(0, 0)
-  }
-
-  links: PathBar[] = [
-    { link: "/home-page", nomeLink: "home" },
-    { link: "/category-page", nomeLink: "motores elétricos" },
-    { link: "/category-page", nomeLink: "W22" }];
-
-  product: Product;
-  usuarioLogado: boolean;
+  constructor(private routeSnap: ActivatedRoute,
+    private userStatusService: UserStatusService,
+    private router: Router,
+    private cartService: CartService) { }
 
   ngOnInit(): void {
     this.userStatusService.userLoggedIn$.subscribe((logado) => {
@@ -62,6 +55,21 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
 
   }
 
+  ngAfterViewInit(): void {
+    window.scrollTo(0, 0)
+  }
+
+  links: PathBar[] = [
+    { link: "/home-page", nomeLink: "home" },
+    { link: "/category-page", nomeLink: "motores elétricos" },
+    { link: "/category-page", nomeLink: "W22" }
+  ];
+
+  product: Product;
+  usuarioLogado: boolean;
+
+
+
   moreInfo: boolean = false;
 
   openMoreInfo() {
@@ -70,8 +78,9 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
 
 
   adicionarAoCarrinho() {
-    if (this.usuarioLogado){
-      console.log("Adicionar no carrinho")
+    if (this.usuarioLogado) {
+      this.cartService.addToCart(this.product)
+      console.log("Adicionou")
     } else {
       this.router.navigate(['/signin-page'], { queryParams: { returnUrl: '/product-page/:' + this.product.productName } });
     }

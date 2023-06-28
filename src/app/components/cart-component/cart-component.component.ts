@@ -1,51 +1,35 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { Product } from 'src/app/interfaces/Product';
+import { CartService } from 'src/app/services/cart.service';
 @Component({
   selector: 'app-cart-component',
   templateUrl: './cart-component.component.html',
   styleUrls: ['./cart-component.component.css']
 })
-export class CartComponentComponent {
+export class CartComponentComponent implements OnInit {
 
-  constructor(private route: Router){}
+  constructor(private route: Router, private cartService: CartService){}
+
+  ngOnInit(): void {
+    this.cartService.cartItems$.subscribe(items => {
+      this.produtos = items;
+    });
+  }
   
   @Input() isOpen: boolean;
   @Output() closeCartEvent = new EventEmitter();
 
-  produtos = [
-    {
-      nome: "Nome do produto",
-      img: "https://static.weg.net/medias/images/h39/hf5/BRASIL_W22_Plus_Premium_225_355_IE3_B3Dnew_1200Wx1200H.jpg"
-    },
-    {
-      nome: "Nome do produto",
-      img: "https://static.weg.net/medias/images/h39/hf5/BRASIL_W22_Plus_Premium_225_355_IE3_B3Dnew_1200Wx1200H.jpg"
-    },
-    {
-      nome: "Nome do produto",
-      img: "https://static.weg.net/medias/images/h39/hf5/BRASIL_W22_Plus_Premium_225_355_IE3_B3Dnew_1200Wx1200H.jpg"
-    },
-    {
-      nome: "Nome do produto",
-      img: "https://static.weg.net/medias/images/h39/hf5/BRASIL_W22_Plus_Premium_225_355_IE3_B3Dnew_1200Wx1200H.jpg"
-    },
-    {
-      nome: "Nome do produto",
-      img: "https://static.weg.net/medias/images/h39/hf5/BRASIL_W22_Plus_Premium_225_355_IE3_B3Dnew_1200Wx1200H.jpg"
-    },
-    {
-      nome: "Nome do produto",
-      img: "https://static.weg.net/medias/images/h39/hf5/BRASIL_W22_Plus_Premium_225_355_IE3_B3Dnew_1200Wx1200H.jpg"
-    }
-  ]
+  produtos: Product[]; 
+  
 
   closeCart() {
     this.isOpen = !this.isOpen
     this.closeCartEvent.emit();
   }
 
-  deleteProduct() {
-    console.log("aaaaa")
+  deleteProduct(produto: Product) {
+    this.cartService.removeFromCart(produto)
   }
 
   navigateTo() {
