@@ -21,7 +21,7 @@
                         <div class="container-item" item_frame_container>
                             <img [src]="produto.url" alt="" class="foto-prod">
                             <h2 class="nome-produto">{{produto.productName}}</h2>
-                            <mat-icon class="delete-icon">delete_outline</mat-icon>
+                            <mat-icon class="delete-icon" (click)="removeProduto(produto.id)">delete_outline</mat-icon>
                         </div>
                     </app-item-frame>
                 </div>
@@ -29,7 +29,7 @@
         </div>
         <div class="resumo-div">
             <h2>RESUMO</h2> 
-            <h2>Quantidade de produtos: {{2}}</h2>
+            <h2>Quantidade de produtos: {{listaDeProdutos.length}}</h2>
             <button class="first-button">Entrar em contato</button>
             <button>Continuar navegando</button>
         </div>

@@ -1,45 +1,47 @@
-<main>
-    <section class="Container-Login">
-        <div class="Container-Titulo">
-            Login
-        </div>
-        <div class="Container-Endereco_Email">
-            <div class="Container-Endereco_Email-Texto">
-                Endeço de email *
+<form>
+    <main>
+        <section class="Container-Login">
+            <div class="Container-Titulo">
+                Login
             </div>
-            <input type="text" class="Container-Endereco_Email-Input" maxlength="45">
-        </div>
-
-        <div class="Container-Senha">
-            <div class="Container-Senha-Texto">
-                Senha *
-            </div>
-            <input type="text" class="Container-Senha-Input" maxlength="45">
-        </div>
-
-        <div class="Container-Botao_Entrar-Esqueceu_Senha">
-            <div class="Container-Botao_Entrar">
-                <div class="Container-Botao_Entrar-Seta">
-                    >
+            <div class="Container-Endereco_Email">
+                <div class="Container-Endereco_Email-Texto">
+                    Endeço de email *
                 </div>
-                <div class="Container-Botao_Entrar-Texto" routerLink="/home-page">
-                    Entrar
+                <input type="text" class="Container-Endereco_Email-Input" maxlength="45" name="email" [(ngModel)]="email" >
+            </div>
+
+            <div class="Container-Senha">
+                <div class="Container-Senha-Texto">
+                    Senha *
+                </div>
+                <input type="password" class="Container-Senha-Input" maxlength="45" name="senha" [(ngModel)]="senha">
+            </div>
+
+            <div class="Container-Botao_Entrar-Esqueceu_Senha">
+                <div class="Container-Botao_Entrar">
+                    <div class="Container-Botao_Entrar-Seta">
+                        >
+                    </div>
+                    <div class="Container-Botao_Entrar-Texto" (click)="logar()">
+                        Entrar
+                    </div>
+                </div>
+                <div class="Container-Esqueceu_Senha">
+                    <a href="">Esqueceu sua senha?</a>
                 </div>
             </div>
-            <div class="Container-Esqueceu_Senha">
-                <a href="">Esqueceu sua senha?</a>
-            </div>
-        </div>
 
-        <div class="Container-Linha_Central"></div>
+            <div class="Container-Linha_Central"></div>
 
-        <div class="Container-Novo_Cliente">
-            <div class="Container-Novo_Cliente-Texto">
-                Novo cliente?
+            <div class="Container-Novo_Cliente">
+                <div class="Container-Novo_Cliente-Texto">
+                    Novo cliente?
+                </div>
+                <div class="Container-Novo_Cliente-Botao" routerLink="/signup-page">
+                    Criar conta
+                </div>
             </div>
-            <div class="Container-Novo_Cliente-Botao" routerLink="/signup-page">
-                Criar conta
-            </div>
-        </div>
-    </section>
-</main>
+        </section>
+    </main>
+</form>
