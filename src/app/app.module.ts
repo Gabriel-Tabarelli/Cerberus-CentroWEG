@@ -32,7 +32,6 @@ import { CartPageModule } from './pages/cart-page/cart-page.module';
     ProductPageModule,
     SigninPageModule,
     SignupPageModule,
-    CategoryPageModule,
     HeaderModule,
     HeaderLoginModule,
     CartPageModule

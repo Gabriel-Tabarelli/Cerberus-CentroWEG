@@ -61,6 +61,10 @@ section {
     justify-content: center;
 }
 
+#recomendations .frame-container .frame-content .img-container > img {
+    margin-top: 10px;
+}
+
 #recomendations .frame-container .frame-content .label-container {
     width: 100%;
     height: 82px;
