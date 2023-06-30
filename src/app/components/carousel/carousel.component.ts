@@ -26,6 +26,7 @@ export class CarouselComponent implements AfterViewInit {
 		if (Math.abs(this.posDownX - this.posUpX) > 70) {
 			if (this.posDownX > this.posUpX) this.next()
 			else this.previous()
+			console.log(this.posDownX, this.posUpX)
 		}
 	}
 	

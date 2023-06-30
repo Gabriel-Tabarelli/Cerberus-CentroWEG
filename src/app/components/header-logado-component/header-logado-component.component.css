@@ -1,4 +1,3 @@
-
 .container-cabecalho {
     display: flex;
     justify-content: space-between;
@@ -19,14 +18,14 @@
     user-select: none;
 }
 
-.container-doubleGrid{
+.container-doubleGrid {
     display: flex;
     align-items: center;
     user-select: none;
 }
 
 
-.container-pesquisa{
+.container-pesquisa {
     display: flex;
     align-items: center;
     width: 40%;
@@ -47,12 +46,12 @@
     padding-left: 10px;
 }
 
-.div-inputPesquisa > input{
+.div-inputPesquisa>input {
     font-size: 15px;
     border: none;
     width: calc(100% - 50px);
     background-color: transparent;
-    outline:none
+    outline: none
 }
 
 .linhaNaBarraDePesquisa {
@@ -62,12 +61,12 @@
     width: 1px;
 }
 
-.container-fraseLogin { 
+.container-fraseLogin {
     height: 100%;
     width: 140px;
 }
 
-.div-fraseLogin {   
+.div-fraseLogin {
     width: 135px;
     height: 100%;
     display: flex;
@@ -76,20 +75,20 @@
     color: white;
 }
 
-.div-fraseLogin > h1 {
+.div-fraseLogin>h1 {
     color: white;
     display: flex;
     align-items: center;
 }
 
-.div-fraseLogin  a {
+.div-fraseLogin a {
     color: white;
     align-items: center;
     text-decoration: none;
     font-weight: bold;
 }
 
-.div-inputPesquisa > img {
+.div-inputPesquisa>img {
     width: 25px;
     float: left;
 }
@@ -107,37 +106,37 @@
     scale: 1.1;
 }
 
-.container-carrinho > img{
+.container-carrinho>img {
     height: 40%;
- }
+}
 
- .container-linguagem {
+.container-linguagem {
     width: 6%;
     display: flex;
     align-items: center;
     margin: 0 0.5%;
     user-select: none;
- }
+}
 
- .container-linguagem > img{
+.container-linguagem>img {
     width: 38px;
- }
+}
 
- .container-linguagem > img ~ img{
+.container-linguagem>img~img {
     width: 24px;
     rotate: 90deg;
- }
-
- @media screen and (max-width:850px) {
-
-.container-doubleGrid {
-    display: none;
 }
 
-.container-pesquisa {
-    width: auto;
-}
-    
+@media screen and (max-width:850px) {
+
+    .container-doubleGrid {
+        display: none;
+    }
+
+    .container-pesquisa {
+        width: auto;
+    }
+
 }
 
 .div-iconeLogado {
@@ -146,13 +145,83 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    
+    transition-duration: 0.1s;
+    cursor: pointer;
 }
 
-.div-iconeLogado > img {
-    width: 30%;
+.div-iconeLogado:hover {
+    scale: 1.1;
 }
-.div-iconeLogado > img ~ img  {
+
+.userIcone {
+    width: 25%;
+}
+
+.userSetaOff {
+    transition-duration: 0.2s;
     rotate: 90deg;
     width: 20%;
+}
+
+.userSetaOn {
+    transition-duration: 0.2s;
+    rotate: -90deg;
+    width: 20%;
+}
+
+/* Modal login ---------*/
+
+.div-itemFrame {
+    position: absolute;
+    top: 75px;
+    right: 17%;
+    z-index: 12;
+}
+
+@keyframes userOpen {
+    0% {
+        height: 0px;
+    }
+
+    100% {
+        height: 130px;
+    }
+}
+
+.div-modalUsuario {
+    background-color: #fff;
+    border-radius: 10px;
+    width: 215px;
+    height: 130px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding-top: 10px;
+    animation: userOpen 300ms ease;
+}
+
+.div-modalUsuario>a {
+    margin-left: 20%;
+    margin-right: 20%;
+    font-size: 12px;
+    text-decoration: none;
+    color: black;
+}
+
+.div-modalUsuario>div {
+    height: 1px;
+    width: 80%;
+    background-color: rgba(0, 0, 0, 0.40);
+}
+
+.shadow {
+    position: fixed;
+    margin-top: 88px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 11;
 }

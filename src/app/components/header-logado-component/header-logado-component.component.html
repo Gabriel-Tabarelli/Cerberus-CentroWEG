@@ -14,8 +14,19 @@
     </section>
     <section class="container-fraseLogin">
         <div class="div-iconeLogado">
-            <img src="/assets/images/logoLogado.png">
-            <img src="/assets/images/setaLinguagem.png">
+            <img (click)="userShow()" class="userIcone" src="/assets/images/logoLogado.png">
+            <img (click)="userShow()" [ngClass]="{'userSetaOn': isOpenUser, 'userSetaOff': !isOpenUser}" src="/assets/images/setaLinguagem.png">
+        </div>
+        <div class="div-itemFrame" *ngIf="isOpenUser">
+            <app-item-frame>
+                <div class="div-modalUsuario" item_frame_container>
+                    <a >MINHA CONTA</a>
+                    <div></div>
+                    <a>NOTIFICAÇÕES</a>
+                    <div></div>
+                    <a>SAIR</a> 
+                </div>
+            </app-item-frame>
         </div>
     </section>
     <section class="container-carrinho">
@@ -25,5 +36,6 @@
         <img src="/assets/images/bandeiraBrasil.png">
         <img src="/assets/images/setaLinguagem.png">
     </section>
-    <app-cart-component [isOpen]="isOpen" (closeCartEvent)="cartShow()"></app-cart-component> <!-- Cart -->
+    <app-cart-component [isOpen]="isOpenCart" (closeCartEvent)="cartShow()"></app-cart-component> <!-- Cart -->
+    <div *ngIf="isOpenUser" (click)="userShow()" class="shadow"></div>
 </header>

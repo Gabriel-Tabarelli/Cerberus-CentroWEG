@@ -7,17 +7,32 @@ import { Component, Renderer2 } from '@angular/core';
 })
 export class HeaderLogadoComponentComponent {
 
-  isOpen: boolean = false;
+  isOpenCart: boolean = false;
+  isOpenUser: boolean = false;
 
   constructor(private renderer: Renderer2) {}
 
   cartShow() {
-    this.isOpen = !this.isOpen;
-    if (this.isOpen) {
+    this.isOpenCart = !this.isOpenCart;
+    if (this.isOpenCart) {
+      if(this.isOpenUser) {
+        this.userShow();
+      }
       this.renderer.addClass(document.body, 'no-scrollbar');
     } else {
       this.renderer.removeClass(document.body, 'no-scrollbar');
     }
   }
+
+  userShow() {
+    this.isOpenUser = !this.isOpenUser;
+    if (this.isOpenUser) {
+      this.renderer.addClass(document.body, 'no-scrollbar');
+    } else {
+      this.renderer.removeClass(document.body, 'no-scrollbar');
+    }
+  }
+
+
 
 }
