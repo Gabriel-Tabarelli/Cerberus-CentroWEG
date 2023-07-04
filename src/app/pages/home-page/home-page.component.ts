@@ -22,7 +22,8 @@ export class HomePageComponent implements OnInit {
       url: "https://static.weg.net/medias/images/h39/hf5/BRASIL_W22_Plus_Premium_225_355_IE3_B3Dnew_1200Wx1200H.jpg",
       description: " Com carcaça de ferro fundido, flexibilidade de forma construtiva, pés maciços e inteiriços e níveis de ruído e temperatura de operação reduzidos, os motores W22 Alta Tensão são perfeitamente adequados para as mais diversas aplicações industriais.",
       category: 2,
-      specificationList: []
+      specificationList: [],
+      commentList: []
     },
     {
         id: 2,
@@ -38,7 +39,8 @@ export class HomePageComponent implements OnInit {
           , "Altura do cubo (hub): 125 m "
           , "Gerador síncrono de ímãs permanentes"
           , "Acoplamento mecânico: direto (sem caixa de engrenagem)"
-          , "Conexão à rede: conversor de potência plena"]
+          , "Conexão à rede: conversor de potência plena"],
+          commentList: []
     },
     {
         id: 3,
@@ -53,7 +55,8 @@ export class HomePageComponent implements OnInit {
         "	Quantidade de disjuntores no quadro:	12	"	,
         "	Forma de instalação:	De embutir, com tampa	"	,
         "	Componente principal do quadro:	Minidisjuntores	"	
-      ]
+        ],
+        commentList: []
       },
       {
           id: 4,
@@ -72,7 +75,8 @@ export class HomePageComponent implements OnInit {
             "	Potência	:	 200 a 2.800 kW	"	,
             "	Grau de proteção:	 IP55 e IP56	"	,
             "	Forma construtiva:	 horizontal ou vertical	"	
-        ]
+        ],
+        commentList: []
       },
       {
           id: 5,
@@ -86,7 +90,8 @@ export class HomePageComponent implements OnInit {
             "	Tensão:	 220 a 13.800 V	",
             "	Grau de Proteção:	 IP23 a IP56W/IP65W	",
             "	Rotação:	 3.600 a 150 rpm	"  
-          ]
+          ],
+          commentList: []
         }
   ]
 

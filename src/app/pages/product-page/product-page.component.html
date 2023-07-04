@@ -21,10 +21,7 @@
         </div>
     </div>
 </div>
-<div class="break-line-div" *ngIf="product.specificationList.length == 0; else sobreProduto">
-    <div class="break-line"></div>
-</div>
-<ng-template #sobreProduto>
+<div *ngIf="product.specificationList.length > 0;">
     <div class="sobre-produto-div" (click)="openMoreInfo()">
         <p>Sobre o produto</p>
         <img src="/assets/icons/setaIcon.png" alt="" [ngClass]="{'open' : moreInfo}" class="seta-img">
@@ -36,6 +33,40 @@
             <li *ngFor="let item of product.specificationList">{{ item }}</li>
         </ul>
     </div>
-
-</ng-template>
-<div class="aaaa"></div>
+</div>
+<br>
+<br>
+<div *ngIf="product.commentList.length > 0;">
+    <div id="comment-container">
+        <div id="label-container">
+            <div>
+                <h2>PERGUNTAS FREQUENTES</h2>
+                <div></div>
+            </div>
+        </div>
+        <div id="comments">
+            <div *ngFor="let comment of product.commentList; let index = index" class="comments-div">
+                <app-item-frame class="item-frame">
+                    <div class="comment" item_frame_container>
+                        <p class="comment-name">{{ comment.user }}</p>
+                        <P class="comment-comment">{{ comment.question }}</P>
+                        <p class="comment-show" *ngIf="comment.answerList.length > 0" (click)="showAnswers(comment)">
+                            Mostrar respostas
+                        </p>
+                    </div>
+                </app-item-frame>
+                <div *ngIf="isAnsersVisibles(comment)" class="answer">
+                    <div *ngFor="let answer of product.commentList[index].answerList" class="answer-div">
+                        <app-item-frame class="item-frame">
+                            <div class="comment" item_frame_container>
+                                <p class="comment-name">{{ answer.user }}</p>
+                                <P class="comment-comment">{{ answer.answer }}</P>
+                            </div>
+                        </app-item-frame>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <div class="aaaa"></div> -->
