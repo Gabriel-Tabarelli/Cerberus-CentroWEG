@@ -93,6 +93,15 @@
     float: left;
 }
 
+.centered-text {
+    position: absolute;
+    top: 43px;
+    left: 30px;
+    transform: translate(-50%, -50%);
+    font-size: 12px;
+    color: #fff;
+}
+
 .container-carrinho {
     display: flex;
     align-items: center;
@@ -100,6 +109,7 @@
     user-select: none;
     cursor: pointer;
     transition-duration: .1s;
+    position: relative;
 }
 
 .container-carrinho:hover {
@@ -201,12 +211,11 @@
     animation: userOpen 300ms ease;
 }
 
-.div-modalUsuario>a {
+.div-modalUsuario>p {
     margin-left: 20%;
     margin-right: 20%;
     font-size: 12px;
-    text-decoration: none;
-    color: black;
+    cursor: pointer;
 }
 
 .div-modalUsuario>div {
@@ -225,3 +234,6 @@
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 11;
 }
+
+
+

@@ -13,23 +13,24 @@
         </div>
     </section>
     <section class="container-fraseLogin">
-        <div class="div-iconeLogado">
-            <img (click)="userShow()" class="userIcone" src="/assets/images/logoLogado.png">
-            <img (click)="userShow()" [ngClass]="{'userSetaOn': isOpenUser, 'userSetaOff': !isOpenUser}" src="/assets/images/setaLinguagem.png">
+        <div class="div-iconeLogado" (click)="userShow()">
+            <img  class="userIcone" src="/assets/images/logoLogado.png">
+            <img [ngClass]="{'userSetaOn': isOpenUser, 'userSetaOff': !isOpenUser}" src="/assets/images/setaLinguagem.png">
         </div>
         <div class="div-itemFrame" *ngIf="isOpenUser">
             <app-item-frame>
                 <div class="div-modalUsuario" item_frame_container>
-                    <a >MINHA CONTA</a>
+                    <p>MINHA CONTA</p>
                     <div></div>
-                    <a>NOTIFICAÇÕES</a>
+                    <p>NOTIFICAÇÕES</p>
                     <div></div>
-                    <a>SAIR</a> 
+                    <p (click)="deslogar()">SAIR</p> 
                 </div>
             </app-item-frame>
         </div>
     </section>
     <section class="container-carrinho">
+        <p class="centered-text">{{quantidadeProdutos}}</p>
         <img (click)="cartShow()" src="/assets/images/carrinhoWEG.png" alt="">
     </section>
     <section class="container-linguagem">
