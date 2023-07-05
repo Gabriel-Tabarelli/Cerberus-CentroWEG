@@ -1,21 +1,38 @@
-import { Component, Renderer2 } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
+import { Router } from '@angular/router';
+import { CartService } from 'src/app/services/cart.service';
+import { SessionStorageService } from 'src/app/services/session-storage.service';
+import { UserStatusService } from 'src/app/services/user-state.service';
 
 @Component({
   selector: 'app-header-logado-component',
   templateUrl: './header-logado-component.component.html',
   styleUrls: ['./header-logado-component.component.css']
 })
-export class HeaderLogadoComponentComponent {
+export class HeaderLogadoComponentComponent implements OnInit {
 
+
+
+  constructor(private renderer: Renderer2,
+    private sessionService: SessionStorageService,
+    private userService: UserStatusService,
+    private router: Router,
+    private cartService: CartService) { }
+
+  ngOnInit(): void {
+    this.cartService.cartItems$.subscribe(items => {
+      this.quantidadeProdutos = items.length;
+    });
+  }
+  quantidadeProdutos: number = 0;
   isOpenCart: boolean = false;
   isOpenUser: boolean = false;
 
-  constructor(private renderer: Renderer2) {}
-
   cartShow() {
+
     this.isOpenCart = !this.isOpenCart;
     if (this.isOpenCart) {
-      if(this.isOpenUser) {
+      if (this.isOpenUser) {
         this.userShow();
       }
       this.renderer.addClass(document.body, 'no-scrollbar');
@@ -34,5 +51,12 @@ export class HeaderLogadoComponentComponent {
   }
 
 
+
+  deslogar() {
+    this.sessionService.clear();
+    this.userService.setUserLoggedOut();
+    this.userShow();
+    this.router.navigate(['/']);
+  }
 
 }
