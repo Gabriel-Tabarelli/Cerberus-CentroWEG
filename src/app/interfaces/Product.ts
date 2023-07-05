@@ -1,3 +1,5 @@
+import { Question } from "./Question"
+
 export interface Product {
     id: number
     productName: string
@@ -5,4 +7,5 @@ export interface Product {
     description: string
     category: number
     specificationList: string[]
+    commentList: Question[]
 }

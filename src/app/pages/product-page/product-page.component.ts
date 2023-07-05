@@ -2,6 +2,7 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router} from '@angular/router';
 import { PathBar } from 'src/app/interfaces/PathBar';
 import { Product } from 'src/app/interfaces/Product';
+import { Question } from 'src/app/interfaces/Question';
 import { CartService } from 'src/app/services/cart.service';
 import { UserStatusService } from 'src/app/services/user-state.service';
 @Component({
@@ -24,7 +25,8 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
         url: "https://static.weg.net/medias/images/h39/hf5/BRASIL_W22_Plus_Premium_225_355_IE3_B3Dnew_1200Wx1200H.jpg",
         description: " Com carcaça de ferro fundido, flexibilidade de forma construtiva, pés maciços e inteiriços e níveis de ruído e temperatura de operação reduzidos, os motores W22 Alta Tensão são perfeitamente adequados para as mais diversas aplicações industriais.",
         category: 2,
-        specificationList: []
+        specificationList: [],
+        commentList: []
       },
       {
           id: 2,
@@ -40,7 +42,43 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
             , "Altura do cubo (hub): 125 m "
             , "Gerador síncrono de ímãs permanentes"
             , "Acoplamento mecânico: direto (sem caixa de engrenagem)"
-            , "Conexão à rede: conversor de potência plena"]
+            , "Conexão à rede: conversor de potência plena"],
+            commentList: [
+              {
+          id: 1,
+          user: "aa",
+          question: "muito legal isso aqui",
+          answerList: [
+            {
+              id: 1,
+              user: "ab",
+              answer: "que bom que gostou"
+            },
+            {
+              id: 2,
+              user: "ac",
+              answer: "vamos ser amigos?"
+            }
+          ]
+        }, 
+        {
+          id: 2,
+          user: "bb",
+          question: "muito legal isso aqui",
+          answerList: [
+            {
+              id: 1,
+              user: "bc",
+              answer: "que bom que gostou"
+            },
+            {
+              id: 2,
+              user: "bb",
+              answer: "vamos ser amigos?"
+            }
+          ]
+        }
+            ]
       },
       {
           id: 3,
@@ -55,7 +93,8 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
           "	Quantidade de disjuntores no quadro:	12	"	,
           "	Forma de instalação:	De embutir, com tampa	"	,
           "	Componente principal do quadro:	Minidisjuntores	"	
-        ]
+        ],
+            commentList: []
         },
         {
             id: 4,
@@ -74,7 +113,8 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
               "	Potência	:	 200 a 2.800 kW	"	,
               "	Grau de proteção:	 IP55 e IP56	"	,
               "	Forma construtiva:	 horizontal ou vertical	"	
-          ]
+          ],
+            commentList: []
         },
         {
             id: 5,
@@ -88,7 +128,8 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
               "	Tensão:	 220 a 13.800 V	",
               "	Grau de Proteção:	 IP23 a IP56W/IP65W	",
               "	Rotação:	 3.600 a 150 rpm	"  
-            ]
+            ],
+            commentList: []
           }
     ]
 
@@ -101,6 +142,8 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
     const nomeDecodificado = decodeURIComponent(id);
   
     this.product = this.listaDeProdutos.find((product: Product) => product.productName === nomeDecodificado)
+    console.log(encodeURIComponent(id));
+    console.log(decodeURIComponent(id));
   }
 
   ngAfterViewInit(): void {
@@ -116,9 +159,22 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
   product: Product;
   usuarioLogado: boolean;
 
-
-
   moreInfo: boolean = false;
+
+  answersVisibles: number[] = []
+
+  showAnswers(comment: Question) {
+    const index = this.answersVisibles.indexOf(comment.id);
+    if (index === -1) {
+      this.answersVisibles.push(comment.id);
+    } else {
+      this.answersVisibles.splice(index, 1);
+    }
+  }
+
+  isAnsersVisibles(comment: Question) {
+    return this.answersVisibles.includes(comment.id);
+  }
 
   openMoreInfo() {
     this.moreInfo = !this.moreInfo

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ProductPageComponent } from './product-page.component';
 import { BarraNavegacaoModule } from 'src/app/components/barra-navegacao/barra-navegacao.module';
 import { ProductPageRoutingModule } from './product-page-routing.module';
+import { ItemFrameModule } from 'src/app/components/item-frame/item-frame.module';
 
 
 
@@ -11,6 +12,7 @@ import { ProductPageRoutingModule } from './product-page-routing.module';
     ProductPageComponent
   ],
   imports: [
+    ItemFrameModule,
     CommonModule,
     BarraNavegacaoModule,
     ProductPageRoutingModule
