@@ -36,7 +36,7 @@
 </div>
 <br>
 <br>
-<div *ngIf="product.commentList.length > 0;">
+<div>
     <div id="comment-container">
         <div id="label-container">
             <div>
@@ -45,26 +45,46 @@
             </div>
         </div>
         <div id="comments">
-            <div *ngFor="let comment of product.commentList; let index = index" class="comments-div">
-                <app-item-frame class="item-frame">
-                    <div class="comment" item_frame_container>
-                        <p class="comment-name">{{ comment.user }}</p>
-                        <P class="comment-comment">{{ comment.question }}</P>
-                        <p class="comment-show" *ngIf="comment.answerList.length > 0" (click)="showAnswers(comment)">
-                            Mostrar respostas
-                        </p>
-                    </div>
-                </app-item-frame>
-                <div *ngIf="isAnsersVisibles(comment)" class="answer">
-                    <div *ngFor="let answer of product.commentList[index].answerList" class="answer-div">
-                        <app-item-frame class="item-frame">
-                            <div class="comment" item_frame_container>
-                                <p class="comment-name">{{ answer.user }}</p>
-                                <P class="comment-comment">{{ answer.answer }}</P>
+            <div class="first-column" *ngIf="product.commentList.length > 0">
+                <div *ngFor="let comment of product.commentList; let index = index" class="comments-div">
+                    <app-item-frame class="item-frame">
+                        <div class="comment" item_frame_container>
+                            <p class="comment-name">{{ comment.user }}</p>
+                            <P class="comment-comment">{{ comment.question }}</P>
+                            <div (click)="showAnswers(comment)" class="comment-show"
+                                *ngIf="comment.answerList.length > 0">
+                                Mostrar respostas
                             </div>
-                        </app-item-frame>
+                        </div>
+                    </app-item-frame>
+                    <div [ngClass]="{'answer-open': isAnsersVisibles(comment)}" class="answer">
+                        <div *ngFor="let answer of product.commentList[index].answerList" class="answer-div">
+                            <app-item-frame class="item-frame">
+                                <div class="comment" item_frame_container>
+                                    <p class="comment-name">{{ answer.user }}</p>
+                                    <P class="comment-comment">{{ answer.answer }}</P>
+                                </div>
+                            </app-item-frame>
+                        </div>
                     </div>
                 </div>
+                <button class="show-more-comments">Mostrar mais</button>
+            </div>
+            <div class="first-column" *ngIf="product.commentList.length <= 0">
+                <app-item-frame>
+                    <div class="noComment-container" item_frame_container>
+                        <p>Esse produto não tem nenhum pergunta ainda.</p>
+                    </div>
+                </app-item-frame>
+            </div>
+            <div class="second-column">
+                <app-item-frame class="question-item-frame">
+                    <div class="question-container" item_frame_container>
+                        <p class="question-tittle">Faça sua pergunta</p>
+                        <textarea class="question-text" [(ngModel)]="questionText"></textarea>
+                        <button (click)="toComment()">Enviar</button>
+                    </div>
+                </app-item-frame>
             </div>
         </div>
     </div>

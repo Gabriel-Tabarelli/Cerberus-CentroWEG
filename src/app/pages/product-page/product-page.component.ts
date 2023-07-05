@@ -162,6 +162,13 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
   moreInfo: boolean = false;
 
   answersVisibles: number[] = []
+  questionText: String = "";
+  currentPageComment: number = 1;
+
+  nextPageComment() {
+    this.currentPageComment++;
+    //Fazer a lógica de receber do back
+  }
 
   showAnswers(comment: Question) {
     const index = this.answersVisibles.indexOf(comment.id);
@@ -180,12 +187,16 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
     this.moreInfo = !this.moreInfo
   }
 
-
   adicionarAoCarrinho() {
     if (this.usuarioLogado) {
       this.cartService.addToCart(this.product)
     } else {
       this.router.navigate(['/signin-page'], { queryParams: { returnUrl: '/product-page/:' + this.product.productName } });
     }
+  }
+
+  toComment() {
+    console.log(this.questionText);
+    //Fazer a lógica de enviar para o back
   }
 }
