@@ -19,3 +19,7 @@ button {
 .no-scrollbar {
     overflow: hidden;
 }
+
+mat-icon {
+    color: #00569D;
+}

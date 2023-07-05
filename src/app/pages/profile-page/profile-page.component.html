@@ -1,0 +1,83 @@
+<div class="recomendation-container">
+    <div class="label-container">
+        <div>
+            <h2>PERFIL</h2>
+            <div></div>
+        </div>
+    </div>
+    <div class="div-perfil">
+        <div class="div-edicoes">
+            <div class="div-edicao-dados">
+                <app-item-frame>
+                    <div class="div-dados" item_frame_container>
+                        <div class="first-line">
+                            <h2>Bem vindo, {{userName}}!</h2>
+                            <mat-icon class="config-icon icons">settings</mat-icon>
+                        </div>
+                        <div class="second-line">
+                            <mat-icon>email</mat-icon>
+                            <h5>email@gmail.com</h5>
+                        </div>
+                        <div class="thrid-line">
+                            <mat-icon>phone</mat-icon>
+                            <h5>(47) 98544-2920</h5>
+                        </div>
+                    </div>
+                </app-item-frame>
+            </div>
+            <div class="div-edicao-endereco">
+                <app-item-frame>
+                    <div class="div-endereco" item_frame_container>
+                        <div class="first-line">
+                            <h2>Endereço</h2>
+                            <mat-icon class="config-icon icons">settings</mat-icon>
+                        </div>
+                        <div class="second-line">
+                            <mat-icon> location_on</mat-icon>
+                            <h5>CEP 89260-334</h5>
+                        </div>
+                        <div class="thrid-line">
+                            <mat-icon>location_city</mat-icon>
+                            <h5>Jaraugá do Sul - SC</h5>
+                        </div>
+                    </div>
+                </app-item-frame>
+            </div>
+        </div>
+        <div class="div-ultimos-pedidos">
+            <div class="div-pedidos">
+                <app-item-frame>
+                    <div class="div-lista-pedidos" item_frame_container>
+                        <div class="label-inside-container">
+                            <div>
+                                <h2>ULTIMOS PEDIDOS</h2>
+                                <div class="blue-line"></div>
+                            </div>
+                        </div>
+                        <table>
+                            <thead>
+                              <tr>
+                                <th>Número do pedido</th>
+                                <th>Status</th>
+                                <th>Data</th>
+                                <th></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let pedido of listaDePedidos">
+                                  <td>#{{pedido.id}}</td>
+                                  <td>{{pedido.status}}</td>
+                                  <td>{{pedido.data}}</td>
+                                  <td>Detalhes do pedido</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="mostrar-mais">
+                            <p>Mostrar mais</p>
+                        </div>
+                    </div>
+                </app-item-frame>
+            </div>
+        </div>
+    </div>
+</div>
