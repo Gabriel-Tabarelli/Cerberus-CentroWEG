@@ -14,12 +14,25 @@ body {
 
 button {
     cursor: pointer;
+    transition: filter 0.3s;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    border: none;
+    outline: none;
 }
 
 .no-scrollbar {
     overflow: hidden;
 }
 
+
 mat-icon {
     color: #00569D;
+
+button:hover {
+    filter: brightness(0.90);
+
 }

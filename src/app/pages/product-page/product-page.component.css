@@ -14,11 +14,12 @@
     justify-content: center;
     width: 40%;
 }
-.prod-img-div > img { 
+
+.prod-img-div>img {
     width: 80%;
 }
 
-.prod-img-div > p {
+.prod-img-div>p {
     opacity: 0.5;
     font-size: 1rem;
 }
@@ -39,7 +40,7 @@
     flex-direction: column;
 }
 
-.description-div > p {
+.description-div>p {
     font-size: 1rem;
     text-align: justify;
 }
@@ -63,38 +64,37 @@
     justify-content: space-between;
 }
 
-.buttons-div > button {
+button {
     border: none;
     color: white;
     padding: 12px 22px;
     border-radius: 10px;
     width: 47%;
     font-size: 0.9rem;
-  }
+    background-color: #0090C5;
+}
 
-.buttons-div button:first-child{
+.buttons-div button:first-child {
     background-color: #00579D;
 }
 
-.buttons-div button:last-child {
-    background-color: #0090C5;
-}
-  
-  @media (max-width: 768px) {
+@media (max-width: 768px) {
     .button {
-      padding: 8px 16px;
-      font-size: 14px;
+        padding: 8px 16px;
+        font-size: 14px;
     }
-    .description-div > p {
+
+    .description-div>p {
         font-size: 0.8rem;
     }
-  }
+}
 
-.break-line  {
+.break-line {
     width: 70%;
     height: 5px;
     background-color: #00579D;
 }
+
 .break-line-div {
     width: 100%;
     display: flex;
@@ -117,12 +117,12 @@
     cursor: pointer;
 }
 
-.sobre-produto-div > p {
+.sobre-produto-div>p {
     padding: 0 90px 0 90px;
     font-size: 1.3rem;
 }
 
-.seta-img{ 
+.seta-img {
     padding: 0 90px 0 90px;
     width: 25px;
     rotate: 90deg;
@@ -139,22 +139,22 @@
     overflow: hidden;
     opacity: 0;
     transition-duration: .4s;
-  }
-  
-  .more-info-div.open {
+}
+
+.more-info-div.open {
     max-height: 500px;
     padding: 20px 90px;
     opacity: 1;
     width: 70%;
     transition-duration: .4s;
-  }
+}
 
-.more-info-div > h4 {
+.more-info-div>h4 {
     color: #00579D;
 }
 
-.more-info-div > h4,
-.more-info-div > ul > li {
+.more-info-div>h4,
+.more-info-div>ul>li {
     padding: 5px 0 5px 0;
 }
 
@@ -164,7 +164,7 @@
     margin-top: 25px;
 }
 
-#comment-container > div {
+#comment-container>div {
     padding-left: 90px;
     padding-right: 90px;
 }
@@ -180,7 +180,7 @@
     font-weight: 500;
 }
 
-#comment-container #label-container > div > div  {
+#comment-container #label-container>div>div {
     width: 100%;
     height: 5px;
     background: #0090c5;
@@ -193,14 +193,18 @@
     background: #90c1e3;
     padding-top: 20px;
     padding-bottom: 20px;
-    grid-template-columns: 65%;
+    grid-template-columns: 60% 40%;
+}
+
+.first-column {
+    grid-column: 1;
 }
 
 .comments-div {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-end;
-    
+
     margin-top: 10px;
 }
 
@@ -214,7 +218,7 @@
     background-color: white;
     border-radius: 10px;
     box-sizing: border-box;
-    padding: 15px 20px 15px 20px;
+    padding: 15px 20px 15px 10px;
 }
 
 .comment-name {
@@ -234,9 +238,87 @@
 }
 
 .answer {
+    transition-duration: .4s;
     width: 90%;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+}
+
+.answer-open {
+    transition-duration: .4s;
+    max-height: max-content;
+    opacity: 1;
+    overflow: visible;
+    padding: 5px 0px 10px 0px;
 }
 
 .answer-div {
     margin-top: 10px;
+}
+
+.second-column {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.question-item-frame {
+    margin-top: 10px;
+    width: 80%;
+}
+
+.question-container {
+    height: 200px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px 15px 10px 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.question-tittle {
+    width: 100%;
+    height: 2rem;
+}
+
+.question-text {
+    width: 100%;
+    height: 60%;
+    border-radius: 10px;
+    resize: none;
+    padding: 5px;
+    font-size: 15px;
+    font-family: sans-serif;
+}
+
+.question-container>button {
+    padding: 6px;
+    width: 100px;
+    margin-top: .5rem;
+    margin-right: .5rem;
+}
+
+.show-more-comments {
+    margin-top: 18px;
+    width: 130px;
+    height: 40px;
+    color: black;
+    background-color: white;
+    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, .25);
+}
+
+.noComment-container {
+    width: 100%;
+    height: 55px;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.noComment-container>p {
+    padding-left: 5%;
 }

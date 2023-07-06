@@ -4,6 +4,7 @@ import { ProductPageComponent } from './product-page.component';
 import { BarraNavegacaoModule } from 'src/app/components/barra-navegacao/barra-navegacao.module';
 import { ProductPageRoutingModule } from './product-page-routing.module';
 import { ItemFrameModule } from 'src/app/components/item-frame/item-frame.module';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -15,7 +16,8 @@ import { ItemFrameModule } from 'src/app/components/item-frame/item-frame.module
     ItemFrameModule,
     CommonModule,
     BarraNavegacaoModule,
-    ProductPageRoutingModule
+    ProductPageRoutingModule,
+    FormsModule
   ],
   exports: [
     ProductPageComponent
