@@ -31,6 +31,7 @@ button {
 
 mat-icon {
     color: #00569D;
+}
 
 button:hover {
     filter: brightness(0.90);
