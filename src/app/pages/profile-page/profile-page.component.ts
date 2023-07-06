@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Product } from 'src/app/interfaces/Product';
 import { SessionStorageService } from 'src/app/services/session-storage.service';
 
@@ -9,7 +10,8 @@ import { SessionStorageService } from 'src/app/services/session-storage.service'
 })
 export class ProfilePageComponent implements OnInit {
 
-  constructor(private sessionService: SessionStorageService) { }
+  constructor(private sessionService: SessionStorageService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.usuario = this.sessionService.getItem('usuario');
@@ -81,4 +83,9 @@ export class ProfilePageComponent implements OnInit {
         commentList: []
       }
   ]
+
+  navigateTo(productName: string){
+    const rotaProduto = "/product-page/" + encodeURIComponent(productName)
+    this.router.navigate([rotaProduto])
+  }
 }

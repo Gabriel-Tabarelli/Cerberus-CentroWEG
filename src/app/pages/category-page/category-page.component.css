@@ -65,6 +65,7 @@ section {
     background: white;
     border-radius: 10px;
     align-items: center;
+    padding: 10px;
 }
 
 #recomendations .frame-container .frame-content .img-container {

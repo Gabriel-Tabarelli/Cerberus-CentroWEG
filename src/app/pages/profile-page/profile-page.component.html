@@ -97,7 +97,7 @@
                                         <img [src]="produto.url" alt="" class="imagem-produto">
                                     </td>
                                     <td class="nome-produto">{{produto.productName}}</td>
-                                    <td class="coluna-botao"><button class="ver-detalhes-button">Ver datalhes</button></td>
+                                    <td class="coluna-botao"><button class="ver-detalhes-button" (click)="navigateTo(produto.productName)">Ver datalhes</button></td>
                                 </tr>
                             </tbody>
                         </table>
