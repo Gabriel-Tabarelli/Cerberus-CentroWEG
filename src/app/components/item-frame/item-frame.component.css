@@ -1,6 +1,7 @@
 
 .item-frame {
     height: fit-content;
+    background-color: white;
     box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, .25);
     border-radius: 15px;
 }
@@ -8,5 +9,5 @@
 .item-frame > div {
     border-right: 3px solid #0090C5;
     border-bottom: 5px solid #0090C5;
-    border-radius: 15px;
+    border-radius: 10px;
 }

@@ -15,6 +15,7 @@ import { SignupPageModule } from './pages/signup-page/signup-page.module';
 import { HeaderModule } from './components/header-component/header.module';
 import { HeaderLoginModule } from './components/header-login-component/header-login.module';
 import { CartPageModule } from './pages/cart-page/cart-page.module';
+import { ProfilePageModule } from './pages/profile-page/profile-page.module';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { CartPageModule } from './pages/cart-page/cart-page.module';
     SignupPageModule,
     HeaderModule,
     HeaderLoginModule,
-    CartPageModule
+    CartPageModule,
+    ProfilePageModule
   ], 
   providers: [],
   bootstrap: [AppComponent]

@@ -34,6 +34,11 @@ const routes: Route[] = [
     canActivate: [AuthenticationGuard]
   },
   {
+    path: 'profile-page',
+    loadChildren: () => import('./pages/profile-page/profile-page.module').then(m => m.ProfilePageModule),
+    canActivate: [AuthenticationGuard]
+  },
+  {
     path: "**",
     redirectTo: 'home-page',
     pathMatch: 'full'
