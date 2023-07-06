@@ -122,24 +122,24 @@ table {
 
 th,
 td {
-    padding: 8px;
+    padding: 20px;
     text-align: start;
+    border-bottom: 1px solid #ddd;
 }
 
 th {
     background-color: #f2f2f2;
 }
 
-td:last-child {
+.detalhes {
     text-align: center;
     cursor: pointer;
     color: #0090c5;
-
     font-weight: 500;
     transition-duration: .1s;
 }
 
-td:last-child:hover {
+.detalhes:hover {
     color: #0090c5;
     scale: 1.04;
     transition-duration: .1s;
@@ -163,5 +163,40 @@ table {
 .mostrar-mais > p:hover {
     scale: 1.04;
     transition-duration: .1s;
+
+}
+
+.imagem-produto {
+    width: 100px;
+}
+
+.ver-detalhes-button {
+    border: none;
+    color: white;
+    padding: 12px 22px;
+    border-radius: 10px;
+    width: 150px;
+    font-size: 0.9rem;
+    background-color: #0090C5;
+}
+
+.coluna-botao{
+    text-align: center;
+}
+
+@media screen and (max-width:850px) {
+
+    .div-edicoes {
+        flex-direction: column;
+    }
+
+    .div-edicao-dados,
+    .div-edicao-endereco  {
+        width: 100%;
+    }
+
+    .div-edicao-dados { 
+        margin-bottom: 20px;
+    }
 
 }

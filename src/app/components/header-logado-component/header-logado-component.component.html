@@ -20,7 +20,7 @@
         <div class="div-itemFrame" *ngIf="isOpenUser">
             <app-item-frame>
                 <div class="div-modalUsuario" item_frame_container>
-                    <p>MINHA CONTA</p>
+                    <p (click)="navegateTo()">MINHA CONTA</p>
                     <div></div>
                     <p>NOTIFICAÇÕES</p>
                     <div></div>
@@ -29,9 +29,9 @@
             </app-item-frame>
         </div>
     </section>
-    <section class="container-carrinho">
+    <section (click)="cartShow()" class="container-carrinho">
         <p class="centered-text">{{quantidadeProdutos}}</p>
-        <img (click)="cartShow()" src="/assets/images/carrinhoWEG.png" alt="">
+        <img src="/assets/images/carrinhoWEG.png" alt="">
     </section>
     <section class="container-linguagem">
         <img src="/assets/images/bandeiraBrasil.png">

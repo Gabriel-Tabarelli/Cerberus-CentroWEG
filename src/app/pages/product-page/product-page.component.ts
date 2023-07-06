@@ -185,7 +185,7 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
     if (this.usuarioLogado) {
       this.cartService.addToCart(this.product)
     } else {
-      this.router.navigate(['/signin-page'], { queryParams: { returnUrl: '/product-page/:' + this.product.productName } });
+      this.router.navigate(['/signin-page'], { queryParams: { returnUrl: '/product-page/' + this.product.productName } });
     }
   }
 }

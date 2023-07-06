@@ -56,19 +56,48 @@
                         </div>
                         <table>
                             <thead>
-                              <tr>
-                                <th>Número do pedido</th>
-                                <th>Status</th>
-                                <th>Data</th>
-                                <th></th>
-                              </tr>
+                                <tr>
+                                    <th>Número do pedido</th>
+                                    <th>Status</th>
+                                    <th>Data</th>
+                                    <th></th>
+                                </tr>
                             </thead>
                             <tbody>
                                 <tr *ngFor="let pedido of listaDePedidos">
-                                  <td>#{{pedido.id}}</td>
-                                  <td>{{pedido.status}}</td>
-                                  <td>{{pedido.data}}</td>
-                                  <td>Detalhes do pedido</td>
+                                    <td>#{{pedido.id}}</td>
+                                    <td>{{pedido.status}}</td>
+                                    <td>{{pedido.data}}</td>
+                                    <td class="detalhes">Detalhes do pedido</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="mostrar-mais">
+                            <p>Mostrar mais</p>
+                        </div>
+                    </div>
+                </app-item-frame>
+            </div>
+        </div>
+
+        <div class="div-ultimos-pedidos">
+            <div class="div-pedidos">
+                <app-item-frame>
+                    <div class="div-lista-pedidos" item_frame_container>
+                        <div class="label-inside-container">
+                            <div>
+                                <h2>PRODUTOS FAVORITOS</h2>
+                                <div class="blue-line"></div>
+                            </div>
+                        </div>
+                        <table>
+                            <tbody>
+                                <tr *ngFor="let produto of listaDeProdutos">
+                                    <td class="imagem-produto">
+                                        <img [src]="produto.url" alt="" class="imagem-produto">
+                                    </td>
+                                    <td class="nome-produto">{{produto.productName}}</td>
+                                    <td class="coluna-botao"><button class="ver-detalhes-button">Ver datalhes</button></td>
                                 </tr>
                             </tbody>
                         </table>

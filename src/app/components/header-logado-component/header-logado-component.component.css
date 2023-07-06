@@ -110,6 +110,7 @@
     cursor: pointer;
     transition-duration: .1s;
     position: relative;
+  
 }
 
 .container-carrinho:hover {
@@ -143,8 +144,12 @@
         display: none;
     }
 
-    .container-pesquisa {
-        width: auto;
+    .container-carrinho {
+        width: 10%;
+    }
+
+    .container-linguagem {
+        display: none;
     }
 
 }

@@ -59,4 +59,9 @@ export class HeaderLogadoComponentComponent implements OnInit {
     this.router.navigate(['/']);
   }
 
+  navegateTo(){
+    this.userShow();
+    this.router.navigate(['/profile-page']);
+  }
+
 }
