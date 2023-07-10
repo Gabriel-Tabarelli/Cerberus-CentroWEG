@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { User } from 'src/app/interfaces/User';
 
 @Component({
   selector: 'app-cadastro',
@@ -9,8 +10,8 @@ export class CadastroComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.edicao)
-  
-    const User = {
+
+    const user : User = {
       nome: 'John Doe',
       cpf: '12345678901',
       estado: 'São Paulo',
@@ -25,21 +26,23 @@ export class CadastroComponent implements OnInit {
       senha: 'password'
     };
 
-    this.nome = User.nome;
-    this.cpf = User.cpf;
-    this.estado = User.estado;
-    this.cidade = User.cidade;
-    this.bairro = User.bairro;
-    this.endereco = User.endereco;
-    this.numero = User.numero;
-    this.cep = User.cep;
-    this.telefone = User.telefone;
-    this.nomeContato = User.nomeContato;
-    this.email = User.email;
-    this.senha = User.senha;
+    if (this.edicao) {
+      this.nome = user.nome;
+      this.cpf = user.cpf;
+      this.estado = user.estado;
+      this.cidade = user.cidade;
+      this.bairro = user.bairro;
+      this.endereco = user.endereco;
+      this.numero = user.numero;
+      this.cep = user.cep;
+      this.telefone = user.telefone;
+      this.nomeContato = user.nomeContato;
+      this.email = user.email;
+      this.senha = user.senha;
 
+    }
     if (this.cpf == null) {
-      this.pessoaJuridica();	
+      this.pessoaJuridica();
     } else {
       this.pessoaFisica();
     }
@@ -55,73 +58,73 @@ export class CadastroComponent implements OnInit {
   edicao: boolean = false;
   acao: string = "Cadastrar";
   titulo: string = "Cadastro";
-  textNome:string = "Nome";
-  textId:string = "CPF";
-  
-  pessoa:boolean = true;
+  textNome: string = "Nome";
+  textId: string = "CPF";
+
+  pessoa: boolean = true;
 
   // --Dados do Usuario-- //
   lista: user[] = [];
   //---
-  nome:string;
-  cpf:string;
-  estado:string;
-  cidade:string;
-  bairro:string;
-  endereco:string;
-  numero:number;
-  cep:string;
-  telefone:number;
-  nomeContato:string;
-  email:string;
-  senha:string;
+  nome: string;
+  cpf: string;
+  estado: string;
+  cidade: string;
+  bairro: string;
+  endereco: string;
+  numero: number;
+  cep: string;
+  telefone: number;
+  nomeContato: string;
+  email: string;
+  senha: string;
   //---
   submit() {
-    this.lista.push(new user(this.nome, this.cpf, this.estado, this.cidade, this.bairro, 
+    this.lista.push(new user(this.nome, this.cpf, this.estado, this.cidade, this.bairro,
       this.endereco, this.numero, this.cep, this.telefone, this.nomeContato, this.email, this.senha))
     console.log(this.lista)
   }
   // --------end---------
 
-  pessoaJuridica(){
-      this.textNome = "Empresa"
-      this.textId = "CNPJ";
+  pessoaJuridica() {
+    this.textNome = "Empresa"
+    this.textId = "CNPJ";
   }
 
-  pessoaFisica(){
-      this.textNome = "Nome"
-      this.textId = "CPF";
+  pessoaFisica() {
+    this.textNome = "Nome"
+    this.textId = "CPF";
   }
 
 }
 
-class user{
-  nome:string;
-  cpf:string;
-  estado:string;
-  cidade:string;
-  bairro:string;
-  endereco:string;
-  numero:number;
-  cep:string;
-  telefone:number;
-  nomeContato:string;
-  email:string;
-  senha:string;
-  empresa:boolean;
+class user {
+  nome: string;
+  cpf: string;
+  estado: string;
+  cidade: string;
+  bairro: string;
+  endereco: string;
+  numero: number;
+  cep: string;
+  telefone: number;
+  nomeContato: string;
+  email: string;
+  senha: string;
+  empresa: boolean;
 
-  constructor(nome:string, cpf:string, estado:string, cidade:string, bairro:string, endereco:string, numero:number, cep:string, telefone:number, nomeContato:string, email:string, senha:string) {
-      this.nome = nome;
-      this.cpf = cpf;
-      this.estado = estado;
-      this.cidade = cidade;
-      this.bairro = bairro;
-      this.endereco = endereco;
-      this.numero = numero;
-      this.cep = cep;
-      this.telefone = telefone;
-      this.nomeContato = nomeContato;
-      this.email = email;
-      this.senha = senha;
+  constructor(nome: string, cpf: string, estado: string, cidade: string, bairro: string, endereco: string, numero: number, cep: string, telefone: number, nomeContato: string, email: string, senha: string) {
+    this.nome = nome;
+    this.cpf = cpf;
+    this.estado = estado;
+    this.cidade = cidade;
+    this.bairro = bairro;
+    this.endereco = endereco;
+    this.numero = numero;
+    this.cep = cep;
+    this.telefone = telefone;
+    this.nomeContato = nomeContato;
+    this.email = email;
+    this.senha = senha;
   }
 }

@@ -1,0 +1,171 @@
+.recomendation-container {
+    margin-top: 25px;
+}
+
+.recomendation-container .label-container {
+    width: fit-content;
+    padding-left: 90px;
+}
+
+
+h2  {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.recomendation-container .label-container h2 {
+    padding: 0 10px 5px 10px;
+}
+
+.recomendation-container .label-container>div>div {
+    width: 100%;
+    height: 5px;
+    background: #0090c5;
+    border-radius: 10px;
+}
+
+.recomendations {
+    display: flex;
+    min-height: 72vh;
+    background: #90c1e3;
+    padding: 40px 90px 40px 90px;
+    justify-content: center;
+}
+
+
+
+
+.ver-detalhes-button {
+    border: none;
+    color: white;
+    padding: 12px 22px;
+    border-radius: 10px;
+    width: 150px;
+    font-size: 0.9rem;
+    background-color: #0090C5;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    padding: 20px;
+}
+
+th,
+td {
+    padding: 20px;
+    text-align: start;
+    border-bottom: 1px solid #ddd;
+}
+
+.detalhes,
+.mostrar-mais {
+    text-align: center;
+    cursor: pointer;
+    color: #0090c5;
+    font-weight: 500;
+    transition-duration: .1s;
+}
+
+.detalhes:hover,
+.mostrar-mais:hover
+ {
+    color: #0090c5;
+    scale: 1.04;
+    transition-duration: .1s;
+}
+
+.mostrar-mais {
+    margin-top: 20px;
+}
+.div-lista-pedidos {
+    padding: 15px;
+}
+
+.cabecalho-table > tr > th:last-child {
+    text-align: center;
+
+}
+
+.div-pedidos {
+    width: 100%;
+}
+
+
+select {
+    text-align: center;
+    width: 90%;
+    padding: 10px 0px 10px 0px;
+    border-radius: 5px;
+    border: 2px solid #0090C5;
+    box-sizing: border-box;
+    color: #0090C5;
+    font-size: 13px;
+    font-weight: 600; 
+}
+
+select:focus-visible {
+    outline: none;
+    color: #00569D;
+    border: 2px solid #00569D;
+}
+
+
+
+
+.mostrar-mais {
+    margin-top: 20px;
+}
+.mostrar-mais > p {
+    color: #0090c5;
+    text-align: center;
+    transition-duration: .1s;
+    cursor: pointer;
+}
+
+.mostrar-mais > p:hover {
+    scale: 1.04;
+    transition-duration: .1s;
+
+}
+
+.imagem-produto {
+    width: 100px;
+}
+
+.ver-detalhes-button {
+    border: none;
+    color: white;
+    padding: 12px 22px;
+    border-radius: 10px;
+    width: 150px;
+    font-size: 0.9rem;
+    background-color: #0090C5;
+}
+.ver-detalhes-button:first-child{
+    background-color: #00569D;
+}
+
+.coluna-botao{
+    text-align: center;
+}
+
+.buttons-div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+}
+.buttons-div > button:first-child {
+    margin-bottom: 10px;
+}
+
+@media screen and (max-width:850px) {
+
+    .recomendations{
+     flex-direction: column;
+     align-items: center;
+    }
+ 
+}

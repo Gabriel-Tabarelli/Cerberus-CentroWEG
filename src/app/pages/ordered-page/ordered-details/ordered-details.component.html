@@ -1,1 +1,38 @@
-<p>ordered-details works!</p>
+<div class="recomendation-container">
+    <div class="label-container">
+        <div>
+            <h2>PEDIDO</h2>
+            <div></div>
+        </div>
+    </div>
+    <div class="recomendations">
+        <div class="lado-produtos">
+            <div class="header-div">
+                <app-item-frame >
+                    <div class="lista-produtos-header" item_frame_container>
+                        <h2>Lista de Produtos</h2>
+                    </div>
+                </app-item-frame>
+            </div>
+            <div class="lista-produtos-div">
+                <div class="produtos-div" *ngFor="let produto of listaDeProdutos">    
+                    <app-item-frame>
+                        <div class="container-item" item_frame_container>
+                            <img [src]="produto.url" alt="" class="foto-prod">
+                            <h2 class="nome-produto">{{produto.productName}}</h2>
+                            <button class="ver-detalhes-button">Ver datalhes</button>
+                        </div>
+                    </app-item-frame>
+                </div>
+            </div>
+        </div>
+        <div class="resumo-div">
+            <h2>RESUMO</h2> 
+            <h2>Quantidade de produtos: {{listaDeProdutos.length}}</h2>
+            <h2>Nº pedido: #{{pedido.id}}</h2>
+            <h2>Data: {{pedido.data}}</h2>   
+            <button class="first-button" routerLink="/home-page">Continuar navegando</button>
+            <button routerLink="/profile-page">Voltar ao perfil</button>
+        </div>
+    </div>
+</div>

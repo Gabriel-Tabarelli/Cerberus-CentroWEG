@@ -33,10 +33,10 @@
         <p class="centered-text">{{quantidadeProdutos}}</p>
         <img src="/assets/images/carrinhoWEG.png" alt="">
     </section>
-    <section class="container-linguagem">
+    <!-- <section class="container-linguagem">
         <img src="/assets/images/bandeiraBrasil.png">
         <img src="/assets/images/setaLinguagem.png">
-    </section>
+    </section> -->
     <app-cart-component [isOpen]="isOpenCart" (closeCartEvent)="cartShow()"></app-cart-component> <!-- Cart -->
     <div *ngIf="isOpenUser" (click)="userShow()" class="shadow"></div>
 </header>

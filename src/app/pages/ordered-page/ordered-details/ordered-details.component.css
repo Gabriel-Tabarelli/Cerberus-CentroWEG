@@ -1,0 +1,167 @@
+.recomendation-container {
+    margin-top: 25px;
+}
+
+.recomendation-container .label-container {
+    width: fit-content;
+    padding-left: 90px;
+}
+
+
+h2  {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.recomendation-container .label-container h2 {
+    padding: 0 10px 5px 10px;
+}
+
+.recomendation-container .label-container>div>div {
+    width: 100%;
+    height: 5px;
+    background: #0090c5;
+    border-radius: 10px;
+}
+
+.recomendations {
+    display: flex;
+    min-height: 72vh;
+    background: #90c1e3;
+    padding: 40px 90px 40px 90px;
+    justify-content: space-between;
+}
+
+.lado-produtos {
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+}
+
+.lista-produtos-header {
+    width: 100%;
+    height: 80px;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.lista-produtos-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.resumo-div {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    height: 100%;
+    background-color: #fff;
+    padding: 20px;
+    align-items: center;
+    border-radius: 10px;
+
+    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, .25);
+    border-radius: 10px;
+    border-right: 3px solid #0090C5;
+    border-bottom: 5px solid #0090C5;
+}
+
+.resumo-div  h2 {
+    text-align: justify;
+    width: 80%;
+}
+
+.resumo-div  h2:first-child {
+    text-align: center;
+}
+
+.resumo-div > button {
+    border: none;
+    color: white;
+    padding: 12px 22px;
+    border-radius: 10px;
+    width: 80%;
+    font-size: 0.9rem;
+    background-color: #00579D;
+    margin-bottom: 30px;
+}
+
+
+.resumo-div > button:last-child {
+    margin-bottom: 0px;
+    background-color: #0090c5;
+}
+
+.resumo-div > h2{
+    margin-bottom: 30px;
+}
+
+
+.container-item { 
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 10px;
+    width: 95%;
+    height: 140px;
+    justify-content: space-between;
+}
+
+.foto-prod {
+    width: 100px;
+    margin-left: 20px;
+}
+.header-div {
+    width: 100%;
+    margin-bottom: 20px;
+}   
+
+.produtos-div {
+    margin-bottom: 20px;
+}
+
+.delete-icon {
+    margin-right: 20px;
+    transition-duration: .3s;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.delete-icon:hover {
+    transition-duration: .3s;
+    scale: 1.2;
+}
+.nome-produto {
+    width: 70%;
+    padding: 0px 20px 0px 20px;
+    text-align: start;
+}
+
+
+.ver-detalhes-button {
+    border: none;
+    color: white;
+    padding: 12px 22px;
+    border-radius: 10px;
+    width: 150px;
+    font-size: 0.9rem;
+    background-color: #0090C5;
+}
+
+@media screen and (max-width:850px) {
+
+   .recomendations{
+    flex-direction: column;
+    align-items: center;
+   }
+
+   .resumo-div {
+    width: 75%;
+   }
+
+   .lado-produtos {
+    width: 82%;
+   }
+}

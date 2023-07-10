@@ -1,1 +1,43 @@
-<p>ordered-page works!</p>
+<div class="recomendation-container">
+    <div class="label-container">
+        <div>
+            <h2>PEDIDOS</h2>
+            <div></div>
+        </div>
+    </div>
+    <div class="recomendations">
+        <div class="lado-produtos">
+            <app-item-frame>
+                <div class="div-lista-pedidos" item_frame_container>
+                    <table>
+                        <thead class="cabecalho-table">
+                            <tr>
+                                <th>Número do pedido</th>
+                                <th>Status</th>
+                                <th>Data</th>
+                                <th>
+                                    <select class="filtro">
+                                        <option>Mais recente</option>
+                                        <option>Menos recente</option>
+                                        <option>Status</option>
+                                    </select>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let pedido of listaDePedidos">
+                                <td>#{{pedido.id}}</td>
+                                <td>{{pedido.status}}</td>
+                                <td>{{pedido.data}}</td>
+                                <td class="detalhes" [routerLink]="'/ordered-page/' + pedido.id">Detalhes do pedido</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="mostrar-mais">
+                        <p>Mostrar mais</p>
+                    </div>
+                </div>
+            </app-item-frame>
+        </div>  
+    </div>
+</div>
