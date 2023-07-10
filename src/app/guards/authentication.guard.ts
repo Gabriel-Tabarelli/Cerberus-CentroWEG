@@ -20,7 +20,7 @@ export class AuthenticationGuard implements CanActivate {
         if (loggedIn) {
           return true;
         } else {
-          this.route.navigate(['/signin-page'], { queryParams: { returnUrl: '/cart-page'}}); 
+          this.route.navigate(['/signin-page'], { queryParams: { returnUrl: state.url}}); 
           return false; 
         }
       })

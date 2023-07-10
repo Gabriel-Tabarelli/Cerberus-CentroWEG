@@ -12,7 +12,7 @@
                     <div class="div-dados" item_frame_container>
                         <div class="first-line">
                             <h2>Bem vindo, {{userName}}!</h2>
-                            <mat-icon class="config-icon icons">settings</mat-icon>
+                            <mat-icon class="config-icon icons" routerLink="/edit-page">settings</mat-icon>
                         </div>
                         <div class="second-line">
                             <mat-icon>email</mat-icon>
@@ -30,7 +30,7 @@
                     <div class="div-endereco" item_frame_container>
                         <div class="first-line">
                             <h2>Endereço</h2>
-                            <mat-icon class="config-icon icons">settings</mat-icon>
+                            <mat-icon class="config-icon icons" routerLink="/edit-page">settings</mat-icon>
                         </div>
                         <div class="second-line">
                             <mat-icon> location_on</mat-icon>
@@ -68,7 +68,7 @@
                                     <td>#{{pedido.id}}</td>
                                     <td>{{pedido.status}}</td>
                                     <td>{{pedido.data}}</td>
-                                    <td class="detalhes">Detalhes do pedido</td>
+                                    <td class="detalhes" [routerLink]="'/ordered-page/' + pedido.id">Detalhes do pedido</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -102,7 +102,7 @@
                             </tbody>
                         </table>
                         <div class="mostrar-mais">
-                            <p>Mostrar mais</p>
+                            <p routerLink="/favorite-page">Mostrar mais</p>
                         </div>
                     </div>
                 </app-item-frame>

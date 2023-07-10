@@ -2,19 +2,19 @@
 <!-- finalizado -->
     <section class="Container-Cadastro_Texto">
 
-        Cadastro
+        {{titulo}}
 
     </section>
 
-    <section class="Container-Botoes_Cpf_Juridica">
+    <section class="Container-Botoes_Cpf_Juridica" *ngIf="!edicao">
 
         <div class="Custom-Radio">
             <input type="radio" id="radio1" name="radio" value="1" checked>
-            <label for="radio1" (click)='troca2()'>Pessoa Jurídica</label>
+            <label for="radio1" (click)='pessoaJuridica()'>Pessoa Jurídica</label>
         </div>
         <div class="Custom-Radio">
             <input type="radio" id="radio2" name="radio" value="0">
-            <label for="radio2" (click)="troca1()">Pessoa Física</label>
+            <label for="radio2" (click)="pessoaFisica()">Pessoa Física</label>
         </div>
 
     </section>
@@ -53,7 +53,7 @@
 
         <div class="Input-Medio">
             <label for="email">E-mail *</label>
-            <input type="email" id="email"  name="email" [(ngModel)]="email">
+            <input type="email" id="email"  name="email" [(ngModel)]="email" [disabled]="edicao">
         </div>
 
     </section>
@@ -62,7 +62,7 @@
 
         <div class="Input-Medio">
             <label for="cpf">{{ textId }} *</label>
-            <input type="text" id="cpf"  name="cpf" [(ngModel)]="cpf">
+            <input type="text" id="cpf"  name="cpf" [(ngModel)]="cpf" [disabled]="edicao">
         </div>
 
         <div class="Container-Input-Extra_Pequeno">
@@ -106,7 +106,7 @@
                 >
             </div>
             <div class="Container-Botao_Entrar-Texto">
-                Entrar
+                {{acao}}
             </div>
         </button>
     </section>

@@ -39,6 +39,21 @@ const routes: Route[] = [
     canActivate: [AuthenticationGuard]
   },
   {
+    path: 'favorite-page',
+    loadChildren: () => import('./pages/favorite-page/favorite-page.module').then(m => m.FavoritePageModule),
+    canActivate: [AuthenticationGuard]
+  },
+  {
+    path: 'ordered-page',
+    loadChildren: () => import('./pages/ordered-page/ordered-page.module').then(m => m.OrderedPageModule),
+    canActivate: [AuthenticationGuard]
+  },
+  {
+    path: 'edit-page',
+    loadChildren: () => import('./pages/edit-page/edit-page.module').then(m => m.EditPageModule),
+    canActivate: [AuthenticationGuard]
+  },
+  {
     path: "**",
     redirectTo: 'home-page',
     pathMatch: 'full'

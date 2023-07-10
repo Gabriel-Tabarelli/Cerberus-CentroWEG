@@ -35,9 +35,7 @@
 }
 
 .Custom-Radio {
-    /* width: 15%; */
     width: 145px;
-    /* margin-left: 3%; */
     margin-left: 35px;
 }
 
@@ -48,7 +46,6 @@
 .Custom-Radio input+label::before {
     content: '';
     height: 20px;
-    /* width: 10%; */
     width: 20px;
     border-radius: 50%;
     background-color: white;
@@ -84,7 +81,6 @@
     display: flex;
     flex-wrap: wrap;
     width: 93%;
-    /* height: 20%; */
     height: 60px;
 }
 
@@ -106,7 +102,6 @@
 
 .Container-Input-Pequeno {
     width: 93%;
-    /* height: 20%; */
     height: 60px;
     display: flex;
     align-items: center;
@@ -150,7 +145,6 @@
 
 .Container-Input-Extra_Pequeno {
     width: 93%;
-    /* height: 20%; */
     height: 60px;
     display: flex;
     align-items: center;
