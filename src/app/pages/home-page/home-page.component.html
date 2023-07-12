@@ -13,14 +13,14 @@
             </div>
         </div>
         <div id="recomendations">
-            <div class="frame-container" *ngFor="let produto of listaDeProdutos" (click)="navigateTo(produto.productName)">
+            <div class="frame-container" *ngFor="let produto of listaDeProdutos" (click)="navigateTo(produto.id)">
                 <app-item-frame>
                     <div class="frame-content" item_frame_container>
                         <div class="img-container">
-                            <img [src]="produto.url">
+                            <img [src]="produto.urlImagem">
                         </div>
                         <div class="label-container">
-                            <p>{{produto.productName}}</p>
+                            <p>{{produto.nome}}</p>
                         </div>
                     </div>
                 </app-item-frame>

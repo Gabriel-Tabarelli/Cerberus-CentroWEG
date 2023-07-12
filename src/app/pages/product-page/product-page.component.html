@@ -2,17 +2,17 @@
 
 <div class="display-item-div">
     <div class="prod-img-div">
-        <img [src]="product.url" alt="">
+        <img [src]="product.urlImagem" alt="">
         <p>Imagem meramente ilustrativas</p>
     </div>
     <div class="box-txt-div">
         <div class="box">
             <div class="layoult title-div">
-                <h2>{{product.productName}}</h2>
+                <h2>{{product.nome}}</h2>
             </div>
             <div class="line-div"></div>
             <div class="layoult description-div">
-                <p>{{product.description}}</p>
+                <p>{{product.descricao}}</p>
             </div>
             <div class="layoult buttons-div">
                 <button>Entrar em contato conosco</button>
@@ -21,7 +21,7 @@
         </div>
     </div>
 </div>
-<div *ngIf="product.specificationList.length > 0;">
+<div *ngIf="product.especificacoes.length > 0;">
     <div class="sobre-produto-div" (click)="openMoreInfo()">
         <p>Sobre o produto</p>
         <img src="/assets/icons/setaIcon.png" alt="" [ngClass]="{'open' : moreInfo}" class="seta-img">
@@ -30,7 +30,7 @@
     <div class="more-info-div" [ngClass]="{ 'open': moreInfo }">
         <h4>Características Técnicas</h4>
         <ul>
-            <li *ngFor="let item of product.specificationList">{{ item }}</li>
+            <li *ngFor="let item of product.especificacoes">{{ item }}</li>
         </ul>
     </div>
 </div>

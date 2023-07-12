@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Product } from '../interfaces/Product';
+import { Product } from '../interfaces/Product/Product';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -18,7 +18,7 @@ export class CartService {
   }
 
   removeFromCart(product: Product): void {
-    const index = this.cartItems.findIndex(item => item.productName === product.productName);
+    const index = this.cartItems.findIndex(item => item.nome === product.nome);
     if (index !== -1) {
       this.cartItems.splice(index, 1);
     }

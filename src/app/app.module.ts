@@ -16,6 +16,7 @@ import { HeaderModule } from './components/header-component/header.module';
 import { HeaderLoginModule } from './components/header-login-component/header-login.module';
 import { CartPageModule } from './pages/cart-page/cart-page.module';
 import { ProfilePageModule } from './pages/profile-page/profile-page.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -36,9 +37,11 @@ import { ProfilePageModule } from './pages/profile-page/profile-page.module';
     HeaderModule,
     HeaderLoginModule,
     CartPageModule,
-    ProfilePageModule
+    ProfilePageModule,
+    HttpClientModule
   ], 
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [
+    AppComponent]
 })
 export class AppModule { }

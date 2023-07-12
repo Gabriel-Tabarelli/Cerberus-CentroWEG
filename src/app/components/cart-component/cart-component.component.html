@@ -14,9 +14,9 @@
 
     <section class="container-body">
         <section class="container-product" *ngFor="let produto of produtos">
-            <img [src]="produto.url" alt="">
+            <img [src]="produto.urlImagem" alt="">
             <div class="product-name">
-                {{ produto.productName }} 
+                {{ produto.nome }} 
             </div>
             <div>
                 <mat-icon (click)="deleteProduct(produto)">delete_outline</mat-icon>
