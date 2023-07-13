@@ -99,7 +99,7 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
 
   toComment() {
     if (this.usuarioLogado) {
-      this.webSocket.sendMessage(this.product.id, this.questionText);
+      this.webSocket.sendMessage(this.product.id, this.questionText);// Revisar como enviar mensagem !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
     } else {
       this.usuarioDeslogado();
     }
@@ -122,7 +122,7 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
 
   favoritar() {
     if (this.usuarioLogado) {
-      this.webSocket.subscribeToTopic(this.product.id,this.buscarComentarios.bind(this)
+      this.webSocket.subscribeToTopic(this.product.id,this.buscarComentarios.bind(this) // Revisar funcão de call back !!!!!!!!!!!!!!!
       );
     } else {
       this.usuarioDeslogado();

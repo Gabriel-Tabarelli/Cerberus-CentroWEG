@@ -47,14 +47,14 @@ export class WebSocketService {
 
   sendMessage(idProd: number, pergunta: string): void {
     const destination = "/api/" + idProd + "/perguntar";
-    const message: string = JSON.stringify({ pessoa: 1, pergunta: pergunta });
+    const message: string = JSON.stringify({ pessoa: 1, pergunta: pergunta }); // Revisar como enviar mensagem
     this.conexao.publish({ destination: `${destination}`, body: `${message}` });
   }
 
   subscribeToTopic(idProd: number, callback: (message: IMessage) => void): void{
     if (this.conexao.connected) {
       const topic = "/topic/" + idProd;
-      this.conexao.subscribe(topic, (message: IMessage) => { callback(message);});
+      this.conexao.subscribe(topic, (message: IMessage) => { callback(message);}); // Revisar funcão de call back
     } else {
       console.log('Não conectado');
     }
