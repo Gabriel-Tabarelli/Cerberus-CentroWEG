@@ -30,7 +30,7 @@
     <div class="more-info-div" [ngClass]="{ 'open': moreInfo }">
         <h4>Características Técnicas</h4>
         <ul>
-            <li *ngFor="let item of product.especificacoes">{{ item }}</li>
+            <li *ngFor="let item of product.especificacoes">{{ item.especificacao }}</li>
         </ul>
     </div>
 </div>
@@ -45,32 +45,32 @@
             </div>
         </div>
         <div id="comments">
-            <div class="first-column" *ngIf="product.commentList.length > 0">
-                <div *ngFor="let comment of product.commentList; let index = index" class="comments-div">
+            <div class="first-column" *ngIf="product.listaDeComentarios.length > 0">
+                <div *ngFor="let comment of product.listaDeComentarios; let index = index" class="comments-div">
                     <app-item-frame class="item-frame">
                         <div class="comment" item_frame_container>
-                            <p class="comment-name">{{ comment.user }}</p>
-                            <P class="comment-comment">{{ comment.question }}</P>
+                            <p class="comment-name">{{ comment.pessoa.nome }}</p>
+                            <P class="comment-comment">{{ comment.pergunta }}</P>
                             <div (click)="showAnswers(comment)" class="comment-show"
-                                *ngIf="comment.answerList.length > 0">
+                                *ngIf="comment.listaRespostas.length > 0">
                                 Mostrar respostas
                             </div>
                         </div>
                     </app-item-frame>
                     <div [ngClass]="{'answer-open': isAnsersVisibles(comment)}" class="answer">
-                        <div *ngFor="let answer of product.commentList[index].answerList" class="answer-div">
+                        <div *ngFor="let answer of product.listaDeComentarios[index].listaRespostas" class="answer-div">
                             <app-item-frame class="item-frame">
                                 <div class="comment" item_frame_container>
-                                    <p class="comment-name">{{ answer.user }}</p>
-                                    <P class="comment-comment">{{ answer.answer }}</P>
+                                    <p class="comment-name">{{ answer.pessoa.nome }}</p>
+                                    <P class="comment-comment">{{ answer.resposta }}</P>
                                 </div>
                             </app-item-frame>
                         </div>
                     </div>
                 </div>
-                <button class="show-more-comments">Mostrar mais</button>
+                <button class="show-more-comments" *ngIf="!lastQuestion">Mostrar mais</button>
             </div>
-            <div class="first-column" *ngIf="product.commentList.length <= 0">
+            <div class="first-column" *ngIf="product.listaDeComentarios.length <= 0">
                 <app-item-frame>
                     <div class="noComment-container" item_frame_container>
                         <p>Esse produto não tem nenhum pergunta ainda.</p>
@@ -89,3 +89,4 @@
         </div>
     </div>
 </div>
+<button (click)="favoritar()">FAVORITAR</button>

@@ -6,6 +6,6 @@ export interface Product {
     urlImagem: string
     descricao: string
     categoriaId: number
-    especificacoes: string[]
-    commentList: Question[]
+    especificacoes: any[]
+    listaDeComentarios: Question[]
 }

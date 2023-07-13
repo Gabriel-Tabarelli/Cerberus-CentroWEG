@@ -1,11 +1,13 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router} from '@angular/router';
+import { IMessage } from '@stomp/stompjs';
 import { PathBar } from 'src/app/interfaces/PathBar';
 import { Product } from 'src/app/interfaces/Product/Product';
 import { Question } from 'src/app/interfaces/Question';
 import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from 'src/app/services/product.service';
 import { UserStatusService } from 'src/app/services/user-state.service';
+import { WebSocketService } from 'src/app/services/web-socket/web-socket.service';
 @Component({
   selector: 'app-product-page',
   templateUrl: './product-page.component.html',
@@ -18,7 +20,8 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
     private userStatusService: UserStatusService,
     private router: Router,
     private cartService: CartService,
-    private productService: ProductService) { }
+    private productService: ProductService,
+    private webSocket: WebSocketService) { }
 
     listaDeProdutos: Product[] = []
 
@@ -31,6 +34,8 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
   
   
     this.findProduct(id);
+    this.buscarComentarios(id);
+
     
   }
 
@@ -46,24 +51,25 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
 
   product: Product = {
       id: 2,
-      nome: "",
-      urlImagem: "",
-      descricao: "",
+      nome: "Não encontrado",
+      urlImagem: "https://www.cbvj.org.br/index/wp-content/uploads/2017/07/default.png",
+      descricao: "Algo deu errado, tente novamente mais tarde",
       categoriaId: 2,
       especificacoes: [""],
-      commentList: []
+      listaDeComentarios: []
   }
   usuarioLogado: boolean;
 
   moreInfo: boolean = false;
 
   answersVisibles: number[] = []
-  questionText: String = "";
-  currentPageComment: number = 1;
+  questionText: string = "";
+  currentPageComment: number = 0;
+  lastQuestion: boolean = true;
 
   nextPageComment() {
     this.currentPageComment++;
-    //Fazer a lógica de receber do back
+    this.findProduct(this.product.id.toString());
   }
 
   showAnswers(comment: Question) {
@@ -87,19 +93,43 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
     if (this.usuarioLogado) {
       this.cartService.addToCart(this.product)
     } else {
-      this.router.navigate(['/signin-page'], { queryParams: { returnUrl: '/product-page/' + this.product.nome } });
+      this.usuarioDeslogado();
     }
   }
 
   toComment() {
-    console.log(this.questionText);
-    //Fazer a lógica de enviar para o back
+    if (this.usuarioLogado) {
+      this.webSocket.sendMessage(this.product.id, this.questionText);
+    } else {
+      this.usuarioDeslogado();
+    }
   }
 
   findProduct(id: string) {
     this.productService.getProductById(id).subscribe((data: Product) => {
       this.product = data;
-      console.log(data)
     });
+  }
+
+  buscarComentarios(id: string) {
+    console.log("buscando comentarios")
+    this.productService.getProductQuestions(id,this.currentPageComment).subscribe((data: any) => {
+      const questions: Question[] = data.content[0].perguntas;
+      this.product.listaDeComentarios = questions;
+      this.lastQuestion = data.last
+    });
+  }
+
+  favoritar() {
+    if (this.usuarioLogado) {
+      this.webSocket.subscribeToTopic(this.product.id,this.buscarComentarios.bind(this)
+      );
+    } else {
+      this.usuarioDeslogado();
+    }
+  }
+
+  usuarioDeslogado(){
+    this.router.navigate(['/signin-page'], { queryParams: { returnUrl: '/product-page/' + this.product.id } });
   }
 }

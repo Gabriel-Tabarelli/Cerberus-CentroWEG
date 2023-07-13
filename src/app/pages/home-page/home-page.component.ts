@@ -20,8 +20,8 @@ export class HomePageComponent implements OnInit {
 
   listaDeProdutos: ProductMinimized[] = []
 
-  navigateTo(nome: any){
-    const rotaProduto = "/product-page/" + encodeURIComponent(nome)
+  navigateTo(id: number){
+    const rotaProduto = "/product-page/" + id
     this.router.navigate([rotaProduto])
   }
   

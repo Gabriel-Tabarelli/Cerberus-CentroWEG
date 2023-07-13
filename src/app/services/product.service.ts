@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from '../interfaces/Product/Product';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { ProductMinimized } from '../interfaces/Product/ProdutctMinimized';
+import { Question } from '../interfaces/Question';
 
 @Injectable({
   providedIn: 'root'
@@ -22,9 +23,13 @@ export class ProductService {
   }
 
   getProductById(id: string): Observable<Product> {
+    console.log(id);
     return this.httpClient.get<Product>(this.url + "/" +  id)
   }
 
-  get
-
+  getProductQuestions(id: string, page: number): Observable<any> {
+    let params = new HttpParams();
+    params = params.set('page', String(page));
+    return this.httpClient.get<any>(this.url + "/" + id + "/perguntas?page=" + page);
+  }
 }
