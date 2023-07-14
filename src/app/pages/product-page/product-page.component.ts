@@ -31,26 +31,19 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
     });
 
     const id = this.routeSnap.snapshot.paramMap.get("id")
-  
-  
     this.findProduct(id);
     this.buscarComentarios(id);
-
-    
+    console.log(this.links)
   }
 
   ngAfterViewInit(): void {
     window.scrollTo(0, 0)
   }
 
-  links: PathBar[] = [
-    { link: "/home-page", nomeLink: "home" },
-    { link: "/category-page", nomeLink: "motores elétricos" },
-    { link: "/category-page", nomeLink: "W22" }
-  ];
+  links: PathBar[] = [];
 
   product: Product = {
-      id: 2,
+      id: 1,
       nome: "Não encontrado",
       urlImagem: "https://www.cbvj.org.br/index/wp-content/uploads/2017/07/default.png",
       descricao: "Algo deu errado, tente novamente mais tarde",
@@ -106,16 +99,22 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
   }
 
   findProduct(id: string) {
-    this.productService.getProductById(id).subscribe((data: Product) => {
+    this.productService.getProductById(id).subscribe((data: any) => {
       this.product = data;
+      
+      for (let categoria of data.categoria) { // Terminar path bar !!!!!!!!
+        console.log(categoria)
+        
+        if (categoria.nome !== null) {
+          let codificado = encodeURI(categoria.nome)
+          this.links.push({ link: codificado, nomeLink: categoria.nome });
+        }
+      }
     });
   }
 
   buscarComentarios(id: string) {
-    console.log("buscando comentarios")
     console.log(id)
-    console.log("Entrando")
-
     this.productService.getProductQuestions(id,this.currentPageComment).subscribe((data: any) => {
       const questions: Question[] = data.content[0].perguntas;
       this.product.listaDeComentarios = questions;
@@ -125,8 +124,7 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
 
   favoritar() {
     if (this.usuarioLogado) {
-      this.webSocket.subscribeToTopic(this.product.id,this.buscarComentarios.bind(this) // Revisar funcão de call back !!!!!!!!!!!!!!!
-      );
+      this.webSocket.subscribeToTopic(this.product.id,this.funcaoRetorno.bind(this));
     } else {
       this.usuarioDeslogado();
     }
@@ -134,5 +132,14 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
 
   usuarioDeslogado(){
     this.router.navigate(['/signin-page'], { queryParams: { returnUrl: '/product-page/' + this.product.id } });
+  }
+
+  funcaoRetorno(message?: IMessage) {
+    if (message.headers['content-type'] === 'application/json') {
+      const jsonData = JSON.parse(message.body);
+      console.log(jsonData);
+    }
+    this.currentPageComment = 0;
+    this.buscarComentarios(this.product.id.toString());
   }
 }
