@@ -29,7 +29,6 @@ export class ProductService {
 
   getProductQuestions(id: string, page: number): Observable<any> {
     let params = new HttpParams();
-    params = params.set('page', String(page));
     return this.httpClient.get<any>(this.url + "/" + id + "/perguntas?page=" + page);
   }
 }

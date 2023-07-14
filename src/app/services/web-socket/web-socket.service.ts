@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Client, IMessage, Stomp } from '@stomp/stompjs';
 import { Observable } from 'rxjs';
 import SockJS from 'sockjs-client';
+import { Question } from 'src/app/interfaces/Question';
 
 @Injectable({
   providedIn: 'root'
@@ -47,8 +48,13 @@ export class WebSocketService {
 
   sendMessage(idProd: number, pergunta: string): void {
     const destination = "/api/" + idProd + "/perguntar";
-    const message: string = JSON.stringify({ pessoa: 1, pergunta: pergunta }); // Revisar como enviar mensagem
-    this.conexao.publish({ destination: `${destination}`, body: `${message}` });
+    const question: any = {
+      idPessoa: 1,
+      pergunta: pergunta,
+      listaRespostas : []
+    }
+    const message: string = JSON.stringify(question); // Revisar como enviar mensagem
+    this.conexao.publish({ destination: destination, body: message });
   }
 
   subscribeToTopic(idProd: number, callback: (message: IMessage) => void): void{
