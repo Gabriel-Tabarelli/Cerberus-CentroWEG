@@ -90,17 +90,17 @@
                                 <div class="blue-line"></div>
                             </div>
                         </div>
-                        <table>
-                            <tbody>
+                        <!-- <table> -->
+                            <!-- <tbody>
                                 <tr *ngFor="let produto of listaDeProdutos">
                                     <td class="imagem-produto">
-                                        <img [src]="produto.url" alt="" class="imagem-produto">
+                                        <img [src]="produto.urlImagem" alt="" class="imagem-produto">
                                     </td>
-                                    <td class="nome-produto">{{produto.productName}}</td>
-                                    <td class="coluna-botao"><button class="ver-detalhes-button" (click)="navigateTo(produto.productName)">Ver datalhes</button></td>
+                                    <td class="nome-produto">{{produto.nome}}</td>
+                                    <td class="coluna-botao"><button class="ver-detalhes-button" (click)="navigateTo(produto.nome)">Ver datalhes</button></td>
                                 </tr>
                             </tbody>
-                        </table>
+                        </table> -->
                         <div class="mostrar-mais">
                             <p routerLink="/favorite-page">Mostrar mais</p>
                         </div>

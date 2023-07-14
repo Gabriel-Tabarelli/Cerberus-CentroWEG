@@ -1,4 +1,4 @@
-<div class="recomendation-container">
+<!-- <div class="recomendation-container">
     <div class="label-container">
         <div>
             <h2>PRODUTOS FAVORITOS</h2>
@@ -13,12 +13,12 @@
                         <tbody>
                             <tr *ngFor="let produto of listaDeProdutos">
                                 <td class="imagem-produto">
-                                    <img [src]="produto.url" alt="" class="imagem-produto">
+                                    <img [src]="produto.urlImagem" alt="" class="imagem-produto">
                                 </td>
-                                <td class="nome-produto">{{produto.productName}}</td>
+                                <td class="nome-produto">{{produto.nome}}</td>
                                 <td class="coluna-botao">
                                     <div class="buttons-div">
-                                        <button class="ver-detalhes-button" (click)="navigateTo(produto.productName)" >Ver datalhes</button>
+                                        <button class="ver-detalhes-button" (click)="navigateTo(produto.nome)" >Ver datalhes</button>
                                         <button class="ver-detalhes-button">Desfavoritar</button>
                                     </div>
                                 </td>
@@ -32,4 +32,4 @@
             </app-item-frame>
         </div>
     </div>
-</div>
+</div> -->
