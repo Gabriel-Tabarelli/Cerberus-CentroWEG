@@ -1,4 +1,5 @@
-<app-barra-navegacao [links]='[{link:"/home-page", nomeLink: "home"}, {link:"/category-page", nomeLink: "motores elétricos"}]'></app-barra-navegacao>
+<app-barra-navegacao [links]='[]'></app-barra-navegacao>  
+<!-- ARRUMAR A PARTE DE PATH BAR E FAZER DINAMICAMENTE O CATEGORY PAGE -->
 <div id="recomendation-container">
     <div id="label-container">
         <div>
@@ -12,7 +13,7 @@
         </div>
     </div>
     <div id="recomendations">
-        <div class="frame-container">
+        <div class="frame-container" *ngFor="let produtos of listaDeProdutos">
             <app-item-frame>
                 <div class="frame-content" item_frame_container>
                     <div class="img-container">
@@ -21,32 +22,6 @@
                     <div class="label-container">
                         <p>Quadro de Distribuição QDW</p>
                         <span>Saiba mais</span>
-                    </div>
-                </div>
-            </app-item-frame>
-        </div>
-        <div class="frame-container">
-            <app-item-frame>
-                <div class="frame-content" item_frame_container>
-                    <div class="img-container">
-                        <img src="/assets/homeImages/quadro_de_distribuicao.png">
-                    </div>
-                    <div class="label-container">
-                            <p>Quadro de Distribuição QDW</p>
-                            <span>Saiba mais</span>
-                    </div>
-                </div>
-            </app-item-frame>
-        </div>
-        <div class="frame-container">
-            <app-item-frame>
-                <div class="frame-content" item_frame_container>
-                    <div class="img-container">
-                        <img src="/assets/homeImages/quadro_de_distribuicao.png">
-                    </div>
-                    <div class="label-container">
-                            <p>Quadro de Distribuição QDW</p>
-                            <span>Saiba mais</span>
                     </div>
                 </div>
             </app-item-frame>

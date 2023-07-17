@@ -2,8 +2,8 @@
 
     <div class="navegacao-navbar">
 
-        <div *ngFor="let linki of links; index as i" class="div-for">
-            <a [routerLink]="links[i].link" class="{{ last('textoLink', i) }}">{{ links[i].nomeLink.toUpperCase() }}</a>
+        <div *ngFor="let link of links; index as i" class="div-for">
+            <a (click)="navigateTo(links[i], i)" class="{{ last('textoLink', i) }}">{{ links[i].nomeLink.toUpperCase() }}</a>
             <div class="{{ last('barra', i) }}">|</div>
         </div>
 

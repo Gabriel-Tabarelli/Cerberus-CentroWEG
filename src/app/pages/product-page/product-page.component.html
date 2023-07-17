@@ -45,7 +45,7 @@
             </div>
         </div>
         <div id="comments">
-            <div class="first-column" *ngIf="product.listaDeComentarios.length > 0">
+            <div class="first-column" *ngIf="product?.listaDeComentarios?.length > 0">
                 <div *ngFor="let comment of product.listaDeComentarios; let index = index" class="comments-div">
                     <app-item-frame class="item-frame">
                         <div class="comment" item_frame_container>
@@ -70,7 +70,7 @@
                 </div>
                 <button class="show-more-comments" *ngIf="!lastQuestion">Mostrar mais</button>
             </div>
-            <div class="first-column" *ngIf="product.listaDeComentarios.length <= 0">
+            <div class="first-column" *ngIf="product?.listaDeComentarios?.length <= 0">
                 <app-item-frame>
                     <div class="noComment-container" item_frame_container>
                         <p>Esse produto não tem nenhum pergunta ainda.</p>

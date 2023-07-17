@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, catchError, throwError } from 'rxjs';
 import { Product } from '../interfaces/Product/Product';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { ProductMinimized } from '../interfaces/Product/ProdutctMinimized';
@@ -24,7 +24,11 @@ export class ProductService {
 
   getProductById(id: string): Observable<Product> {
     console.log(id);
-    return this.httpClient.get<Product>(this.url + "/" +  id)
+    return this.httpClient.get<Product>(this.url + "/" +  id).pipe(
+      catchError(() => {
+        return throwError('Produto não encontrado');
+      })
+    );
   }
 
   getProductQuestions(id: string, page: number): Observable<any> {

@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router} from '@angular/router';
+import { Title } from '@angular/platform-browser';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IMessage } from '@stomp/stompjs';
 import { PathBar } from 'src/app/interfaces/PathBar';
 import { Product } from 'src/app/interfaces/Product/Product';
@@ -23,7 +24,7 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
     private productService: ProductService,
     private webSocket: WebSocketService) { }
 
-    listaDeProdutos: Product[] = []
+  listaDeProdutos: Product[] = []
 
   ngOnInit(): void {
     this.userStatusService.userLoggedIn$.subscribe((logado) => {
@@ -36,20 +37,41 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
     console.log(this.links)
   }
 
+
+
   ngAfterViewInit(): void {
     window.scrollTo(0, 0)
+  }
+
+  findProduct(id: string) {
+    this.productService.getProductById(id).subscribe((data: any) => {
+      this.product = data;
+      let aux = data.categoria;
+      console.log(data.nome);
+      this.links.push({ link: data.id, nomeLink: data.nome });
+      while (aux.categoria != null) {
+        this.links.push({ link: aux.categoria.id, nomeLink: aux.categoria.nome });
+        aux = aux.categoria;
+      }
+      this.links.reverse();
+      console.log(this.links);
+    },
+      (error) => {
+        console.error(error);
+        this.router.navigate(['/home-page']);
+      });
   }
 
   links: PathBar[] = [];
 
   product: Product = {
-      id: 1,
-      nome: "Não encontrado",
-      urlImagem: "https://www.cbvj.org.br/index/wp-content/uploads/2017/07/default.png",
-      descricao: "Algo deu errado, tente novamente mais tarde",
-      categoriaId: 2,
-      especificacoes: [""],
-      listaDeComentarios: []
+    id: 0,
+    nome: "Não encontrado",
+    urlImagem: "https://www.cbvj.org.br/index/wp-content/uploads/2017/07/default.png",
+    descricao: "Algo deu errado, tente novamente mais tarde",
+    categoriaId: 2,
+    especificacoes: [],
+    listaDeComentarios: []
   }
   usuarioLogado: boolean;
 
@@ -92,30 +114,15 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
 
   toComment() {
     if (this.usuarioLogado) {
-      this.webSocket.sendMessage(this.product.id, this.questionText);// Revisar como enviar mensagem !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
+      this.webSocket.sendMessage(this.product.id, this.questionText);
     } else {
       this.usuarioDeslogado();
     }
   }
 
-  findProduct(id: string) {
-    this.productService.getProductById(id).subscribe((data: any) => {
-      this.product = data;
-      
-      for (let categoria of data.categoria) { // Terminar path bar !!!!!!!!
-        console.log(categoria)
-        
-        if (categoria.nome !== null) {
-          let codificado = encodeURI(categoria.nome)
-          this.links.push({ link: codificado, nomeLink: categoria.nome });
-        }
-      }
-    });
-  }
-
   buscarComentarios(id: string) {
     console.log(id)
-    this.productService.getProductQuestions(id,this.currentPageComment).subscribe((data: any) => {
+    this.productService.getProductQuestions(id, this.currentPageComment).subscribe((data: any) => {
       const questions: Question[] = data.content[0].perguntas;
       this.product.listaDeComentarios = questions;
       this.lastQuestion = data.last
@@ -124,13 +131,13 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
 
   favoritar() {
     if (this.usuarioLogado) {
-      this.webSocket.subscribeToTopic(this.product.id,this.funcaoRetorno.bind(this));
+      this.webSocket.subscribeToTopic(this.product.id, this.funcaoRetorno.bind(this));
     } else {
       this.usuarioDeslogado();
     }
   }
 
-  usuarioDeslogado(){
+  usuarioDeslogado() {
     this.router.navigate(['/signin-page'], { queryParams: { returnUrl: '/product-page/' + this.product.id } });
   }
 
@@ -142,4 +149,5 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
     this.currentPageComment = 0;
     this.buscarComentarios(this.product.id.toString());
   }
+
 }

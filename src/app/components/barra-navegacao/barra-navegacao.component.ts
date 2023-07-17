@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { PathBar } from 'src/app/interfaces/PathBar';
 
 @Component({
@@ -7,22 +8,28 @@ import { PathBar } from 'src/app/interfaces/PathBar';
   styleUrls: ['./barra-navegacao.component.css']
 })
 
-export class BarraNavegacaoComponent {
+export class BarraNavegacaoComponent implements OnInit {
 
+  constructor(private route: Router) {}
+  ngOnInit(): void {
+  }
+  
   @Input()
   links!: PathBar[];
 
 
-  last(tipo:string, index:number):string {
-    if (index < this.links.length-1 && tipo == "barra") {
-      return "barra-normal";
-    } if (index < this.links.length-1 && tipo == "textoLink") {
-      return "textoLink-normal"
-    } if (index >= this.links.length-1 && tipo == "barra") {
-      return "barra-ultima"
-    } if (index >= this.links.length-1 && tipo == "textoLink") {
-      return "textoLink-ultima"
+  last(tipo: string, index: number): string {
+    const isLastLink = index >= this.links.length - 1;
+    return `${tipo}-${isLastLink ? 'ultima' : 'normal'}`;
+  }
+
+  navigateTo(link: PathBar, index: number) {
+    if (index == this.links.length-1) {
+      this.route.navigate(['/product-page/', link.link])
+    } else if (index == 0) {
+      this.route.navigate(['/home-page'])
+    } else {
+      this.route.navigate(['/category-page/', link.link])
     }
-    return "none" 
   }
 }

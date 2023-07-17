@@ -59,7 +59,7 @@ export class WebSocketService {
 
   subscribeToTopic(idProd: number, callback: (message: IMessage) => void): void{
     if (this.conexao.connected) {
-      const topic = "/topic/" + idProd;
+      const topic = "/topic/pergunta/" + idProd;
       this.conexao.subscribe(topic, (message: IMessage) => { callback(message);}); // Revisar funcão de call back
     } else {
       console.log('Não conectado');

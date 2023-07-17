@@ -13,7 +13,7 @@ const routes: Route[] = [
     loadChildren: () => import('./pages/home-page/home-page.module').then(m => m.HomePageModule)
   },
   {
-    path: 'category-page',
+    path: 'category-page/:id',
     loadChildren: () => import('./pages/category-page/category-page.module').then(m => m.CategoryPageModule)
   },
   {
@@ -53,11 +53,11 @@ const routes: Route[] = [
     loadChildren: () => import('./pages/edit-page/edit-page.module').then(m => m.EditPageModule),
     canActivate: [AuthenticationGuard]
   },
-  {
-    path: "**",
-    redirectTo: 'home-page',
-    pathMatch: 'full'
-  }
+  // {
+  //   path: "**",
+  //   redirectTo: 'home-page',
+  //   pathMatch: 'full'
+  // }
 ];
 
 @NgModule({

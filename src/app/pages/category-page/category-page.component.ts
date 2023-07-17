@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-category-page',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoryPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private routeSnap: ActivatedRoute) { }
 
   ngOnInit(): void {
+
+    const id = this.routeSnap.snapshot.paramMap.get("id")
+    this.buscarProdutos(id);
   }
 
+  listaDeProdutos: [] = []
+
+  buscarProdutos(id: any) {
+    console.log(id)
+  }
 }

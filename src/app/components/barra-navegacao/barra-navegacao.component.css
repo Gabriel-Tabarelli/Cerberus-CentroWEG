@@ -26,6 +26,7 @@
     height: 100%;
     display: flex;
     align-items: center;
+    
 }
 
 .textoLink-normal {
@@ -57,4 +58,12 @@
 
 .barra-ultima {
     display: none;
+}
+
+a {
+    cursor: pointer;
+}
+
+div {
+    cursor: default;
 }
