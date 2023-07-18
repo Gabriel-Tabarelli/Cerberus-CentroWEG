@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
   selector: 'app-category-page',
@@ -8,7 +9,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CategoryPageComponent implements OnInit {
 
-  constructor(private routeSnap: ActivatedRoute) { }
+  constructor(private routeSnap: ActivatedRoute,
+    private categoryService: CategoryService) { }
 
   ngOnInit(): void {
 
@@ -20,5 +22,11 @@ export class CategoryPageComponent implements OnInit {
 
   buscarProdutos(id: any) {
     console.log(id)
+    this.categoryService.findOne(id).subscribe((data: any) => {
+      console.log(data)
+      this.listaDeProdutos = data.produtos
+      console.log(this.listaDeProdutos)
+    }
+    )
   }
 }
