@@ -16,7 +16,7 @@ export class CategoryPageComponent implements OnInit {
         urlIcone: "http://localhost:4200/assets/icons/motorEletricoIcon.png"
     }]
     pathBar: any[] = [];
-
+//asdfsdfa
     constructor(private routeSnap: ActivatedRoute, private router: Router, private categoryService: CategoryService) { }
 
     ngOnInit(): void {
