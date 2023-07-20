@@ -41,6 +41,11 @@ section {
     margin-left: 10px;
 }
 
+#recomendation-container #label-container > div > div .img-container {
+    display: block;
+    margin-left: 10px;
+}
+
 #recomendation-container #label-container img {
     width: 60px;
 }
@@ -73,6 +78,12 @@ section {
     width: 130px;
     height: 130px;
     justify-content: center;
+    align-items: center;
+}
+
+#recomendations .frame-container .frame-content .img-container > img {
+    max-width: 100%;
+    height: fit-content;
 }
 
 #recomendations .frame-container .frame-content .label-container {
