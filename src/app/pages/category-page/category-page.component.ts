@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CategoryService } from 'src/app/services/category.service';
 import { Router } from '@angular/router';
+import { PathBar } from 'src/app/interfaces/PathBar';
+import { retry } from 'rxjs';
 
 @Component({
     selector: 'app-category-page',
@@ -15,8 +17,8 @@ export class CategoryPageComponent implements OnInit {
         nome: "Home", 
         urlIcone: "http://localhost:4200/assets/icons/motorEletricoIcon.png"
     }]
-    pathBar: any[] = [];
-//asdfsdfa
+    pathBar: PathBar[] = [];
+
     constructor(private routeSnap: ActivatedRoute, private router: Router, private categoryService: CategoryService) { }
 
     ngOnInit(): void {
@@ -31,10 +33,22 @@ export class CategoryPageComponent implements OnInit {
     }
 
     pathBarConstructor(categoria:any) {
+        let link:PathBar;
         if (categoria.categoria != null) {
             this.pathBarConstructor(categoria.categoria)
         }
-        this.pathBar.push(categoria.nome);
+        if (categoria.nome == "Home") {
+            link = {
+                link: categoria.nome,
+                nomeLink: "categorias"
+            }
+        } else {
+            link = {
+                link: categoria.nome,
+                nomeLink: categoria.nome
+            }
+        }
+        this.pathBar.push(link);
     }
 
     redirect(id: string) {
