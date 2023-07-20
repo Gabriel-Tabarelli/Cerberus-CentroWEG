@@ -1,5 +1,4 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IMessage } from '@stomp/stompjs';
 import { PathBar } from 'src/app/interfaces/PathBar';
@@ -34,7 +33,7 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
     const id = this.routeSnap.snapshot.paramMap.get("id")
     this.findProduct(id);
     this.buscarComentarios(id);
-    console.log(this.links)
+    // console.log(this.links)
   }
 
 
@@ -47,14 +46,16 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
     this.productService.getProductById(id).subscribe((data: any) => {
       this.product = data;
       let aux = data.categoria;
-      console.log(data.nome);
-      this.links.push({ link: data.id, nomeLink: data.nome });
+      this.links.push({ link: data.nome, nomeLink: data.nome });
+      console.log(this.links);
+      console.log()
       while (aux.categoria != null) {
-        this.links.push({ link: aux.categoria.id, nomeLink: aux.categoria.nome });
+        this.links.push({ link: aux.nome, nomeLink: aux.nome });
         aux = aux.categoria;
       }
+      this.links.push({ link: "/home-page", nomeLink: "Home" });
       this.links.reverse();
-      console.log(this.links);
+      
     },
       (error) => {
         console.error(error);
@@ -69,7 +70,7 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
     nome: "Não encontrado",
     urlImagem: "https://www.cbvj.org.br/index/wp-content/uploads/2017/07/default.png",
     descricao: "Algo deu errado, tente novamente mais tarde",
-    categoriaId: 2,
+    categoriaId: 0,
     especificacoes: [],
     listaDeComentarios: []
   }
@@ -121,7 +122,6 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
   }
 
   buscarComentarios(id: string) {
-    console.log(id)
     this.productService.getProductQuestions(id, this.currentPageComment).subscribe((data: any) => {
       const questions: Question[] = data.content[0].perguntas;
       this.product.listaDeComentarios = questions;
@@ -144,7 +144,7 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
   funcaoRetorno(message?: IMessage) {
     if (message.headers['content-type'] === 'application/json') {
       const jsonData = JSON.parse(message.body);
-      console.log(jsonData);
+      // console.log(jsonData);
     }
     this.currentPageComment = 0;
     this.buscarComentarios(this.product.id.toString());
