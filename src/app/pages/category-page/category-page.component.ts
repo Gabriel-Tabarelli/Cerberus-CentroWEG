@@ -40,7 +40,7 @@ export class CategoryPageComponent implements OnInit {
         if (categoria.nome == "Home") {
             link = {
                 link: categoria.nome,
-                nomeLink: "categorias"
+                nomeLink: "Home"
             }
         } else {
             link = {
