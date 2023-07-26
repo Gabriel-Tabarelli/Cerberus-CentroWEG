@@ -13,7 +13,7 @@ export class CategoryPageComponent implements OnInit {
 
     id: any;
     listaDeProdutos: any[] = [{
-        nome: "Home", 
+        nome: "Home",
         urlIcone: "http://localhost:4200/assets/icons/motorEletricoIcon.png"
     }]
     pathBar: PathBar[] = [];
@@ -31,18 +31,18 @@ export class CategoryPageComponent implements OnInit {
         });
     }
 
-  buscarProdutos(id: any) {
-    console.log(id)
-    this.categoryService.findOne("Controls").subscribe((data: any) => {
-      console.log(data)
-      this.listaDeProdutos = data.produtos
+    buscarProdutos(id: any) {
+        console.log(id)
+        this.categoryService.findOne("Controls").subscribe((data: any) => {
+            console.log(data)
+            this.listaDeProdutos = data.produtos
+        }
+        )
     }
-    )
-  }
 
 
-    pathBarConstructor(categoria:any) {
-        let link:PathBar;
+    pathBarConstructor(categoria: any) {
+        let link: PathBar;
         if (categoria.categoria != null) {
             this.pathBarConstructor(categoria.categoria)
         }

@@ -10,6 +10,7 @@ import { MatInputModule } from "@angular/material/input";
 import { CommonModule, NgIf } from "@angular/common";
 import { MatIconModule } from "@angular/material/icon";
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from "@angular/material/dialog";
 
 @NgModule({
     declarations: [
@@ -22,7 +23,9 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
         MatInputModule,
         ReactiveFormsModule,
         MatIconModule,
-        CommonModule
+        CommonModule,
+        MatIconModule, 
+        MatDialogModule
     ],
     exports: [
         LoginComponent

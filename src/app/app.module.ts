@@ -17,7 +17,8 @@ import { HeaderLoginModule } from './components/header-login-component/header-lo
 import { CartPageModule } from './pages/cart-page/cart-page.module';
 import { ProfilePageModule } from './pages/profile-page/profile-page.module';
 import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations"; // ou NoopAnimationsModule
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { ModalComponent } from './components/modal-component/modal.component'; // ou NoopAnimationsModule
 
 @NgModule({
   declarations: [
