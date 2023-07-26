@@ -50,7 +50,7 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
       console.log(this.links);
       console.log()
       while (aux.categoria != null) {
-        this.links.push({ link: aux.nome, nomeLink: aux.nome });
+        this.links.push({ link: "/category-page/" + aux.nome, nomeLink: aux.nome });
         aux = aux.categoria;
       }
       this.links.push({ link: "/home-page", nomeLink: "Home" });
