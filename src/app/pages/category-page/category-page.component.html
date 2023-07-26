@@ -7,20 +7,20 @@
                 <div class="img-container">
                     <img src="/assets/icons/motorEletricoIcon.png" alt="">
                 </div>
-                <h2> Motores Elétricos</h2>
+                <h2>{{ id }}</h2>
             </div>
             <div></div>
         </div>
     </div>
     <div id="recomendations">
-        <div class="frame-container" *ngFor="let produtos of listaDeProdutos">
-            <app-item-frame>
+        <div class="frame-container" *ngFor="let produto of listaDeProdutos">
+            <app-item-frame (click)="redirect(produto.nome)">
                 <div class="frame-content" item_frame_container>
                     <div class="img-container">
-                        <img src="/assets/homeImages/quadro_de_distribuicao.png">
+                        <img [src]="produto.urlIcone">
                     </div>
                     <div class="label-container">
-                        <p>Quadro de Distribuição QDW</p>
+                        <p>{{ produto.nome }}</p>
                         <span>Saiba mais</span>
                     </div>
                 </div>
