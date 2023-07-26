@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { PathBar } from 'src/app/interfaces/PathBar';
 import { CategoryService } from 'src/app/services/category.service';
 import { Router } from '@angular/router';
 import { PathBar } from 'src/app/interfaces/PathBar';
@@ -32,6 +33,20 @@ export class CategoryPageComponent implements OnInit {
         });
     }
 
+
+  listaDeProdutos: [] = []
+  pathBar: PathBar[] = [{ nomeLink: "Home", link: "/home-page" }]
+
+  buscarProdutos(id: any) {
+    console.log(id)
+    this.categoryService.findOne("Controls").subscribe((data: any) => {
+      console.log(data)
+      this.listaDeProdutos = data.produtos
+    }
+    )
+  }
+
+
     pathBarConstructor(categoria:any) {
         let link:PathBar;
         if (categoria.categoria != null) {
@@ -55,5 +70,6 @@ export class CategoryPageComponent implements OnInit {
         this.router.routeReuseStrategy.shouldReuseRoute = () => false;
         this.router.navigate(["/category-page/" + id]);
     }
+
 }
 

@@ -233,3 +233,20 @@ main {
 .Container-Novo_Cliente-Botao:hover {
     background: #006B92;
 }
+
+.example-container {
+    width: 80%;
+}
+
+mat-form-field {
+    font-size: 17px;
+    width: 100%;
+}
+
+.example-container:first-child {
+    margin-top: 20px;
+}
+
+.mat-form-field-focused {
+    caret-color: #00579D;
+}

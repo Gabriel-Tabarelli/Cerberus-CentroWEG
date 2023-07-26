@@ -4,19 +4,30 @@
             <div class="Container-Titulo">
                 Login
             </div>
-            <div class="Container-Endereco_Email">
-                <div class="Container-Endereco_Email-Texto">
-                    Endeço de email *
-                </div>
-                <input type="text" class="Container-Endereco_Email-Input" maxlength="45" name="email" [(ngModel)]="email" >
-            </div>
 
-            <div class="Container-Senha">
+            <div class="example-container">
+                <mat-form-field>
+                    <mat-label>Coloque seu email</mat-label>
+                    <input matInput placeholder="conor@gmail.com" [formControl]="email" required name="email2" [(ngModel)]="email2">
+                    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                </mat-form-field>
+            </div>
+            
+            <div class="example-container">
+                <mat-form-field>
+                    <mat-label>Senha</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'"  name="senha" [(ngModel)]="senha">
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                  </mat-form-field>
+            </div>
+            <!-- <div class="Container-Senha">
                 <div class="Container-Senha-Texto">
                     Senha *
                 </div>
                 <input type="password" class="Container-Senha-Input" maxlength="45" name="senha" [(ngModel)]="senha">
-            </div>
+            </div> -->
 
             <div class="Container-Botao_Entrar-Esqueceu_Senha">
                 <div class="Container-Botao_Entrar">

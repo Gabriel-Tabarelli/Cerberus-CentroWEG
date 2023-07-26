@@ -3,21 +3,32 @@ import { NgModule } from "@angular/core";
 import { LoginComponent } from "./login.component";
 import { AppRoutingModule } from "src/app/app-routing.module";
 import { RouterModule } from "@angular/router";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { SessionStorageService } from "src/app/services/session-storage.service";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material/input";
+import { CommonModule, NgIf } from "@angular/common";
+import { MatIconModule } from "@angular/material/icon";
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
     declarations: [
         LoginComponent
     ],
-    imports: [
+    imports:  [
         RouterModule,
-        FormsModule
+        FormsModule,
+        MatFormFieldModule, 
+        MatInputModule,
+        ReactiveFormsModule,
+        MatIconModule,
+        CommonModule
     ],
     exports: [
         LoginComponent
     ],
-    providers:[SessionStorageService]
+    providers:[SessionStorageService],
+    
 })
 
 export class LoginModule{}
