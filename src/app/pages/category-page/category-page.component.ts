@@ -26,8 +26,10 @@ export class CategoryPageComponent implements OnInit {
             this.listaDeProdutos = data
             this.pathBarConstructor(this.listaDeProdutos[0])
             this.pathBar.pop()
-            console.log(this.listaDeProdutos[0])
-            console.log(this.pathBar)
+            if (this.listaDeProdutos[0].categoria != null){
+                this. categoriaIcon = this.listaDeProdutos[0].categoria.urlIcone
+            }
+            console.log(this.listaDeProdutos[0].categoria.urlIcone)
         });
     }
 
@@ -39,10 +41,12 @@ export class CategoryPageComponent implements OnInit {
     }
     )
   }
+  categoriaIcon: string = ""
 
 
     pathBarConstructor(categoria:any) {
         let link:PathBar;
+        console.log(categoria)
         if (categoria.categoria != null) {
             this.pathBarConstructor(categoria.categoria)
         }
