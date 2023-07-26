@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { PathBar } from 'src/app/interfaces/PathBar';
 import { CategoryService } from 'src/app/services/category.service';
 import { Router } from '@angular/router';
-import { retry } from 'rxjs';
 
 @Component({
     selector: 'app-category-page',
@@ -31,9 +30,6 @@ export class CategoryPageComponent implements OnInit {
             console.log(this.pathBar)
         });
     }
-
-
-
 
   buscarProdutos(id: any) {
     console.log(id)
@@ -66,7 +62,11 @@ export class CategoryPageComponent implements OnInit {
 
     redirect(id: string) {
         this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-        this.router.navigate(["/category-page/" + id]);
+        if (this.listaDeProdutos[0].id) {
+            this.router.navigate(["/product-page/" + this.listaDeProdutos[0].id]);
+        } else {
+            this.router.navigate(["/category-page/" + id]);
+        }
     }
 
 }

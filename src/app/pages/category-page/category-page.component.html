@@ -17,7 +17,7 @@
             <app-item-frame (click)="redirect(produto.nome)">
                 <div class="frame-content" item_frame_container>
                     <div class="img-container">
-                        <img [src]="produto.urlIcone">
+                        <img [src]="produto.urlIcone || produto.urlImagem">
                     </div>
                     <div class="label-container">
                         <p>{{ produto.nome }}</p>
