@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { PathBar } from 'src/app/interfaces/PathBar';
 import { CategoryService } from 'src/app/services/category.service';
 import { Router } from '@angular/router';
-import { PathBar } from 'src/app/interfaces/PathBar';
 import { retry } from 'rxjs';
 
 @Component({
@@ -34,8 +33,7 @@ export class CategoryPageComponent implements OnInit {
     }
 
 
-  listaDeProdutos: [] = []
-  pathBar: PathBar[] = [{ nomeLink: "Home", link: "/home-page" }]
+
 
   buscarProdutos(id: any) {
     console.log(id)
@@ -59,7 +57,7 @@ export class CategoryPageComponent implements OnInit {
             }
         } else {
             link = {
-                link: categoria.nome,
+                link: "/category-page/" + categoria.nome,
                 nomeLink: categoria.nome
             }
         }
