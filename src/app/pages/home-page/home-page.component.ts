@@ -26,8 +26,9 @@ export class HomePageComponent implements OnInit {
   }
   
   getProducts() {
-    this.productService.getAllMinimizado().subscribe((data: ProductMinimized[]) => {
-      this.listaDeProdutos = data
+    this.productService.getAllMinimizado(0).subscribe((data: any) => {
+      console.log(data.content)
+      this.listaDeProdutos = data.content
     });
   }
 }

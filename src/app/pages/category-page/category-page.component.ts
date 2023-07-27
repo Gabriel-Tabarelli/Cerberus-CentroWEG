@@ -18,18 +18,23 @@ export class CategoryPageComponent implements OnInit {
     }]
     pathBar: PathBar[] = [];
 
-    constructor(private routeSnap: ActivatedRoute, private router: Router, private categoryService: CategoryService) { }
+    constructor(private routeSnap: ActivatedRoute,
+        private categoryService: CategoryService,
+        private router: Router) { }
 
     ngOnInit(): void {
-        this.id = this.routeSnap.snapshot.paramMap.get("id")
-        this.categoryService.findOne(this.id).subscribe(data => {
-            this.listaDeProdutos = data
-            this.pathBarConstructor(this.listaDeProdutos[0])
-            this.pathBar.pop()
-            console.log(this.listaDeProdutos[0])
-            console.log(this.pathBar)
+        this.routeSnap.params.subscribe(params => {
+            this.id = params['id'];
+            this.categoryService.findOne(this.id).subscribe(data => {
+                this.listaDeProdutos = data
+                this.pathBarConstructor(this.listaDeProdutos[0].categoria)
+                if (this.listaDeProdutos[0].categoria != null) {
+                    this.categoriaIcon = this.listaDeProdutos[0].categoria.urlIcone
+                }
+            });
         });
     }
+
 
     buscarProdutos(id: any) {
         console.log(id)
@@ -40,9 +45,14 @@ export class CategoryPageComponent implements OnInit {
         )
     }
 
+   
+    categoriaIcon: string = ""
+
+
 
     pathBarConstructor(categoria: any) {
         let link: PathBar;
+        this.pathBar = [];
         if (categoria.categoria != null) {
             this.pathBarConstructor(categoria.categoria)
         }
@@ -61,7 +71,6 @@ export class CategoryPageComponent implements OnInit {
     }
 
     redirect(id: string) {
-        this.router.routeReuseStrategy.shouldReuseRoute = () => false;
         if (this.listaDeProdutos[0].id) {
             this.router.navigate(["/product-page/" + this.listaDeProdutos[0].id]);
         } else {
