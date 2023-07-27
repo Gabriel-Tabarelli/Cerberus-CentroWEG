@@ -59,11 +59,11 @@ export class CategoryPageComponent implements OnInit {
         this.pathBar.push(link);
     }
 
-    redirect(id: string) {
+    redirect(produto: any) {
         if (this.listaDeProdutos[0].id) {
-            this.router.navigate(["/product-page/" + this.listaDeProdutos[0].id]);
+            this.router.navigate(["/product-page/" + produto.id]);
         } else {
-            this.router.navigate(["/category-page/" + id]);
+            this.router.navigate(["/category-page/" + produto.nome]);
         }
     }
 
