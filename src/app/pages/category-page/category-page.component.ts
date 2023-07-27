@@ -35,6 +35,9 @@ export class CategoryPageComponent implements OnInit {
         });
     }
 
+    ngAfterViewInit(): void {
+        window.scrollTo(0, 0)
+      }
 
     buscarProdutos(id: any) {
         console.log(id)
