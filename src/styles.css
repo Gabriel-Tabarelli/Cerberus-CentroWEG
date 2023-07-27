@@ -46,3 +46,16 @@ mat-form-fild {
 mat-label {
     color: #00569D;
 }
+
+.mat-simple-snackbar-action {
+    color: white;
+}
+
+.mat-snack-bar-container {
+    background-color: #0090C5;
+    color: #ffffff;
+}
+
+.cdk-overlay-pane {
+    padding-top: 80px;
+}

@@ -5,8 +5,8 @@ import { SessionStorageService } from 'src/app/services/session-storage.service'
 import { UserStatusService } from 'src/app/services/user-state.service';
 import { UserService } from 'src/app/services/user.service';
 import { tap, catchError } from 'rxjs/operators';
-import {MatDialog, MatDialogModule} from '@angular/material/dialog';
-import { ModalComponent } from '../modal-component/modal.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { of } from 'rxjs';
 
 
 @Component({
@@ -21,7 +21,7 @@ export class LoginComponent {
     private userState: UserStatusService,
     private routeSnap: ActivatedRoute,
     private userService: UserService,
-    public dialog: MatDialog){}
+    private _snackBar: MatSnackBar){}
     
     email = new FormControl('', [Validators.required, Validators.email]);
     senha: string
@@ -32,12 +32,15 @@ export class LoginComponent {
     if (!(this.email.hasError('required') || this.email.hasError('email'))) {
       this.userService.getOneByEmailAndPassword(this.email2, this.senha).pipe(tap((data:any) => {
         this.userState.setUserLoggedIn();
-        this.sessionService.setItem("usuario", data); // ARRUMAR ISSO! ESSES DADOS DEVEM SEMPRE RETORNAR DO BACK
+        this.sessionService.setItem("usuario", data); // ARRUMAR ISSO! ARMAZENAR NO TOKEN
         const returnUrl = this.routeSnap.snapshot.queryParams['returnUrl'] || '/';
         this.router.navigateByUrl(returnUrl);
       }), catchError((error: any) => {
-        this.dialog.open(ModalComponent);
-        return null;
+        this._snackBar.open('Email ou senha incorretos', 'Fechar', {
+          horizontalPosition: 'end',
+          verticalPosition: 'top',
+        });
+        return of(null);
       })).subscribe();
     }
   }
