@@ -14,7 +14,7 @@
     </div>
     <div id="recomendations">
         <div class="frame-container" *ngFor="let produto of listaDeProdutos">
-            <app-item-frame (click)="redirect(produto.nome)">
+            <app-item-frame (click)="redirect(produto)">
                 <div class="frame-content" item_frame_container>
                     <div class="img-container">
                         <img [src]="produto.urlIcone || produto.urlImagem">
