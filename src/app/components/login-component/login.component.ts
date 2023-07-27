@@ -3,6 +3,10 @@ import { FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, ActivatedRouteSnapshot, Router } from '@angular/router';
 import { SessionStorageService } from 'src/app/services/session-storage.service';
 import { UserStatusService } from 'src/app/services/user-state.service';
+import { UserService } from 'src/app/services/user.service';
+import { tap, catchError } from 'rxjs/operators';
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
+import { ModalComponent } from '../modal-component/modal.component';
 
 
 @Component({
@@ -15,7 +19,9 @@ export class LoginComponent {
   constructor(private router: Router,
     private sessionService: SessionStorageService,
     private userState: UserStatusService,
-    private routeSnap: ActivatedRoute){}
+    private routeSnap: ActivatedRoute,
+    private userService: UserService,
+    public dialog: MatDialog){}
     
     email = new FormControl('', [Validators.required, Validators.email]);
     senha: string
@@ -24,20 +30,17 @@ export class LoginComponent {
 
   logar() {
     if (!(this.email.hasError('required') || this.email.hasError('email'))) {
-      let usuario = {
-        email: this.email2,
-        senha: this.senha
-      }
-      console.log(usuario)
-      this.sessionService.setItem("usuario", usuario);
-      this.userState.setUserLoggedIn();
-      const returnUrl = this.routeSnap.snapshot.queryParams['returnUrl'] || '/';
-      this.router.navigateByUrl(returnUrl);
-    } 
-    
+      this.userService.getOneByEmailAndPassword(this.email2, this.senha).pipe(tap((data:any) => {
+        this.userState.setUserLoggedIn();
+        this.sessionService.setItem("usuario", data); // ARRUMAR ISSO! ESSES DADOS DEVEM SEMPRE RETORNAR DO BACK
+        const returnUrl = this.routeSnap.snapshot.queryParams['returnUrl'] || '/';
+        this.router.navigateByUrl(returnUrl);
+      }), catchError((error: any) => {
+        this.dialog.open(ModalComponent);
+        return null;
+      })).subscribe();
+    }
   }
-
-
 
   getErrorMessage() {
     if (this.email.hasError('required')) {

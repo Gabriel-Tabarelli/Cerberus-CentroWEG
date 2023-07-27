@@ -35,8 +35,19 @@ export class CategoryPageComponent implements OnInit {
         });
     }
 
+
+    buscarProdutos(id: any) {
+        console.log(id)
+        this.categoryService.findOne("Controls").subscribe((data: any) => {
+            console.log(data)
+            this.listaDeProdutos = data.produtos
+        }
+        )
+    }
+
    
     categoriaIcon: string = ""
+
 
 
     pathBarConstructor(categoria: any) {
