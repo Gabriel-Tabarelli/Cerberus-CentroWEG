@@ -18,6 +18,7 @@ import { CartPageModule } from './pages/cart-page/cart-page.module';
 import { ProfilePageModule } from './pages/profile-page/profile-page.module';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { SearchPageModule } from './pages/search-page/search-page.module';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     HeaderLoginModule,
     CartPageModule,
     ProfilePageModule,
-    HttpClientModule
+    HttpClientModule,
+    SearchPageModule
   ], 
   providers: [],
   bootstrap: [

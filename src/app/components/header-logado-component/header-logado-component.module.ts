@@ -4,6 +4,7 @@ import { HeaderLogadoComponentComponent } from './header-logado-component.compon
 import { CartComponentModule } from '../cart-component/cart-component.module';
 import { RouterModule } from '@angular/router';
 import { ItemFrameModule } from '../item-frame/item-frame.module';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -15,7 +16,8 @@ import { ItemFrameModule } from '../item-frame/item-frame.module';
     CommonModule,
     CartComponentModule,
     RouterModule,
-    ItemFrameModule
+    ItemFrameModule,
+    FormsModule
   ],
   exports: [
     HeaderLogadoComponentComponent

@@ -1,12 +1,11 @@
-<app-barra-navegacao [links]='pathBar'></app-barra-navegacao> 
 <div id="recomendation-container">
     <div id="label-container">
         <div>
             <div>
                 <div class="img-container">
-                    <img [src]="categoriaIcon" alt="">
+                    <img src="" alt="">
                 </div>
-                <h2>{{ id }}</h2>
+                <h3>Você pesquisou por: {{ pesquisa }}</h3>
             </div>
             <div></div>
         </div>
@@ -16,7 +15,7 @@
             <app-item-frame (click)="redirect(produto)">
                 <div class="frame-content" item_frame_container>
                     <div class="img-container">
-                        <img [src]="produto.urlIcone || produto.urlImagem">
+                        <img [src]="produto.urlImagem">
                     </div>
                     <div class="label-container">
                         <p>{{ produto.nome }}</p>
@@ -25,8 +24,8 @@
                 </div>
             </app-item-frame>
         </div>
-        <div class="popup-div">
-            <p>Não encontrou o seu produto? Consulte o antigo catálogo eletrônico.</p>
+        <div class="popup-div" *ngIf="listaDeProdutos.length == 0">
+            <p>Lamentamos, nenhum produto encontrado com esse critério de pesquisa.</p>
         </div>
     </div>
 </div>

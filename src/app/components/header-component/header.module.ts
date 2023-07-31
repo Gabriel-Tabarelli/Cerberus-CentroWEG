@@ -5,6 +5,7 @@ import { CartComponentModule } from "../cart-component/cart-component.module";
 import { CommonModule } from "@angular/common";
 
 import { RouterModule } from "@angular/router";
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
     declarations: [
@@ -13,7 +14,8 @@ import { RouterModule } from "@angular/router";
     imports: [
         CommonModule,
         RouterModule,
-        CartComponentModule
+        CartComponentModule,
+        FormsModule
     ],
     exports: [
         HeaderComponentComponent

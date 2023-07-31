@@ -1,0 +1,125 @@
+section {
+    overflow-x: hidden;
+    font-family: sans-serif;
+    font-weight: 100;
+}
+
+#recomendation-container {
+    margin-top: 25px;
+}
+
+#recomendation-container > div {
+    padding-left: 90px;
+    padding-right: 90px;
+}
+
+#recomendation-container #label-container {
+    width: fit-content;
+}
+
+#recomendation-container #label-container > div > div {
+    display: flex;
+    align-items: center;
+}
+
+#recomendation-container #label-container h3 {
+    padding: 0 10px 5px 10px;
+    font-size: 18px;
+    font-family: sans-serif;
+    font-weight: 500;
+}
+
+#recomendation-container #label-container > div > div:last-child   {
+    width: 100%;
+    height: 5px;
+    background: #0090c5;
+    border-radius: 10px;
+}
+
+#recomendation-container #label-container > div > div .img-container {
+    display: block;
+    margin-left: 10px;
+}
+
+#recomendation-container #label-container > div > div .img-container {
+    display: block;
+    margin-left: 10px;
+}
+
+#recomendation-container #label-container img {
+    width: 60px;
+}
+
+#recomendations {
+    display: flex;
+    width: calc(100% - 180px);
+    min-height: 400px;
+    background: #90c1e3;
+    align-items: center;
+    gap: 42px;
+    flex-flow: row wrap;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    justify-content: center;
+}
+
+#recomendations .frame-container .frame-content {
+    display: flex;
+    width: 320px;
+    height: 165px;
+    background: white;
+    border-radius: 10px;
+    align-items: center;
+    padding: 10px;
+}
+
+#recomendations .frame-container .frame-content .img-container {
+    display: flex;
+    width: 130px;
+    height: 130px;
+    justify-content: center;
+    align-items: center;
+}
+
+#recomendations .frame-container .frame-content .img-container > img {
+    max-width: 100%;
+    height: fit-content;
+}
+
+#recomendations .frame-container .frame-content .label-container {
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    text-align: center;
+}
+
+#recomendations .frame-container .frame-content .label-container p {
+    margin: 0 18px;
+    text-align: center;
+    color: #00579D;
+    font-size: 17px;
+}
+
+#recomendations .frame-container .frame-content .label-container span {
+    margin-top: 10px;
+}
+
+.popup-div {
+    width: 80%;
+    height: 120px;
+    background-color: #D9D9D9;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, .25);
+}
+
+.popup-div > p {
+    font-size: 18px;
+    width: 100%;
+    font-family: sans-serif;
+    text-align: center;
+}

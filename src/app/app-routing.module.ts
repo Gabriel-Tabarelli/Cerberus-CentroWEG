@@ -29,6 +29,10 @@ const routes: Route[] = [
     loadChildren: () => import('./pages/product-page/product-page.module').then(m => m.ProductPageModule)
   },
   {
+    path: 'search-page/:search',
+    loadChildren: () => import('./pages/search-page/search-page.module').then(m => m.SearchPageModule)
+  },
+  {
     path: 'cart-page',
     loadChildren: () => import('./pages/cart-page/cart-page.module').then(m => m.CartPageModule),
     canActivate: [AuthenticationGuard]

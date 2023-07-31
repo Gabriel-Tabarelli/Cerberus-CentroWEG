@@ -11,7 +11,7 @@ import { UserStatusService } from 'src/app/services/user-state.service';
 })
 export class HeaderLogadoComponentComponent implements OnInit {
 
-
+  pesquisa: any = '';
 
   constructor(private renderer: Renderer2,
     private sessionService: SessionStorageService,
@@ -63,6 +63,17 @@ export class HeaderLogadoComponentComponent implements OnInit {
   navegateTo(){
     this.userShow();
     this.router.navigate(['/profile-page']);
+  }
+
+  onEnter(event: KeyboardEvent | Boolean) {
+    if (event instanceof KeyboardEvent && event.key === "Enter") {
+      this.router.navigate(['/search-page/' + (<HTMLInputElement>event.target).value]);
+      (<HTMLInputElement>event.target).value = "";
+      (<HTMLInputElement>event.target).blur()
+    } else if (event == true) {
+      this.router.navigate(['/search-page/' + this.pesquisa]);
+      this.pesquisa = "";
+    }
   }
 
 }

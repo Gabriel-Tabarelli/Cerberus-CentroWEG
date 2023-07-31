@@ -7,15 +7,17 @@
     </section>
     <section class="container-pesquisa">
         <div class="div-inputPesquisa">
-            <input type="text" placeholder="Buscar por produto, categoria ou códigos" maxlength="55">
+            <input type="text" [(ngModel)]="pesquisa" placeholder="Buscar por produto, categoria ou códigos"
+                (keydown)="onEnter($event)" maxlength="55">
             <span class="linhaNaBarraDePesquisa"></span>
-            <img src="/assets/images/Pesquisa.png" alt="">
+            <img src="/assets/images/Pesquisa.png" (click)="onEnter(true)" alt="">
         </div>
     </section>
     <section class="container-fraseLogin">
         <div class="div-iconeLogado" (click)="userShow()">
-            <img  class="userIcone" src="/assets/images/logoLogado.png">
-            <img [ngClass]="{'userSetaOn': isOpenUser, 'userSetaOff': !isOpenUser}" src="/assets/images/setaLinguagem.png">
+            <img class="userIcone" src="/assets/images/logoLogado.png">
+            <img [ngClass]="{'userSetaOn': isOpenUser, 'userSetaOff': !isOpenUser}"
+                src="/assets/images/setaLinguagem.png">
         </div>
         <div class="div-itemFrame" *ngIf="isOpenUser">
             <app-item-frame>
@@ -24,13 +26,13 @@
                     <div></div>
                     <p>NOTIFICAÇÕES</p>
                     <div></div>
-                    <p (click)="deslogar()">SAIR</p> 
+                    <p (click)="deslogar()">SAIR</p>
                 </div>
             </app-item-frame>
         </div>
     </section>
     <section (click)="cartShow()" class="container-carrinho">
-        <p class="centered-text">{{quantidadeProdutos}}</p>
+        <p class="centered-text">{{ quantidadeProdutos }}</p>
         <img src="/assets/images/carrinhoWEG.png" alt="">
     </section>
     <!-- <section class="container-linguagem">

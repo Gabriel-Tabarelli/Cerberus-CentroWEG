@@ -7,9 +7,13 @@
     </section>
     <section class="container-pesquisa">
         <div class="div-inputPesquisa">
-            <input type="text" placeholder="Buscar por produto, categoria ou códigos" maxlength="55">
+            <input type="text" 
+                [(ngModel)]="pesquisa"
+                placeholder="Buscar por produto, categoria ou códigos" 
+                (keydown)="onEnter($event)"
+                maxlength="55">
             <span class="linhaNaBarraDePesquisa"></span>
-            <img src="/assets/images/Pesquisa.png" alt="">
+            <img src="/assets/images/Pesquisa.png" (click)="onEnter(true)" alt="">
         </div>
     </section>
     <section class="container-fraseLogin">
