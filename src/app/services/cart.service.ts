@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../interfaces/Product/Product';
 import { BehaviorSubject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -10,10 +11,10 @@ export class CartService {
   cartItems$ = this.cartItemsSubject.asObservable();
 
   private cartItems: Product[] =  []
-  constructor() {}
+  constructor(private httpClient: HttpClient) {}
 
   addToCart(product: Product): void {
-    this.cartItems.push(product); 
+    this.cartItems.push(product);
     this.cartItemsSubject.next(this.cartItems);
   }
 

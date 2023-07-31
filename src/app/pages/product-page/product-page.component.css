@@ -235,6 +235,7 @@ button {
     font-size: 14px;
     color: #00579D;
     cursor: pointer;
+    width: fit-content;
 }
 
 .answer {
@@ -268,7 +269,8 @@ button {
     width: 80%;
 }
 
-.question-container {
+.question-container,
+.answer-container {
     height: 200px;
     background-color: white;
     border-radius: 10px;
@@ -278,12 +280,16 @@ button {
     justify-content: flex-end;
 }
 
+.answer-container {
+    height: 100%;
+}
 .question-tittle {
     width: 100%;
     height: 2rem;
 }
 
-.question-text {
+.question-text,
+.answer-text {
     width: 100%;
     height: 60%;
     border-radius: 10px;
@@ -293,11 +299,20 @@ button {
     font-family: sans-serif;
 }
 
-.question-container>button {
+.answer-text {
+    height: 20%;
+}
+
+.question-container>button{
     padding: 6px;
     width: 100px;
     margin-top: .5rem;
     margin-right: .5rem;
+}
+
+.answer-container > button {
+    margin-top: .5rem;
+    width: 150px;
 }
 
 .show-more-comments {
@@ -321,4 +336,13 @@ button {
 
 .noComment-container>p {
     padding-left: 5%;
+}
+
+.questionsAswers-div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.send-answer {
+    width: 150px;
 }

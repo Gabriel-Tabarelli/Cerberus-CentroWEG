@@ -22,7 +22,7 @@ export class HeaderLogadoComponentComponent implements OnInit {
   ngOnInit(): void {
     this.cartService.cartItems$.subscribe(items => {
       this.quantidadeProdutos = items.length;
-      console.log("Ativar alguma ação");
+      
     });
   }
   quantidadeProdutos: number = 0;
