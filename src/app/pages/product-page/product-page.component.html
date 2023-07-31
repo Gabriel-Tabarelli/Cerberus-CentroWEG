@@ -34,8 +34,7 @@
         </ul>
     </div>
 </div>
-<br>
-<br>
+
 <div>
     <div id="comment-container">
         <div id="label-container">
@@ -50,10 +49,16 @@
                     <app-item-frame class="item-frame">
                         <div class="comment" item_frame_container>
                             <p class="comment-name">{{ comment.pessoa.nome }}</p>
-                            <P class="comment-comment">{{ comment.pergunta }}</P>
-                            <div (click)="showAnswers(comment)" class="comment-show"
-                                *ngIf="comment.listaRespostas.length > 0">
-                                Mostrar respostas
+                            <p class="comment-comment">{{ comment.pergunta }}</p>
+                            <div class="questionsAswers-div">
+                                <div (click)="showAnswers(comment.id)" class="comment-show"
+                                    *ngIf="comment.listaRespostas.length > 0">
+                                    {{showMoreLess[comment.id - 1]}}
+                                </div>
+                                <!-- LÓGICA DO ADM -->
+                                <div class="comment-show" *ngIf="true" (click)="scrollToResposta(comment.id)"> 
+                                    Responder
+                                </div>
                             </div>
                         </div>
                     </app-item-frame>
@@ -63,6 +68,16 @@
                                 <div class="comment" item_frame_container>
                                     <p class="comment-name">{{ answer.pessoa.nome }}</p>
                                     <p class="comment-comment">{{ answer.resposta }}</p>
+                                </div>
+                            </app-item-frame>
+                        </div>
+
+                        <div class="answer-div" *ngIf="true" [id]="'resposta' + (comment.id-1)">
+                            <app-item-frame class="question-item-frame">
+                                <div class="answer-container" item_frame_container>
+                                    <p class="question-tittle">Responder</p>
+                                    <textarea class="answer-text" [(ngModel)]="answersList[comment.id - 1]" [id]="'textarea' + (comment.id-1)"></textarea>
+                                    <button (click)="toAnswer(comment.id)">Enviar resposta</button>
                                 </div>
                             </app-item-frame>
                         </div>

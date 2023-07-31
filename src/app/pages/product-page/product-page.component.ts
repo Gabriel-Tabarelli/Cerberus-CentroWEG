@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IMessage } from '@stomp/stompjs';
 import { PathBar } from 'src/app/interfaces/PathBar';
@@ -32,10 +32,7 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
 
     const id = this.routeSnap.snapshot.paramMap.get("id")
     this.findProduct(id);
-    this.buscarComentarios(id);
-    // console.log(this.links)
   }
-
 
 
   ngAfterViewInit(): void {
@@ -55,7 +52,7 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
       }
       this.links.push({ link: "/home-page", nomeLink: "Home" });
       this.links.reverse();
-      
+      this.buscarComentarios(id);
     },
       (error) => {
         console.error(error);
@@ -82,19 +79,25 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
   questionText: string = "";
   currentPageComment: number = 0;
   lastQuestion: boolean = true;
+  showMoreLess: string[] = [""];
+
+  answersList : string[] = [""]
 
   nextPageComment() {
     this.currentPageComment++;
     this.findProduct(this.product.id.toString());
   }
 
-  showAnswers(comment: Question) {
-    const index = this.answersVisibles.indexOf(comment.id);
+  showAnswers(comment: number) {
+    const index = this.answersVisibles.indexOf(comment);
     if (index === -1) {
-      this.answersVisibles.push(comment.id);
+      this.answersVisibles.push(comment);
+      this.showMoreLess[comment - 1] = "Mostrar menos";
     } else {
       this.answersVisibles.splice(index, 1);
+      this.showMoreLess[comment - 1] = "Mostrar mais";
     }
+   
   }
 
   isAnsersVisibles(comment: Question) {
@@ -126,6 +129,10 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
       const questions: Question[] = data.content[0].perguntas;
       this.product.listaDeComentarios = questions;
       this.lastQuestion = data.last
+      for (let i = 0; i < this.product.listaDeComentarios.length; i++) {
+        this.showMoreLess[i] = "Mostrar mais";
+      }
+      console.log(this.product.listaDeComentarios[1]);
     });
   }
 
@@ -144,10 +151,42 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
   funcaoRetorno(message?: IMessage) {
     if (message.headers['content-type'] === 'application/json') {
       const jsonData = JSON.parse(message.body);
-      // console.log(jsonData);
     }
     this.currentPageComment = 0;
     this.buscarComentarios(this.product.id.toString());
   }
 
+  toAnswer(id) {
+    // console.log(id) Lógica para enviar a resposta
+    console.log(this.answersList.length)
+    console.log(this.answersList[id - 1])
+    this.answersList[id - 1] = ""
+  }
+
+
+  scrollToResposta(index: number) {
+    if (!this.answersVisibles.includes(index)) {
+      this.showAnswers(index);
+  
+      setTimeout(() => {
+        this.scrollIntoView(index);
+      }, 300); // Aguarda 500 milissegundos antes de fazer o scroll
+    } else {
+      this.scrollIntoView(index);
+    }
+  }
+  
+  scrollIntoView(index: number) {
+    const elementId = 'resposta' + (index - 1);
+    const textId = 'textarea' + (index - 1);
+    const element = document.getElementById(elementId);
+    const text = document.getElementById(textId)
+    if (element && text) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      setTimeout(() => {
+          text.focus();
+      }, 500);
+
+    }
+  }
 }
