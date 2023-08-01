@@ -51,4 +51,7 @@ export class LoginComponent {
     }
     return this.email.hasError('email') ? 'Email inválido' : '';
   }
+
+  
+  
 }
