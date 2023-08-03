@@ -5,6 +5,7 @@ import { BarraNavegacaoModule } from 'src/app/components/barra-navegacao/barra-n
 import { ProductPageRoutingModule } from './product-page-routing.module';
 import { ItemFrameModule } from 'src/app/components/item-frame/item-frame.module';
 import { FormsModule } from '@angular/forms';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 
@@ -17,7 +18,8 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     BarraNavegacaoModule,
     ProductPageRoutingModule,
-    FormsModule
+    FormsModule,
+    MatSnackBarModule
   ],
   exports: [
     ProductPageComponent

@@ -59,3 +59,7 @@ mat-label {
 .cdk-overlay-pane {
     padding-top: 80px;
 }
+
+.mat-input-element {
+    caret-color: #0090C5;
+}

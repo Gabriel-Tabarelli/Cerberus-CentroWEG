@@ -9,7 +9,6 @@ import { User } from 'src/app/interfaces/User';
 export class CadastroComponent implements OnInit {
 
   ngOnInit(): void {
-    console.log(this.edicao)
 
     const user : User = {
       nome: 'John Doe',
@@ -82,7 +81,6 @@ export class CadastroComponent implements OnInit {
   submit() {
     this.lista.push(new user(this.nome, this.cpf, this.estado, this.cidade, this.bairro,
       this.endereco, this.numero, this.cep, this.telefone, this.nomeContato, this.email, this.senha))
-    console.log(this.lista)
   }
   // --------end---------
 

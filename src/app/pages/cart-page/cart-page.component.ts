@@ -10,13 +10,13 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class CartPageComponent implements OnInit {
 
- 
+
   listaDeProdutos: Product[] = []
   constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
-    this.cartService.cartItems$.subscribe(items => {
-      this.listaDeProdutos = items;
+    this.cartService.cartItems$.subscribe(cart => {
+      this.listaDeProdutos = cart?.produtos ?? [];
     });
 
   }
@@ -25,8 +25,7 @@ export class CartPageComponent implements OnInit {
     this.cartService.removeFromCart(produto)
   }
 
-  limparCarrinho(){
-    console.log("Deletando lista")
+  limparCarrinho() {
     this.cartService.cleanCart();
   }
 

@@ -14,7 +14,6 @@ export class HomePageComponent implements OnInit {
     private productService: ProductService) { }
 
   ngOnInit(): void {
-    console.log("Iniciando home")
     this.getProducts()
   }
 

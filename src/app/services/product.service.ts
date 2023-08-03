@@ -23,7 +23,6 @@ export class ProductService {
   }
 
   getProductById(id: string): Observable<Product> {
-    console.log(id);
     return this.httpClient.get<Product>(this.url + id).pipe(
       catchError(() => {
         return throwError('Produto não encontrado');
