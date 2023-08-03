@@ -7,6 +7,7 @@ import { UserService } from 'src/app/services/user.service';
 import { tap, catchError } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { of } from 'rxjs';
+import { WebSocketService } from 'src/app/services/web-socket/web-socket.service';
 
 
 @Component({
@@ -21,7 +22,8 @@ export class LoginComponent {
     private userState: UserStatusService,
     private routeSnap: ActivatedRoute,
     private userService: UserService,
-    private _snackBar: MatSnackBar){}
+    private _snackBar: MatSnackBar,
+    private webSocketService: WebSocketService){}
     
     email = new FormControl('', [Validators.required, Validators.email]);
     senha: string
@@ -34,6 +36,8 @@ export class LoginComponent {
         this.userState.setUserLoggedIn();
         this.sessionService.setItem("usuario", data); // ARRUMAR ISSO! ARMAZENAR NO TOKEN
         const returnUrl = this.routeSnap.snapshot.queryParams['returnUrl'] || '/';
+        console.log(data.id)
+       
         this.router.navigateByUrl(returnUrl);
       }), catchError((error: any) => {
         this._snackBar.open('Email ou senha incorretos', 'Fechar', {

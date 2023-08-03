@@ -157,22 +157,20 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
   }
 
   toAnswer(id) {
-    // console.log(id) Lógica para enviar a resposta
-    console.log(this.answersList.length)
-    console.log(this.answersList[id - 1])
+    console.log(id) 
+    this.webSocket.answerMessage(id, this.answersList[id - 1]);
+    // console.log(this.answersList.length)
+    // console.log(this.answersList[id - 1])
     this.answersList[id - 1] = ""
   }
 
 
   scrollToResposta(index: number) {
-    if (!this.answersVisibles.includes(index)) {
-      this.showAnswers(index);
-  
+    this.showAnswers(index);
+    if (this.answersVisibles.includes(index)) {
       setTimeout(() => {
         this.scrollIntoView(index);
-      }, 300); // Aguarda 500 milissegundos antes de fazer o scroll
-    } else {
-      this.scrollIntoView(index);
+      }, 300); 
     }
   }
   
@@ -186,7 +184,6 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
       setTimeout(() => {
           text.focus();
       }, 500);
-
     }
   }
 }
