@@ -20,11 +20,11 @@ export class HeaderLogadoComponentComponent implements OnInit {
     private cartService: CartService) { }
 
   ngOnInit(): void {
-    this.cartService.cartItems$.subscribe(items => {
-      this.quantidadeProdutos = items.length;
-      
+    this.cartService.cartItems$.subscribe(cart => {
+      this.quantidadeProdutos = cart?.produtos?.length ?? 0;
     });
   }
+
   quantidadeProdutos: number = 0;
   isOpenCart: boolean = false;
   isOpenUser: boolean = false;
@@ -51,13 +51,12 @@ export class HeaderLogadoComponentComponent implements OnInit {
     }
   }
 
-
-
   deslogar() {
     this.sessionService.clear();
     this.userService.setUserLoggedOut();
     this.userShow();
     this.router.navigate(['/']);
+    this.cartService.cartDefault();
   }
 
   navegateTo(){

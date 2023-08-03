@@ -26,8 +26,8 @@ export class BarraNavegacaoComponent implements OnInit {
   navigateTo(link: PathBar, index: number) {
      if (index == 0) {
       this.route.navigate(['/home-page'])
-    } else {
+    } else if (index != this.links.length - 1) {
       this.route.navigate([link.link])
-    }
+    } 
   }
 }

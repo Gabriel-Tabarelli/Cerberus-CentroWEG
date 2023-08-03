@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IMessage } from '@stomp/stompjs';
 import { PathBar } from 'src/app/interfaces/PathBar';
@@ -21,7 +22,8 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
     private router: Router,
     private cartService: CartService,
     private productService: ProductService,
-    private webSocket: WebSocketService) { }
+    private webSocket: WebSocketService,
+    private _snackBar: MatSnackBar) { }
 
   listaDeProdutos: Product[] = []
 
@@ -34,7 +36,6 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
     this.findProduct(id);
   }
 
-
   ngAfterViewInit(): void {
     window.scrollTo(0, 0)
   }
@@ -44,8 +45,6 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
       this.product = data;
       let aux = data.categoria;
       this.links.push({ link: data.nome, nomeLink: data.nome });
-      console.log(this.links);
-      console.log()
       while (aux.categoria != null) {
         this.links.push({ link: "/category-page/" + aux.nome, nomeLink: aux.nome });
         aux = aux.categoria;
@@ -83,6 +82,10 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
 
   answersList : string[] = [""]
 
+  includesInCart():boolean {
+    return this.cartService.includesInCart(this.product);
+  }
+
   nextPageComment() {
     this.currentPageComment++;
     this.findProduct(this.product.id.toString());
@@ -110,7 +113,17 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
 
   adicionarAoCarrinho() {
     if (this.usuarioLogado) {
-      this.cartService.addToCart(this.product)
+      if (!this.includesInCart()) {
+        this.cartService.addToCart(this.product)
+      } else {
+        this._snackBar.open('Produto já adicionado', 'Fechar', {
+          horizontalPosition: 'end',
+          verticalPosition: 'top',
+        });
+        setTimeout(() => {
+          this._snackBar.dismiss();
+        }, 3000);
+      }
     } else {
       this.usuarioDeslogado();
     }
@@ -132,7 +145,6 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
       for (let i = 0; i < this.product.listaDeComentarios.length; i++) {
         this.showMoreLess[i] = "Mostrar mais";
       }
-      console.log(this.product.listaDeComentarios[1]);
     });
   }
 

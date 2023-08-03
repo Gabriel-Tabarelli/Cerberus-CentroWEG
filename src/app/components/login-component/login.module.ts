@@ -9,6 +9,7 @@ import { MatInputModule } from "@angular/material/input";
 import { CommonModule, NgIf } from "@angular/common";
 import { MatIconModule } from "@angular/material/icon";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { CartService } from "src/app/services/cart.service";
 
 @NgModule({
     declarations: [

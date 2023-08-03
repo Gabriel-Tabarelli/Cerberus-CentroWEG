@@ -16,7 +16,7 @@
             </div>
             <div class="layoult buttons-div">
                 <button>Entrar em contato conosco</button>
-                <button (click)="adicionarAoCarrinho()">Adicionar no carrinho</button>
+                <button (click)="adicionarAoCarrinho()">{{ !includesInCart() ? "Adicionar no carrinho" : "Produto adicionado no carrinho"}}</button>
             </div>
         </div>
     </div>
