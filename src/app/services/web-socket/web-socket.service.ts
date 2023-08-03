@@ -15,16 +15,12 @@ export class WebSocketService {
   conexao: Client = {} as Client;
   listaDeMensagens: string[] = [];
 
-  constructor() { 
+  constructor() {
     this.initializeWebSocketConnection();
-    // this.subscribeToTopic(1);
-    // Buscar no banco todos os tópicos aos quais o usuário está inscrito e se inscrever neles
-
   }
 
   ngOnInit(): void {
-    // this.initializeWebSocketConnection();
-    // this.subscribeToTopic(1);
+
   }
 
   initializeWebSocketConnection(): void {
@@ -34,6 +30,20 @@ export class WebSocketService {
       stomp.connect({}, async () => {
         this.conexao = stomp;
         console.log('Conectado');
+
+        //Inscrevendo nos tópicos temporariamente Fazer a incrições nos tópicos dinamicamente
+        this.subscribeToAdmTopic((message: IMessage) => {
+          const mensagemRecebida = JSON.parse(message.body);
+
+          console.log("Mensagem recebida:", mensagemRecebida);
+        });
+
+        this.subscribeToTopic(1, (message: IMessage) => {
+          const mensagemRecebida = JSON.parse(message.body);
+
+          console.log("Retorno de comentário recebida:", mensagemRecebida);
+        });
+
       }, (erro: any) => {
         console.log('Erro ao conectar', erro);
         setTimeout(() => {
@@ -43,6 +53,7 @@ export class WebSocketService {
       });
     };
     connect();
+
   }
 
   sendMessage(idProd: number, pergunta: string): void {
@@ -50,18 +61,42 @@ export class WebSocketService {
     const question: any = {
       idPessoa: 1,
       pergunta: pergunta,
-      listaRespostas : []
+      listaRespostas: []
     }
     const message: string = JSON.stringify(question); // Revisar como enviar mensagem
     this.conexao.publish({ destination: destination, body: message });
   }
 
-  subscribeToTopic(idProd: number, callback: (message: IMessage) => void): void{
+  answerMessage(idPergunta: number, resposta: string) {
+    const destination = "/api/" + idPergunta + "/responder/1" ;
+    const answer: any = {
+      idPessoa: 1,
+      resposta: resposta,
+      idPergunta: idPergunta
+    }
+    const message: string = JSON.stringify(answer);
+    this.conexao.publish({ destination: destination, body: message });
+  }
+
+  subscribeToTopic(idPessoa: number, callback: (message: IMessage) => void): void {
+    console.log("Normal sht")
     if (this.conexao.connected) {
-      const topic = "/topic/pergunta/" + idProd;
-      this.conexao.subscribe(topic, (message: IMessage) => { callback(message);}); // Revisar funcão de call back
+      const topic = "/topic/" + idPessoa;
+      this.conexao.subscribe(topic, (message: IMessage) => { callback(message); }); // Revisar funcão de call back
     } else {
       console.log('Não conectado');
     }
   };
+
+  subscribeToAdmTopic(callback: (message: IMessage) => void): void {
+    console.log("ADMIn")
+    if (this.conexao.connected) {
+      const topic = "/topic/perguntas";
+      this.conexao.subscribe(topic, (message: IMessage) => { callback(message); }); // Revisar funcão de call back
+    } else {
+      console.log('Não conectado');
+    }
+  };
+
+
 }

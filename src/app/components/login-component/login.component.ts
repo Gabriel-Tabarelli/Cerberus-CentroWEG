@@ -8,6 +8,7 @@ import { tap, catchError } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { of } from 'rxjs';
 import { CartService } from 'src/app/services/cart.service';
+import { WebSocketService } from 'src/app/services/web-socket/web-socket.service';
 
 
 @Component({
@@ -23,12 +24,16 @@ export class LoginComponent {
     private routeSnap: ActivatedRoute,
     private userService: UserService,
     private _snackBar: MatSnackBar,
-    private cartService: CartService) { }
+    private cartService: CartService,
+    private webSocketService: WebSocketService) { }
 
-  email = new FormControl('', [Validators.required, Validators.email]);
-  senha: string
-  hide = true;
-  email2: string
+ 
+    
+    email = new FormControl('', [Validators.required, Validators.email]);
+    senha: string
+    hide = true;
+    email2: string
+
 
   logar() {
     if (!(this.email.hasError('required') || this.email.hasError('email'))) {
@@ -36,6 +41,8 @@ export class LoginComponent {
         this.userState.setUserLoggedIn();
         this.sessionService.setItem("usuario", data); // ARRUMAR ISSO! ARMAZENAR NO TOKEN
         const returnUrl = this.routeSnap.snapshot.queryParams['returnUrl'] || '/';
+        console.log(data.id)
+       
         this.router.navigateByUrl(returnUrl);
         this.cartService.findCart();
       }), catchError((error: any) => {
