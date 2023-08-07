@@ -34,6 +34,7 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
 
     const id = this.routeSnap.snapshot.paramMap.get("id")
     this.findProduct(id);
+    
   }
 
   ngAfterViewInit(): void {
@@ -57,6 +58,8 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
         console.error(error);
         this.router.navigate(['/home-page']);
       });
+      
+
   }
 
   links: PathBar[] = [];
@@ -142,8 +145,12 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
       const questions: Question[] = data.content[0].perguntas;
       this.product.listaDeComentarios = questions;
       this.lastQuestion = data.last
+
       for (let i = 0; i < this.product.listaDeComentarios.length; i++) {
+        console.log(i)
         this.showMoreLess[i] = "Mostrar mais";
+      
+        console.log(this.showMoreLess[0])
       }
     });
   }

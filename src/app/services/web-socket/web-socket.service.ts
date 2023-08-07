@@ -8,7 +8,7 @@ import SockJS from 'sockjs-client';
 })
 export class WebSocketService {
 
-  private webSocketUrl = 'http://localhost:8081/ws';
+  private webSocketUrl = 'http://localhost:8082/ws';
   messages$!: Observable<IMessage[]>;
   messageText: string = "";
   messagesArray: IMessage[] = [];
@@ -68,7 +68,7 @@ export class WebSocketService {
   }
 
   answerMessage(idPergunta: number, resposta: string) {
-    const destination = "/api/" + idPergunta + "/responder/1" ;
+    const destination = "/api/" + idPergunta + "/responder/1";
     const answer: any = {
       idPessoa: 1,
       resposta: resposta,

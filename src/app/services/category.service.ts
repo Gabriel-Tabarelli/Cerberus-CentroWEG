@@ -9,7 +9,7 @@ export class CategoryService {
 
   constructor(private httpClient: HttpClient) { }
 
-  url: string = "http://localhost:8081/api/categoria"
+  url: string = "http://localhost:8082/api/categoria"
 
   findOne(id: any): Observable<any> {
     return this.httpClient.get(this.url + "/" + id)

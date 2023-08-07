@@ -52,8 +52,8 @@
                             <p class="comment-comment">{{ comment.pergunta }}</p>
                             <div class="questionsAswers-div">
                                 <div (click)="showAnswers(comment.id)" class="comment-show"
-                                    *ngIf="comment.listaRespostas.length > 0">
-                                    {{showMoreLess[comment.id - 1]}}
+                                *ngIf="comment.listaRespostas.length > 0">
+                                {{showMoreLess[comment.id - 1]}}
                                 </div>
                                 <!-- LÓGICA DO ADM -->
                                 <div class="comment-show" *ngIf="true" (click)="scrollToResposta(comment.id)"> 

@@ -12,7 +12,7 @@ export class CartService {
   private cartItemsSubject: BehaviorSubject<Cart> = new BehaviorSubject<Cart>(null);
   cartItems$ = this.cartItemsSubject.asObservable();
 
-  url: string = "http://localhost:8081/api/carrinho"
+  url: string = "http://localhost:8082/api/carrinho"
 
   private cartItems: Cart = {
     id: 0, 

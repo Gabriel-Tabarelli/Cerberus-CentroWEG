@@ -10,7 +10,7 @@ import { Question } from '../interfaces/Question';
 })
 export class ProductService {
   
-  url: string = "http://localhost:8081/api/produto/"
+  url: string = "http://localhost:8082/api/produto/"
 
   constructor( private httpClient: HttpClient) { }
 
