@@ -24,8 +24,7 @@ export class LoginComponent {
     private routeSnap: ActivatedRoute,
     private userService: UserService,
     private _snackBar: MatSnackBar,
-    private cartService: CartService,
-    private webSocketService: WebSocketService) { }
+    private cartService: CartService) { }
 
  
     

@@ -1,8 +1,11 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
+import { IMessage } from '@stomp/stompjs';
+import { take } from 'rxjs';
 import { CartService } from 'src/app/services/cart.service';
 import { SessionStorageService } from 'src/app/services/session-storage.service';
 import { UserStatusService } from 'src/app/services/user-state.service';
+import { WebSocketService } from 'src/app/services/web-socket/web-socket.service';
 
 @Component({
   selector: 'app-header-logado-component',
@@ -17,12 +20,19 @@ export class HeaderLogadoComponentComponent implements OnInit {
     private sessionService: SessionStorageService,
     private userService: UserStatusService,
     private router: Router,
-    private cartService: CartService) { }
+    private cartService: CartService,
+    private webSocket: WebSocketService) { }
 
   ngOnInit(): void {
     this.cartService.cartItems$.subscribe(cart => {
       this.quantidadeProdutos = cart?.produtos?.length ?? 0;
     });
+
+    const id = this.sessionService.getItem("usuario").id
+
+
+    this.webSocket.initializeWebSocketConnection(id); 
+
   }
 
   quantidadeProdutos: number = 0;
@@ -30,7 +40,6 @@ export class HeaderLogadoComponentComponent implements OnInit {
   isOpenUser: boolean = false;
 
   cartShow() {
-
     this.isOpenCart = !this.isOpenCart;
     if (this.isOpenCart) {
       if (this.isOpenUser) {
@@ -59,7 +68,7 @@ export class HeaderLogadoComponentComponent implements OnInit {
     this.cartService.cartDefault();
   }
 
-  navegateTo(){
+  navegateTo() {
     this.userShow();
     this.router.navigate(['/profile-page']);
   }

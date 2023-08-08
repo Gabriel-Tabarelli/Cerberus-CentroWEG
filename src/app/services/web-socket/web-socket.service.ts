@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Client, IMessage, Stomp } from '@stomp/stompjs';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import SockJS from 'sockjs-client';
 
 @Injectable({
@@ -15,15 +15,18 @@ export class WebSocketService {
   conexao: Client = {} as Client;
   listaDeMensagens: string[] = [];
 
+
+ 
+
+
   constructor() {
-    this.initializeWebSocketConnection();
   }
 
   ngOnInit(): void {
 
   }
 
-  initializeWebSocketConnection(): void {
+  initializeWebSocketConnection(id: number): void {
     const connect = () => {
       const socket = new SockJS(this.webSocketUrl);
       const stomp = Stomp.over(socket);
@@ -31,16 +34,17 @@ export class WebSocketService {
         this.conexao = stomp;
         console.log('Conectado');
 
-        //Inscrevendo nos tópicos temporariamente Fazer a incrições nos tópicos dinamicamente
-        this.subscribeToAdmTopic((message: IMessage) => {
+        if (id == 1) {
+          this.subscribeToAdmTopic((message: IMessage) => {
+            const mensagemRecebida = JSON.parse(message.body);
+    
+            console.log("Mensagem recebida:", mensagemRecebida);
+          });
+        }
+
+        this.subscribeToTopic(id, (message: IMessage) => {
           const mensagemRecebida = JSON.parse(message.body);
-
-          console.log("Mensagem recebida:", mensagemRecebida);
-        });
-
-        this.subscribeToTopic(1, (message: IMessage) => {
-          const mensagemRecebida = JSON.parse(message.body);
-
+    
           console.log("Retorno de comentário recebida:", mensagemRecebida);
         });
 
@@ -56,10 +60,10 @@ export class WebSocketService {
 
   }
 
-  sendMessage(idProd: number, pergunta: string): void {
+  sendMessage(idUsuario: number, idProd: number, pergunta: string): void {
     const destination = "/api/" + idProd + "/perguntar";
     const question: any = {
-      idPessoa: 1,
+      idPessoa: idUsuario,
       pergunta: pergunta,
       listaRespostas: []
     }
@@ -67,8 +71,8 @@ export class WebSocketService {
     this.conexao.publish({ destination: destination, body: message });
   }
 
-  answerMessage(idPergunta: number, resposta: string) {
-    const destination = "/api/" + idPergunta + "/responder/1";
+  answerMessage(idPergunta: number, resposta: string, idPessoa: number): void {
+    const destination = "/api/" + idPergunta + "/responder/" + idPessoa;
     const answer: any = {
       idPessoa: 1,
       resposta: resposta,

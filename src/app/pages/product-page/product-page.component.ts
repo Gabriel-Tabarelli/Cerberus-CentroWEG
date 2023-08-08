@@ -7,6 +7,7 @@ import { Product } from 'src/app/interfaces/Product/Product';
 import { Question } from 'src/app/interfaces/Question';
 import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from 'src/app/services/product.service';
+import { SessionStorageService } from 'src/app/services/session-storage.service';
 import { UserStatusService } from 'src/app/services/user-state.service';
 import { WebSocketService } from 'src/app/services/web-socket/web-socket.service';
 @Component({
@@ -23,7 +24,8 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
     private cartService: CartService,
     private productService: ProductService,
     private webSocket: WebSocketService,
-    private _snackBar: MatSnackBar) { }
+    private _snackBar: MatSnackBar,
+    private sessionService: SessionStorageService) { }
 
   listaDeProdutos: Product[] = []
 
@@ -134,7 +136,10 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
 
   toComment() {
     if (this.usuarioLogado) {
-      this.webSocket.sendMessage(this.product.id, this.questionText);
+      this.webSocket.sendMessage(
+        this.sessionService.getItem("usuario").id,
+        this.product.id,
+        this.questionText);
     } else {
       this.usuarioDeslogado();
     }
@@ -145,11 +150,10 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
       const questions: Question[] = data.content[0].perguntas;
       this.product.listaDeComentarios = questions;
       this.lastQuestion = data.last
-
+      console.log(this.product.listaDeComentarios)
       for (let i = 0; i < this.product.listaDeComentarios.length; i++) {
         console.log(i)
         this.showMoreLess[i] = "Mostrar mais";
-      
         console.log(this.showMoreLess[0])
       }
     });
@@ -175,11 +179,11 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
     this.buscarComentarios(this.product.id.toString());
   }
 
-  toAnswer(id) {
-    console.log(id) 
-    this.webSocket.answerMessage(id, this.answersList[id - 1]);
-    // console.log(this.answersList.length)
-    // console.log(this.answersList[id - 1])
+  toAnswer(comment: Question) {
+    
+    const id = comment.id;
+    console.log();
+    this.webSocket.answerMessage(id, this.answersList[id - 1], comment.pessoa.id);
     this.answersList[id - 1] = ""
   }
 
