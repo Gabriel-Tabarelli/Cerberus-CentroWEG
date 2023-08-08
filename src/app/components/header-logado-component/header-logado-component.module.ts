@@ -5,7 +5,7 @@ import { CartComponentModule } from '../cart-component/cart-component.module';
 import { RouterModule } from '@angular/router';
 import { ItemFrameModule } from '../item-frame/item-frame.module';
 import { FormsModule } from '@angular/forms';
-
+import {MatBadgeModule} from '@angular/material/badge';
 
 
 @NgModule({
@@ -17,7 +17,8 @@ import { FormsModule } from '@angular/forms';
     CartComponentModule,
     RouterModule,
     ItemFrameModule,
-    FormsModule
+    FormsModule,
+    MatBadgeModule
   ],
   exports: [
     HeaderLogadoComponentComponent

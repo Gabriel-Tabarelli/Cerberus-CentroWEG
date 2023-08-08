@@ -15,9 +15,8 @@ export class WebSocketService {
   conexao: Client = {} as Client;
   listaDeMensagens: string[] = [];
 
-
- 
-
+  private notificationSubject: BehaviorSubject<any> = new BehaviorSubject<any>(0);
+  notification$ = this.notificationSubject.asObservable();
 
   constructor() {
   }
@@ -37,7 +36,7 @@ export class WebSocketService {
         if (id == 1) {
           this.subscribeToAdmTopic((message: IMessage) => {
             const mensagemRecebida = JSON.parse(message.body);
-    
+            this.notificationSubject.next(mensagemRecebida)
             console.log("Mensagem recebida:", mensagemRecebida);
           });
         }

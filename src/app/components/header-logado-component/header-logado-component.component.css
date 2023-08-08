@@ -168,8 +168,12 @@
     scale: 1.1;
 }
 
-.userIcone {
+.div-iconeLogado > div {
     width: 25%;
+}
+
+.userIcone {
+    width: 100%;
 }
 
 .userSetaOff {
