@@ -15,10 +15,6 @@ export class WebSocketService {
   conexao: Client = {} as Client;
   listaDeMensagens: string[] = [];
 
-
- 
-
-
   constructor() {
   }
 
