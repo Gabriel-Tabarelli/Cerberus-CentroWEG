@@ -63,3 +63,7 @@ mat-label {
 .mat-input-element {
     caret-color: #0090C5;
 }
+
+.mat-badge-active {
+    background-color: #0090C5;
+}

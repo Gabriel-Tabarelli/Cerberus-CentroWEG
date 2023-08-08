@@ -15,6 +15,7 @@ import { WebSocketService } from 'src/app/services/web-socket/web-socket.service
 export class HeaderLogadoComponentComponent implements OnInit {
 
   pesquisa: any = '';
+  notifications: any = 0;
 
   constructor(private renderer: Renderer2,
     private sessionService: SessionStorageService,
@@ -27,7 +28,10 @@ export class HeaderLogadoComponentComponent implements OnInit {
     this.cartService.cartItems$.subscribe(cart => {
       this.quantidadeProdutos = cart?.produtos?.length ?? 0;
     });
-
+    
+    this.webSocket.notification$.subscribe(notification => {
+      this.notifications = notification;
+    })
     const id = this.sessionService.getItem("usuario").id
 
 
