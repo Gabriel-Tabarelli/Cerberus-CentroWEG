@@ -15,4 +15,8 @@ export class UserService {
     getOneByEmailAndPassword(email:string, password:string): Observable<ProductMinimized[]> {
         return this.httpClient.get<ProductMinimized[]>(`${this.url}?email=${email}&senha=${password}`)
     }
+
+    getEnderecoProjection(id: any): Observable<any> {
+        return this.httpClient.get<any>(`${this.url}/endereco/${id}`)
+    }
 }

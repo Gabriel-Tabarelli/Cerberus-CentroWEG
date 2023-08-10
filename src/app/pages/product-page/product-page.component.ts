@@ -17,7 +17,6 @@ import { WebSocketService } from 'src/app/services/web-socket/web-socket.service
 })
 export class ProductPageComponent implements OnInit, AfterViewInit {
 
-
   constructor(private routeSnap: ActivatedRoute,
     private userStatusService: UserStatusService,
     private router: Router,
@@ -36,7 +35,7 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
 
     const id = this.routeSnap.snapshot.paramMap.get("id")
     this.findProduct(id);
-    
+
   }
 
   ngAfterViewInit(): void {
@@ -60,7 +59,7 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
         console.error(error);
         this.router.navigate(['/home-page']);
       });
-      
+
 
   }
 
@@ -85,15 +84,15 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
   lastQuestion: boolean = true;
   showMoreLess: string[] = [""];
 
-  answersList : string[] = [""]
+  answersList: string[] = [""]
 
-  includesInCart():boolean {
+  includesInCart(): boolean {
     return this.cartService.includesInCart(this.product);
   }
 
   nextPageComment() {
     this.currentPageComment++;
-    this.findProduct(this.product.id.toString());
+    this.buscarComentarios(this.product.id.toString());
   }
 
   showAnswers(comment: number) {
@@ -105,7 +104,7 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
       this.answersVisibles.splice(index, 1);
       this.showMoreLess[comment - 1] = "Mostrar mais";
     }
-   
+
   }
 
   isAnsersVisibles(comment: Question) {
@@ -136,10 +135,31 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
 
   toComment() {
     if (this.usuarioLogado) {
-      this.webSocket.sendMessage(
-        this.sessionService.getItem("usuario").id,
-        this.product.id,
-        this.questionText);
+      if (this.questionText.length > 0) {
+        this.webSocket.sendMessage(
+          this.sessionService.getItem("usuario").id,
+          this.product.id,
+          this.questionText);
+        this.questionText = "";
+        this._snackBar.open('Comentário enviado', 'Fechar', {
+          horizontalPosition: 'end',
+          verticalPosition: 'top',
+        });
+        setTimeout(() => {
+          this._snackBar.dismiss();
+          this.currentPageComment = 0;
+          this.product.listaDeComentarios = [];
+          this.buscarComentarios(this.product.id.toString());
+        }, 3000);
+      } else {
+        this._snackBar.open('Comentário não pode estar vazio', 'Fechar', {
+          horizontalPosition: 'end',
+          verticalPosition: 'top',
+        });
+        setTimeout(() => {
+          this._snackBar.dismiss();
+        }, 3000);
+      }
     } else {
       this.usuarioDeslogado();
     }
@@ -148,12 +168,13 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
   buscarComentarios(id: string) {
     this.productService.getProductQuestions(id, this.currentPageComment).subscribe((data: any) => {
       const questions: Question[] = data.content;
-      console.log(data.content)
-      this.product.listaDeComentarios = questions;
-      this.lastQuestion = data.last
-      for (let i = 0; i < this.product.listaDeComentarios.length; i++) {
-        this.showMoreLess[i] = "Mostrar mais";
+      console.log(questions)
+      if (!this.product.listaDeComentarios) {
+        this.product.listaDeComentarios = [];
       }
+
+      this.product.listaDeComentarios.push(...questions);
+      this.lastQuestion = data.last
     });
   }
 
@@ -178,7 +199,6 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
   }
 
   toAnswer(comment: Question) {
-    
     const id = comment.id;
     console.log();
     this.webSocket.answerMessage(id, this.answersList[id - 1], comment.pessoa.id);
@@ -191,10 +211,10 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
     if (this.answersVisibles.includes(index)) {
       setTimeout(() => {
         this.scrollIntoView(index);
-      }, 300); 
+      }, 300);
     }
   }
-  
+
   scrollIntoView(index: number) {
     const elementId = 'resposta' + (index - 1);
     const textId = 'textarea' + (index - 1);
@@ -203,7 +223,7 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
     if (element && text) {
       element.scrollIntoView({ behavior: 'smooth', block: 'center' });
       setTimeout(() => {
-          text.focus();
+        text.focus();
       }, 500);
     }
   }
