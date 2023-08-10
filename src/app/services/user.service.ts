@@ -15,4 +15,9 @@ export class UserService {
     getOneByEmailAndPassword(email:string, password:string): Observable<ProductMinimized[]> {
         return this.httpClient.get<ProductMinimized[]>(`${this.url}?email=${email}&senha=${password}`)
     }
+
+    getNotificationsByUserId(id:number): Observable<any> {
+        return this.httpClient.get<any>(`${this.url}/${id}/notificacoes`)
+    }
+    
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Product } from 'src/app/interfaces/Product/Product';
 import { SessionStorageService } from 'src/app/services/session-storage.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-profile-page',
@@ -11,15 +12,21 @@ import { SessionStorageService } from 'src/app/services/session-storage.service'
 export class ProfilePageComponent implements OnInit {
 
   constructor(private sessionService: SessionStorageService,
-    private router: Router) { }
+    private router: Router,
+    private userService: UserService
+    ) { }
 
   ngOnInit(): void {
     this.usuario = this.sessionService.getItem('usuario');
-    this.userName = this.usuario.email
+    this.userName = this.usuario.nome
+    this.userService.getNotificationsByUserId(this.usuario.id).subscribe(any => {
+      this.notifications = any;
+      console.log(any)
+    })
   }
   userName: string = '';
   usuario: any = {}
-
+  notifications: any = {}
 
   listaDePedidos: any[] = [
     {

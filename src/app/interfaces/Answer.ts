@@ -1,5 +1,5 @@
 export interface Answer {
     id: number
-    pessoa: any
+    respondedor: any
     resposta: string
 }

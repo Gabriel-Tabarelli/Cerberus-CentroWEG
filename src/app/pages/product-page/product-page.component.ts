@@ -181,7 +181,7 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
     
     const id = comment.id;
     console.log();
-    this.webSocket.answerMessage(id, this.answersList[id - 1], comment.pessoa.id);
+    this.webSocket.answerMessage(id, this.answersList[id - 1], comment.perguntador.id);
     this.answersList[id - 1] = ""
   }
 
