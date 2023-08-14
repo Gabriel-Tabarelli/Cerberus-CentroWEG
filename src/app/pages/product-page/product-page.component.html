@@ -50,7 +50,7 @@
                     <app-item-frame class="item-frame">
                         <div class="comment" item_frame_container>
                             <div class="comment-name-date-div">
-                                <p class="comment-name">{{ comment.pessoa.nome }}</p>
+                                <p class="comment-name">{{ comment.perguntador.nome }}</p>
                                 <p class="comment-date">{{ comment.data }}</p>
                             </div>
                             <p class="comment-comment">{{ comment.pergunta }}</p>
@@ -71,7 +71,7 @@
                             <app-item-frame class="item-frame">
                                 <div class="comment" item_frame_container>
                                     <div class="comment-name-date-div">
-                                        <p class="comment-name">{{ answer.pessoa.nome }}</p>
+                                        <p class="comment-name">{{ answer.respondedor.nome }}</p>
                                         <p class="comment-date">{{ answer.data }}</p>
                                     </div>
                                     <p class="comment-comment">{{ answer.resposta }}</p>
