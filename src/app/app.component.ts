@@ -13,8 +13,8 @@ export class AppComponent implements OnInit {
   constructor(private router: Router, private sessionService: SessionStorageService, private userState: UserStatusService) { }
   usuario: any;
   ngOnInit(): void {
-    this.userState.userLoggedIn$.subscribe((isLoggedIn: boolean) => {
-      this.usuarioLogado = isLoggedIn;
+    this.userState.userLoggedIn$.subscribe((isLoggedIn) => {
+      this.usuarioLogado = isLoggedIn[0];
     });
   }
 

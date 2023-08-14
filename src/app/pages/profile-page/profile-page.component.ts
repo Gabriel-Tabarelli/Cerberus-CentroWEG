@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/interfaces/Product/Product';
 import { SessionStorageService } from 'src/app/services/session-storage.service';
 import { UserService } from 'src/app/services/user.service';
@@ -13,7 +13,8 @@ export class ProfilePageComponent implements OnInit {
 
   constructor(private sessionService: SessionStorageService,
     private router: Router,
-    private userService: UserService) { }
+    private userService: UserService,
+    private route: ActivatedRoute) { }
 
 
   ngOnInit(): void {
@@ -31,9 +32,22 @@ export class ProfilePageComponent implements OnInit {
       this.notifications = any;
       console.log(any)
     })
-
   }
+
+  ngAfterViewInit() {
+    this.route.fragment.subscribe(fragment => {
+      if (fragment === 'notificacao') {
+        this.scrollToElement(this.notificacaoElement.nativeElement);
+      }
+    });
+  }
+
+  @ViewChild('notificacao') notificacaoElement: ElementRef;
   
+  private scrollToElement(element: any): void {
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
   userName: string = '';
   usuario: any = {}
   endereco: any = {}

@@ -30,16 +30,30 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.userStatusService.userLoggedIn$.subscribe((logado) => {
-      this.usuarioLogado = logado;
+      this.usuarioLogado = logado[0];
+      this.admin = logado[1];
     });
-
+    
     const id = this.routeSnap.snapshot.paramMap.get("id")
     this.findProduct(id);
-
+    
   }
+  
+  admin: boolean = false;
+
+  @ViewChild('pergunta') perguntaElement: ElementRef;
 
   ngAfterViewInit(): void {
-    window.scrollTo(0, 0)
+    
+    this.routeSnap.fragment.subscribe(fragment => {
+      if (fragment === 'pergunta') {
+        this.scrollToElement(this.perguntaElement.nativeElement);
+      }
+    });
+  }
+
+  private scrollToElement(element: any): void {
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
   findProduct(id: string) {
@@ -59,7 +73,6 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
         console.error(error);
         this.router.navigate(['/home-page']);
       });
-
 
   }
 
@@ -120,13 +133,7 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
       if (!this.includesInCart()) {
         this.cartService.addToCart(this.product)
       } else {
-        this._snackBar.open('Produto já adicionado', 'Fechar', {
-          horizontalPosition: 'end',
-          verticalPosition: 'top',
-        });
-        setTimeout(() => {
-          this._snackBar.dismiss();
-        }, 3000);
+        this.abrirModal("Produto já adicionado")
       }
     } else {
       this.usuarioDeslogado();
@@ -136,29 +143,24 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
   toComment() {
     if (this.usuarioLogado) {
       if (this.questionText.length > 0) {
+
         this.webSocket.sendMessage(
           this.sessionService.getItem("usuario").id,
           this.product.id,
           this.questionText);
+
         this.questionText = "";
-        this._snackBar.open('Comentário enviado', 'Fechar', {
-          horizontalPosition: 'end',
-          verticalPosition: 'top',
-        });
+
+        this.abrirModal("Comentário enviado")
         setTimeout(() => {
-          this._snackBar.dismiss();
           this.currentPageComment = 0;
           this.product.listaDeComentarios = [];
           this.buscarComentarios(this.product.id.toString());
         }, 3000);
+        
+
       } else {
-        this._snackBar.open('Comentário não pode estar vazio', 'Fechar', {
-          horizontalPosition: 'end',
-          verticalPosition: 'top',
-        });
-        setTimeout(() => {
-          this._snackBar.dismiss();
-        }, 3000);
+        this.abrirModal("Comentário não pode estar vazio")
       }
     } else {
       this.usuarioDeslogado();
@@ -200,9 +202,20 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
 
   toAnswer(comment: Question) {
     const id = comment.id;
-    console.log();
-    this.webSocket.answerMessage(id, this.answersList[id - 1], comment.perguntador.id);
-    this.answersList[id - 1] = ""
+    const texto = this.answersList[id - 1] ? this.answersList[id - 1] : "";
+    if (texto === "") {
+      this.abrirModal("A resposta não pode estar vazia")
+    } else {
+      this.webSocket.answerMessage(id, this.answersList[id - 1], comment.perguntador.id);
+      this.answersList[id - 1] = "";
+      this.abrirModal("Resposta enviada")
+      setTimeout(() => {
+        this.currentPageComment = 0;
+        this.product.listaDeComentarios = [];
+        this.buscarComentarios(this.product.id.toString());
+      }, 3000);
+    }
+
   }
 
 
@@ -227,4 +240,15 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
       }, 500);
     }
   }
+
+  abrirModal(message: string) {
+    this._snackBar.open(message, 'Fechar', {
+      horizontalPosition: 'end',
+      verticalPosition: 'top',
+    });
+    setTimeout(() => {
+      this._snackBar.dismiss();
+    }, 3000);
+  }
+
 }

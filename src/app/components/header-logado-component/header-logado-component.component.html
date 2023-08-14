@@ -24,9 +24,9 @@
         <div class="div-itemFrame" *ngIf="isOpenUser">
             <app-item-frame>
                 <div class="div-modalUsuario" item_frame_container>
-                    <p (click)="navegateTo()">MINHA CONTA</p>
+                    <p (click)="navegateTo('')">MINHA CONTA</p>
                     <div></div>
-                    <p>NOTIFICAÇÕES</p>
+                    <p (click)="navegateTo('notificacao')">NOTIFICAÇÕES</p>
                     <div></div>
                     <p (click)="deslogar()">SAIR</p>
                 </div>
