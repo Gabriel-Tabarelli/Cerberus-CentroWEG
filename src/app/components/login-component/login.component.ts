@@ -37,8 +37,8 @@ export class LoginComponent {
   logar() {
     if (!(this.email.hasError('required') || this.email.hasError('email'))) {
       this.userService.getOneByEmailAndPassword(this.email2, this.senha).pipe(tap((data: any) => {
-        this.userState.setUserLoggedIn();
         this.sessionService.setItem("usuario", data); // ARRUMAR ISSO! ARMAZENAR NO TOKEN
+        this.userState.setUserLoggedIn();
         const returnUrl = this.routeSnap.snapshot.queryParams['returnUrl'] || '/';
         console.log(data.id)
        

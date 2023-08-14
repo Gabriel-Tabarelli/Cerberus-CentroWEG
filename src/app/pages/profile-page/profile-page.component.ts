@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Product } from 'src/app/interfaces/Product/Product';
 import { SessionStorageService } from 'src/app/services/session-storage.service';
 import { UserService } from 'src/app/services/user.service';
+import { Notificacao } from 'src/app/interfaces/Notificacao';
 
 @Component({
   selector: 'app-profile-page',
@@ -27,19 +28,21 @@ export class ProfilePageComponent implements OnInit {
     for (let i = 2; i < this.usuario.telefone.length; i++) {
       this.telefone += this.usuario.telefone[i]
     }
-    this.userService.getNotificationsByUserId(this.usuario.id).subscribe(any => {
-      this.notifications = any;
-      console.log(any)
+
+    this.userService.getNotificationsByUserId(this.usuario.id).subscribe(notifications => {
+      this.notifications = notifications.notificacoes;
+      console.log(notifications.notificacoes[0])
     })
 
   }
+
+  notifications: Notificacao[];
   
   userName: string = '';
   usuario: any = {}
   endereco: any = {}
   telefone: string;
 
-  notifications: any = {}
 
   listaDePedidos: any[] = [
     {
@@ -61,8 +64,15 @@ export class ProfilePageComponent implements OnInit {
 
   listaDeProdutos: Product[] = []
 
-  navigateTo(nome: string){
-    const rotaProduto = "/product-page/" + nome
+  notificacaoVisualizar(idProduto: number, idNotificacao: number): void {
+    this.userService.visualizeNotification(idNotificacao)
+    const rotaProduto = "/product-page/" + idProduto
     this.router.navigate([rotaProduto])
+  }
+
+  notificacaoChecar(idNotificacao: number): void {
+    this.userService.visualizeNotification(idNotificacao).subscribe(response => {
+      console.log(response)
+    })
   }
 }

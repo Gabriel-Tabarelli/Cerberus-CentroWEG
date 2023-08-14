@@ -178,6 +178,23 @@ th {
     text-align: end;
 }
 
+.notificacao-body {
+    display: flex;    
+}
+
+.notificacao-body-nome {
+    width: fit-content;
+    font-weight: 500;
+}
+
+.notificacao-header {
+    font-weight: 500;
+}
+
+.notificacao-footer-botao {
+    margin-right: 10px;
+}
+
 @media screen and (max-width:850px) {
 
     .div-edicoes {
