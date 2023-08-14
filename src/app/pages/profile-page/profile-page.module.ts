@@ -4,7 +4,7 @@ import { ProfilePageComponent } from './profile-page.component';
 import { ProfilePageRoutingModule } from './profile-page-routing.module';
 import { ItemFrameModule } from 'src/app/components/item-frame/item-frame.module';
 import { MatIconModule } from '@angular/material/icon';
-
+import {MatExpansionModule} from '@angular/material/expansion';
 
 
 @NgModule({
@@ -15,10 +15,11 @@ import { MatIconModule } from '@angular/material/icon';
     CommonModule,
     ProfilePageRoutingModule,
     ItemFrameModule,
-    MatIconModule
+    MatIconModule,
+    MatExpansionModule
   ],
   exports: [
-    ProfilePageComponent 
+    ProfilePageComponent
   ]
 })
 export class ProfilePageModule { }

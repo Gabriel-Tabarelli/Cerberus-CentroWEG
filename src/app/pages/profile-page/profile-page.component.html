@@ -68,13 +68,40 @@
                                     <td>#{{pedido.id}}</td>
                                     <td>{{pedido.status}}</td>
                                     <td>{{pedido.data}}</td>
-                                    <td class="detalhes" [routerLink]="'/ordered-page/' + pedido.id">Detalhes do pedido</td>
+                                    <td class="detalhes" [routerLink]="'/ordered-page/' + pedido.id">Detalhes do pedido
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
                         <div class="mostrar-mais">
                             <p routerLink="/ordered-page">Mostrar mais</p>
                         </div>
+                    </div>
+                </app-item-frame>
+            </div>
+        </div>
+        <div class="div-ultimos-pedidos">
+            <div class="div-pedidos">
+                <app-item-frame>
+                    <div class="div-lista-pedidos" item_frame_container>
+                        <div>
+                            <h2>NOTIFICAÇÕES</h2>
+                            <div class="blue-line"></div>
+                        </div>
+                        <br>
+                        <mat-accordion>
+                            <mat-expansion-panel hideToggle>
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        This is the expansion title
+                                    </mat-panel-title>
+                                    <mat-panel-description>
+                                        This is a summary of the content
+                                    </mat-panel-description>
+                                </mat-expansion-panel-header>
+                                <p>This is the primary content of the panel.</p>
+                            </mat-expansion-panel>
+                        </mat-accordion>
                     </div>
                 </app-item-frame>
             </div>

@@ -16,7 +16,13 @@ export class UserService {
         return this.httpClient.get<ProductMinimized[]>(`${this.url}?email=${email}&senha=${password}`)
     }
 
+
     getEnderecoProjection(id: any): Observable<any> {
         return this.httpClient.get<any>(`${this.url}/endereco/${id}`)
     }
+
+    getNotificationsByUserId(id:number): Observable<any> {
+        return this.httpClient.get<any>(`${this.url}/${id}/notificacoes`)
+    }
+    
 }

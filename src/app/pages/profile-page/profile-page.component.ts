@@ -15,6 +15,7 @@ export class ProfilePageComponent implements OnInit {
     private router: Router,
     private userService: UserService) { }
 
+
   ngOnInit(): void {
     this.usuario = this.sessionService.getItem('usuario');
     this.userName = this.usuario.nome
@@ -26,12 +27,20 @@ export class ProfilePageComponent implements OnInit {
     for (let i = 2; i < this.usuario.telefone.length; i++) {
       this.telefone += this.usuario.telefone[i]
     }
+    this.userService.getNotificationsByUserId(this.usuario.id).subscribe(any => {
+      this.notifications = any;
+      console.log(any)
+    })
+
   }
   
   userName: string = '';
   usuario: any = {}
   endereco: any = {}
   telefone: string;
+
+  notifications: any = {}
+
   listaDePedidos: any[] = [
     {
       id: 23233,
