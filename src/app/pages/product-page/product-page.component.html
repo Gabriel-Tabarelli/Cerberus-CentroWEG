@@ -49,7 +49,10 @@
                 <div *ngFor="let comment of product.listaDeComentarios; let index = index" class="comments-div">
                     <app-item-frame class="item-frame">
                         <div class="comment" item_frame_container>
-                            <p class="comment-name">{{ comment.perguntador.nome }}</p>
+                            <div class="comment-name-date-div">
+                                <p class="comment-name">{{ comment.pessoa.nome }}</p>
+                                <p class="comment-date">{{ comment.data }}</p>
+                            </div>
                             <p class="comment-comment">{{ comment.pergunta }}</p>
                             <div class="questionsAswers-div">
                                 <div (click)="showAnswers(comment.id)" class="comment-show"
@@ -67,7 +70,10 @@
                         <div *ngFor="let answer of product.listaDeComentarios[index].listaRespostas" class="answer-div">
                             <app-item-frame class="item-frame">
                                 <div class="comment" item_frame_container>
-                                    <p class="comment-name">{{ answer.respondedor.nome }}</p>
+                                    <div class="comment-name-date-div">
+                                        <p class="comment-name">{{ answer.pessoa.nome }}</p>
+                                        <p class="comment-date">{{ answer.data }}</p>
+                                    </div>
                                     <p class="comment-comment">{{ answer.resposta }}</p>
                                 </div>
                             </app-item-frame>
@@ -85,7 +91,7 @@
                         </div>
                     </div>
                 </div>
-                <button class="show-more-comments" *ngIf="!lastQuestion">Mostrar mais</button>
+                <button class="show-more-comments" *ngIf="!lastQuestion" (click)="nextPageComment()">Mostrar mais</button>
             </div>
             <div class="first-column" *ngIf="product?.listaDeComentarios?.length <= 0">
                 <app-item-frame>

@@ -31,7 +31,6 @@ export class ProductService {
   }
 
   getProductQuestions(id: string, page: number): Observable<any> {
-    let params = new HttpParams();
     return this.httpClient.get<any>(this.url + id + "/perguntas?page=" + page);
   }
 

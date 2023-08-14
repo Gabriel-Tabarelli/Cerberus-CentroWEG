@@ -69,6 +69,4 @@ export class CartService {
     return this.cartItems.produtos.includes(product);
   }
 
-
-
 }

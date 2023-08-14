@@ -13,19 +13,32 @@ export class ProfilePageComponent implements OnInit {
 
   constructor(private sessionService: SessionStorageService,
     private router: Router,
-    private userService: UserService
-    ) { }
+    private userService: UserService) { }
+
 
   ngOnInit(): void {
     this.usuario = this.sessionService.getItem('usuario');
     this.userName = this.usuario.nome
+    this.userService.getEnderecoProjection(this.usuario.id).subscribe((data) => {
+      this.endereco = data.endereco;
+      console.log(this.endereco)
+    })
+    this.telefone = "(" + this.usuario.telefone[0] + this.usuario.telefone[1] + ") " 
+    for (let i = 2; i < this.usuario.telefone.length; i++) {
+      this.telefone += this.usuario.telefone[i]
+    }
     this.userService.getNotificationsByUserId(this.usuario.id).subscribe(any => {
       this.notifications = any;
       console.log(any)
     })
+
   }
+  
   userName: string = '';
   usuario: any = {}
+  endereco: any = {}
+  telefone: string;
+
   notifications: any = {}
 
   listaDePedidos: any[] = [
@@ -49,7 +62,7 @@ export class ProfilePageComponent implements OnInit {
   listaDeProdutos: Product[] = []
 
   navigateTo(nome: string){
-    const rotaProduto = "/product-page/" + encodeURIComponent(nome)
+    const rotaProduto = "/product-page/" + nome
     this.router.navigate([rotaProduto])
   }
 }

@@ -16,11 +16,11 @@
                         </div>
                         <div class="second-line">
                             <mat-icon>email</mat-icon>
-                            <h5>email@gmail.com</h5>
+                            <h5>{{usuario.email}}</h5>
                         </div>
                         <div class="thrid-line">
                             <mat-icon>phone</mat-icon>
-                            <h5>(47) 98544-2920</h5>
+                            <h5>{{telefone}}</h5>
                         </div>
                     </div>
                 </app-item-frame>
@@ -32,13 +32,13 @@
                             <h2>Endereço</h2>
                             <mat-icon class="config-icon icons" routerLink="/edit-page">settings</mat-icon>
                         </div>
-                        <div class="second-line">
-                            <mat-icon> location_on</mat-icon>
-                            <h5>CEP 89260-334</h5>
-                        </div>
                         <div class="thrid-line">
                             <mat-icon>location_city</mat-icon>
-                            <h5>Jaraugá do Sul - SC</h5>
+                            <h5>{{endereco.cidade}} - {{endereco.estado}}</h5>
+                        </div>
+                        <div class="second-line">
+                            <mat-icon> location_on</mat-icon>
+                            <h5>CEP {{endereco.cep}}</h5>
                         </div>
                     </div>
                 </app-item-frame>

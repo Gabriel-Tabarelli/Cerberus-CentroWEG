@@ -218,16 +218,23 @@ button {
     background-color: white;
     border-radius: 10px;
     box-sizing: border-box;
-    padding: 15px 20px 15px 10px;
+    padding: 15px 20px 15px 15px;
 }
 
 .comment-name {
+    width: fit-content;
     margin-bottom: 10px
 }
 
 .comment-comment {
+    word-wrap: break-word;
     font-size: 15px;
     text-align: justify;
+}
+
+.comment-name-date-div {
+    display: flex;
+    justify-content: space-between;
 }
 
 .comment-show {
@@ -236,6 +243,10 @@ button {
     color: #00579D;
     cursor: pointer;
     width: fit-content;
+}
+
+.comment-date {
+    opacity: .6;
 }
 
 .answer {
