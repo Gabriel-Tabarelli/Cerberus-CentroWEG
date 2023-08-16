@@ -36,4 +36,9 @@ export class CartComponentComponent implements OnInit {
     this.closeCart()
     this.route.navigate(["cart-page"])
   }
+
+  navigateToProduct(id: number) {
+    this.closeCart()
+    this.route.navigate(["/product-page/" + id])
+  }
 }
