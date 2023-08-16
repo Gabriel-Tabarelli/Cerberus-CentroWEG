@@ -54,6 +54,8 @@ export class LoginComponent {
         }, 3000);
         return of(null);
       })).subscribe();
+    } else {
+      console.log("AAAAAAAAAAAAAAAA")
     }
   }
 

@@ -17,7 +17,7 @@
             <div class="layoult buttons-div">
                 <button>Entrar em contato conosco</button>
                 <button (click)="adicionarAoCarrinho()">{{ !includesInCart() ? "Adicionar no carrinho" : "Produto
-                    adicionado no carrinho"}}</button>
+                    adicionado"}}</button>
             </div>
         </div>
     </div>
@@ -40,7 +40,7 @@
     <div id="comment-container">
         <div id="label-container">
             <div>
-                <h2>PERGUNTAS FREQUENTES</h2>
+                <h2 #pergunta>PERGUNTAS FREQUENTES</h2>
                 <div></div>
             </div>
         </div>
@@ -60,7 +60,7 @@
                                     {{showMoreLess[comment.id - 1] || 'Mostrar mais' }}
                                 </div>
                                 <!-- LÓGICA DO ADM -->
-                                <div class="comment-show" *ngIf="true" (click)="scrollToResposta(comment.id)">
+                                <div class="comment-show" *ngIf="admin" (click)="scrollToResposta(comment.id)">
                                     Responder
                                 </div>
                             </div>
@@ -79,7 +79,7 @@
                             </app-item-frame>
                         </div>
 
-                        <div class="answer-div" *ngIf="true" [id]="'resposta' + (comment.id-1)">
+                        <div class="answer-div" *ngIf="admin" [id]="'resposta' + (comment.id-1)">
                             <app-item-frame class="question-item-frame">
                                 <div class="answer-container" item_frame_container>
                                     <p class="question-tittle">Responder</p>
@@ -93,7 +93,7 @@
                 </div>
                 <button class="show-more-comments" *ngIf="!lastQuestion" (click)="nextPageComment()">Mostrar mais</button>
             </div>
-            <div class="first-column" *ngIf="product?.listaDeComentarios?.length <= 0">
+            <div class="first-column" *ngIf="product?.listaDeComentarios?.length <= 0" >
                 <app-item-frame>
                     <div class="noComment-container" item_frame_container>
                         <p>Esse produto não tem nenhum pergunta ainda.</p>
@@ -109,7 +109,7 @@
                     </div>
                 </app-item-frame>
             </div>
-        </div>
+        </div >
     </div>
 </div>
 <br><br><br><br>

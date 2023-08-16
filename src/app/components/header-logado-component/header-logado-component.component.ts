@@ -72,9 +72,9 @@ export class HeaderLogadoComponentComponent implements OnInit {
     this.cartService.cartDefault();
   }
 
-  navegateTo() {
+  navegateTo(scroll: string) {
     this.userShow();
-    this.router.navigate(['/profile-page']);
+    this.router.navigate(['/profile-page'], { fragment: scroll });
   }
 
   onEnter(event: KeyboardEvent | Boolean) {
