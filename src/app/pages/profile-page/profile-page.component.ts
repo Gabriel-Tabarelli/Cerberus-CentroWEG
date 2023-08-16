@@ -30,7 +30,7 @@ export class ProfilePageComponent implements OnInit {
       this.telefone += this.usuario.telefone[i]
     }
 
-    this.userService.getNotificationsByUserId(this.usuario.id).subscribe(notifications => {
+    this.userService.getNotificationsByUserIdNotVisualized(this.usuario.id).subscribe(notifications => {
       this.notifications = notifications.notificacoes;
       console.log(notifications.notificacoes[0])
     })
@@ -91,6 +91,14 @@ export class ProfilePageComponent implements OnInit {
       if (notification.id == idNotificacao) {
         notification.visualizada = true;
       }
+    })
+  }
+
+  notificacaoMostrarMais(): void {
+    this.userService.getNotificationsByUserIdVisualized(this.usuario.id).subscribe(notifications => {
+      notifications.notificacoes.forEach((notification) => {
+        this.notifications.push(notification)
+      })
     })
   }
 }

@@ -22,8 +22,12 @@ export class UserService {
         return this.httpClient.get<any>(`${this.url}/endereco/${id}`)
     }
 
-    getNotificationsByUserId(id:number): Observable<any> {
-        return this.httpClient.get<any>(`${this.url}/${id}/notificacoes`)
+    getNotificationsByUserIdNotVisualized(id:number): Observable<any> {
+        return this.httpClient.get<any>(`${this.url}/${id}/notificacoes-nao-visualizadas`)
+    }
+
+    getNotificationsByUserIdVisualized(id:number): Observable<any> {
+        return this.httpClient.get<any>(`${this.url}/${id}/notificacoes-visualizadas`)
     }
 
     visualizeNotification(id: number): Observable<any> {
