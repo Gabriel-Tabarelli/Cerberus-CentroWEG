@@ -1,4 +1,5 @@
 import { Answer } from "./Answer"
+import { ProductMinimized } from "./Product/ProdutctMinimized"
 
 export interface Question {
     id: number
@@ -6,4 +7,5 @@ export interface Question {
     pergunta: string
     data: string
     listaRespostas: Answer[] 
+    produto: ProductMinimized
 }

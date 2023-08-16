@@ -86,22 +86,36 @@
                     <div class="div-lista-pedidos" item_frame_container>
                         <div>
                             <h2 #notificacao id="notificacao">NOTIFICAÇÕES</h2>
+
                             <div class="blue-line"></div>
                         </div>
                         <br>
-                        <mat-accordion>
-                            <mat-expansion-panel hideToggle>
-                                <mat-expansion-panel-header>
-                                    <mat-panel-title>
-                                        This is the expansion title
-                                    </mat-panel-title>
-                                    <mat-panel-description>
-                                        This is a summary of the content
-                                    </mat-panel-description>
-                                </mat-expansion-panel-header>
-                                <p>This is the primary content of the panel.</p>
-                            </mat-expansion-panel>
-                        </mat-accordion>
+                        <div *ngFor="let notificacao of notifications">
+                            <mat-accordion>
+                                <mat-expansion-panel hideToggle>
+                                    <mat-expansion-panel-header (click)="notificacaoChecar(notificacao.id)">
+                                        <mat-panel-title [ngClass]="{'notificacao-header': !notificacao.visualizada}">
+                                            {{ notificacao.resposta.respondedor.nome + " respondeu a sua pergunta" }}
+                                        </mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                    <div class="notificacao-body">
+                                        <div class="notificacao-body-nome">{{ notificacao.resposta.pergunta.perguntador.nome }}
+                                        </div>: {{ notificacao.resposta.pergunta.pergunta }}
+                                    </div>
+                                    <div class="notificacao-body">
+                                        <div class="notificacao-body-nome">{{ notificacao.resposta.respondedor.nome }}
+                                        </div>: {{ notificacao.resposta.resposta }}
+                                    </div>
+                                    <mat-action-row>
+                                        <button class="notificacao-footer-botao"
+                                            (click)="notificacaoVisualizar(notificacao.resposta.pergunta.produto.id)">
+                                            Visualizar
+                                        </button>
+                                    </mat-action-row>
+                                </mat-expansion-panel>
+                            </mat-accordion>
+                            <br>
+                        </div>
                     </div>
                 </app-item-frame>
             </div>
