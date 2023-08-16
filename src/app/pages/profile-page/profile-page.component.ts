@@ -64,15 +64,17 @@ export class ProfilePageComponent implements OnInit {
 
   listaDeProdutos: Product[] = []
 
-  notificacaoVisualizar(idProduto: number, idNotificacao: number): void {
-    this.userService.visualizeNotification(idNotificacao)
+  notificacaoVisualizar(idProduto: number): void {
     const rotaProduto = "/product-page/" + idProduto
     this.router.navigate([rotaProduto])
   }
 
   notificacaoChecar(idNotificacao: number): void {
-    this.userService.visualizeNotification(idNotificacao).subscribe(response => {
-      console.log(response)
+    this.userService.visualizeNotification(idNotificacao).subscribe()
+    this.notifications.forEach((notification) => {
+      if (notification.id == idNotificacao) {
+        notification.visualizada = true;
+      }
     })
   }
 }

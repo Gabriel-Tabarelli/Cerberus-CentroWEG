@@ -92,24 +92,24 @@
                         <div *ngFor="let notificacao of notifications">
                             <mat-accordion>
                                 <mat-expansion-panel hideToggle>
-                                    <mat-expansion-panel-header>
+                                    <mat-expansion-panel-header (click)="notificacaoChecar(notificacao.id)">
                                         <mat-panel-title [ngClass]="{'notificacao-header': !notificacao.visualizada}">
                                             {{ notificacao.resposta.respondedor.nome + " respondeu a sua pergunta" }}
                                         </mat-panel-title>
                                     </mat-expansion-panel-header>
                                     <div class="notificacao-body">
-                                        <div class="notificacao-body-nome">{{
-                                            notificacao.resposta.pergunta.perguntador.nome }}</div>:
-                                        {{ notificacao.resposta.pergunta.pergunta }}
+                                        <div class="notificacao-body-nome">{{ notificacao.resposta.pergunta.perguntador.nome }}
+                                        </div>: {{ notificacao.resposta.pergunta.pergunta }}
                                     </div>
                                     <div class="notificacao-body">
                                         <div class="notificacao-body-nome">{{ notificacao.resposta.respondedor.nome }}
-                                        </div>:
-                                        {{ notificacao.resposta.resposta }}
+                                        </div>: {{ notificacao.resposta.resposta }}
                                     </div>
                                     <mat-action-row>
-                                        <button class="notificacao-footer-botao" (click)="notificacaoChecar(notificacao.id)">Marcar como lido</button>
-                                        <button class="notificacao-footer-botao" (click)="notificacaoVisualizar(notificacao.resposta.pergunta.produto.id, notificacao.id)">Visualizar</button>
+                                        <button class="notificacao-footer-botao"
+                                            (click)="notificacaoVisualizar(notificacao.resposta.pergunta.produto.id)">
+                                            Visualizar
+                                        </button>
                                     </mat-action-row>
                                 </mat-expansion-panel>
                             </mat-accordion>
