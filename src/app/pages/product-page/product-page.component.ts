@@ -42,6 +42,10 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
 
     // Fazer com que esse método seja ligado com o carrinho, e que cada vez que ele retira o item do carrinho, ele verifique se o produto atual está nele
     // A funcao includesInCart já está pronta, só precisa ser chamada
+
+    this.cartService.cartItems$.subscribe(cart => {
+      this.jaAdicionado = this.includesInCart(this.product);
+    });
     
   }
   
@@ -76,8 +80,6 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
       this.links.reverse();
       this.buscarComentarios(id);
       this.jaAdicionado = this.includesInCart(this.product);
-      console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-      console.log(this.jaAdicionado)
     },
       (error) => {
         console.error(error);
