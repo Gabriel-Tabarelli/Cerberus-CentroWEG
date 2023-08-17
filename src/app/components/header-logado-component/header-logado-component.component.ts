@@ -32,7 +32,7 @@ export class HeaderLogadoComponentComponent implements OnInit {
     });
 
     this.webSocket.notification$.subscribe(notification => {
-      this.notificationBoolean = !notification; // POR ALGUM MOTIVO NÃO ENTRA AQUI MESMO QUE DE O NEXT
+      this.notificationBoolean = !notification; // POR ALGUM MOTIVO NÃO ENTRA AQUI MESMO QUE DE O NEXT 
       console.log(notification, "sdfljsdfjklfsdkldfsjklsdfjklfdskljsdf")
     })
     
