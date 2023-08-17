@@ -179,3 +179,7 @@ button {
 .container-footer > div:last-child {
     align-self: flex-end;
 }
+
+img {
+    cursor: pointer;
+}

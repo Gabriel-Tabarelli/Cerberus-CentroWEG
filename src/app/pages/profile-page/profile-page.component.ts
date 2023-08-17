@@ -51,7 +51,7 @@ export class ProfilePageComponent implements OnInit {
 
   
   private scrollToElement(element: any): void {
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    element.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest'  });
   }
 
   userName: string = '';
@@ -82,7 +82,7 @@ export class ProfilePageComponent implements OnInit {
 
   notificacaoVisualizar(idProduto: number): void {
     const rotaProduto = "/product-page/" + idProduto
-    this.router.navigate([rotaProduto])
+    this.router.navigate([rotaProduto], { fragment: "pergunta" })
   }
 
   notificacaoChecar(idNotificacao: number): void {

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { User } from 'src/app/interfaces/User';
+import { SessionStorageService } from 'src/app/services/session-storage.service';
 
 @Component({
   selector: 'app-cadastro',
@@ -8,32 +9,38 @@ import { User } from 'src/app/interfaces/User';
 })
 export class CadastroComponent implements OnInit {
 
+
+  constructor(private sessionStorage: SessionStorageService){}
   ngOnInit(): void {
 
-    const user : User = {
-      nome: 'John Doe',
-      cpf: '12345678901',
-      estado: 'São Paulo',
-      cidade: 'São Paulo',
-      bairro: 'Centro',
-      endereco: 'Rua Principal',
-      numero: 123,
-      cep: '12345-678',
-      telefone: 987654321,
-      nomeContato: 'Jane Doe',
-      email: 'johndoe@example.com',
-      senha: 'password'
-    };
+    // const user : User = {
+    //   nome: 'John Doe',
+    //   cpf: '12345678901',
+    //   estado: 'São Paulo',
+    //   cidade: 'São Paulo',
+    //   bairro: 'Centro',
+    //   endereco: 'Rua Principal',
+    //   numero: 123,
+    //   cep: '12345-678',
+    //   telefone: 987654321,
+    //   nomeContato: 'Jane Doe',
+    //   email: 'johndoe@example.com',
+    //   senha: 'password'
+    // };
+    const user = this.sessionStorage.getItem('usuario');
+    console.log(user)
+    
+
 
     if (this.edicao) {
       this.nome = user.nome;
       this.cpf = user.cpf;
-      this.estado = user.estado;
-      this.cidade = user.cidade;
-      this.bairro = user.bairro;
-      this.endereco = user.endereco;
-      this.numero = user.numero;
-      this.cep = user.cep;
+      this.estado = user.endereco.estado;
+      this.cidade = user.endereco.cidade;
+      this.bairro = user.endereco.bairro;
+      this.endereco = user.endereco.rua;
+      this.numero = user.endereco.numero;
+      this.cep = user.endereco.cep;
       this.telefone = user.telefone;
       this.nomeContato = user.nomeContato;
       this.email = user.email;
@@ -111,7 +118,11 @@ class user {
   senha: string;
   empresa: boolean;
 
-  constructor(nome: string, cpf: string, estado: string, cidade: string, bairro: string, endereco: string, numero: number, cep: string, telefone: number, nomeContato: string, email: string, senha: string) {
+  constructor(nome: string, cpf: string, estado: string,
+     cidade: string, bairro: string, endereco: string,
+      numero: number, cep: string, telefone: number,
+       nomeContato: string, email: string, senha: string) {
+        
     this.nome = nome;
     this.cpf = cpf;
     this.estado = estado;

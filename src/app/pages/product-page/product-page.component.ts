@@ -34,8 +34,14 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
       this.admin = logado[1];
     });
     
-    const id = this.routeSnap.snapshot.paramMap.get("id")
-    this.findProduct(id);
+   
+     this.routeSnap.params.subscribe(params => {
+      const productId = params['id'];
+      this.findProduct(productId);
+    });
+
+    // Fazer com que esse método seja ligado com o carrinho, e que cada vez que ele retira o item do carrinho, ele verifique se o produto atual está nele
+    // A funcao includesInCart já está pronta, só precisa ser chamada
     
   }
   
@@ -44,7 +50,7 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
   @ViewChild('pergunta') perguntaElement: ElementRef;
 
   ngAfterViewInit(): void {
-    
+    window.scrollTo(0, 0);
     this.routeSnap.fragment.subscribe(fragment => {
       if (fragment === 'pergunta') {
         this.scrollToElement(this.perguntaElement.nativeElement);
@@ -53,13 +59,14 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
   }
 
   private scrollToElement(element: any): void {
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    element.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
   }
 
   findProduct(id: string) {
     this.productService.getProductById(id).subscribe((data: any) => {
       this.product = data;
       let aux = data.categoria;
+      this.links = [];
       this.links.push({ link: data.nome, nomeLink: data.nome });
       while (aux.categoria != null) {
         this.links.push({ link: "/category-page/" + aux.nome, nomeLink: aux.nome });
@@ -68,6 +75,9 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
       this.links.push({ link: "/home-page", nomeLink: "Home" });
       this.links.reverse();
       this.buscarComentarios(id);
+      this.jaAdicionado = this.includesInCart(this.product);
+      console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+      console.log(this.jaAdicionado)
     },
       (error) => {
         console.error(error);
@@ -75,6 +85,8 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
       });
 
   }
+
+  jaAdicionado: boolean = false;
 
   links: PathBar[] = [];
 
@@ -99,8 +111,8 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
 
   answersList: string[] = [""]
 
-  includesInCart(): boolean {
-    return this.cartService.includesInCart(this.product);
+  includesInCart(product : Product): boolean {
+    return this.cartService.includesInCart(product);
   }
 
   nextPageComment() {
@@ -130,8 +142,9 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
 
   adicionarAoCarrinho() {
     if (this.usuarioLogado) {
-      if (!this.includesInCart()) {
+      if (!this.jaAdicionado) {
         this.cartService.addToCart(this.product)
+        this.abrirModal("Produto adicionado ao carrinho")
       } else {
         this.abrirModal("Produto já adicionado")
       }
@@ -217,7 +230,6 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
     }
 
   }
-
 
   scrollToResposta(index: number) {
     this.showAnswers(index);

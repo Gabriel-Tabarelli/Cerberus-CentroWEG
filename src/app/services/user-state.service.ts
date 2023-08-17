@@ -12,7 +12,7 @@ export class UserStatusService {
     const usuarioLogado = sessionStorage.getItem('usuario') !== null;
     
     const admin = usuarioLogado ? JSON.parse(sessionStorage.getItem('usuario')).admin : false;
-  
+    console.log(admin)
     this.userLoggedInSubject.next([usuarioLogado, admin]);
   }
 
