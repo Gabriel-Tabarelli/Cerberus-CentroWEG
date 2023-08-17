@@ -17,6 +17,8 @@ export class ProfilePageComponent implements OnInit {
     private userService: UserService,
     private route: ActivatedRoute) { }
 
+  pageNotifications: number = -1;
+  stateNotificacoes: string = "Mostrar mais";
 
   ngOnInit(): void {
     this.usuario = this.sessionService.getItem('usuario');
@@ -25,15 +27,11 @@ export class ProfilePageComponent implements OnInit {
       this.endereco = data.endereco;
       console.log(this.endereco)
     })
-    this.telefone = "(" + this.usuario.telefone[0] + this.usuario.telefone[1] + ") " 
+    this.telefone = "(" + this.usuario.telefone[0] + this.usuario.telefone[1] + ") "
     for (let i = 2; i < this.usuario.telefone.length; i++) {
       this.telefone += this.usuario.telefone[i]
     }
-
-    this.userService.getNotificationsByUserIdNotVisualized(this.usuario.id).subscribe(notifications => {
-      this.notifications = notifications.notificacoes;
-      console.log(notifications.notificacoes[0])
-    })
+    this.buscarNotificacoes();
   }
 
   ngAfterViewInit() {
@@ -47,9 +45,9 @@ export class ProfilePageComponent implements OnInit {
 
   @ViewChild('notificacao') notificacaoElement: ElementRef;
 
-  notifications: Notificacao[];
+  notifications: Notificacao[] = [];
 
-  
+
   private scrollToElement(element: any): void {
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
@@ -94,11 +92,20 @@ export class ProfilePageComponent implements OnInit {
     })
   }
 
-  notificacaoMostrarMais(): void {
-    this.userService.getNotificationsByUserIdVisualized(this.usuario.id).subscribe(notifications => {
-      notifications.notificacoes.forEach((notification) => {
-        this.notifications.push(notification)
-      })
+  buscarNotificacoes(): void {
+    if (this.stateNotificacoes == "Mostrar mais") this.pageNotifications++;
+    else {
+      this.pageNotifications = 0;
+      this.notifications = [];
+    }
+    this.userService.getNotificationsByUserId(this.usuario.id, this.pageNotifications).subscribe(notifications => {
+      this.notifications = this.notifications.concat(notifications.content);
+      if (!notifications.last) {
+        this.stateNotificacoes = "Mostrar mais"
+      } else if (notifications.last && this.notifications.length > 0) {
+        this.stateNotificacoes = "Mostar menos"
+      }
     })
   }
+
 }
