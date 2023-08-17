@@ -1,0 +1,28 @@
+button {
+  padding: 10px 20px;
+  border-radius: 10px;
+  color: #fff;
+}
+
+.mat-dialog-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+h1 {
+    text-align: center;
+    color: #00579D; 
+}
+
+.confirm-button {
+  background-color: #00579D;
+}
+.cancel-button {
+  background-color: #0090C5;
+}
+
+.mat-dialog-content {
+  text-align: center;
+}
+
+

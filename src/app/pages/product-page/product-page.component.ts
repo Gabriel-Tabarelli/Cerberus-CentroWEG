@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IMessage } from '@stomp/stompjs';
@@ -10,6 +11,9 @@ import { ProductService } from 'src/app/services/product.service';
 import { SessionStorageService } from 'src/app/services/session-storage.service';
 import { UserStatusService } from 'src/app/services/user-state.service';
 import { WebSocketService } from 'src/app/services/web-socket/web-socket.service';
+
+import { DialogComponent } from 'src/app/components/dialog-component/dialog-component.component';
+
 @Component({
   selector: 'app-product-page',
   templateUrl: './product-page.component.html',
@@ -24,7 +28,8 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
     private productService: ProductService,
     private webSocket: WebSocketService,
     private _snackBar: MatSnackBar,
-    private sessionService: SessionStorageService) { }
+    private sessionService: SessionStorageService,
+    private dialog: MatDialog) { }
 
   listaDeProdutos: Product[] = []
 
@@ -39,9 +44,6 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
       const productId = params['id'];
       this.findProduct(productId);
     });
-
-    // Fazer com que esse método seja ligado com o carrinho, e que cada vez que ele retira o item do carrinho, ele verifique se o produto atual está nele
-    // A funcao includesInCart já está pronta, só precisa ser chamada
 
     this.cartService.cartItems$.subscribe(cart => {
       this.jaAdicionado = this.includesInCart(this.product);
@@ -263,6 +265,14 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
     setTimeout(() => {
       this._snackBar.dismiss();
     }, 3000);
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      width: 'fit-content',
+      data: { message: 'Você tem certeza que deseja sair?', confirm: "Continuar",
+       cancel: "Cancelar", title: "Sair" }, // Dados que você quer passar para o diálogo
+    });
   }
 
 }

@@ -1,11 +1,12 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
-import { IMessage } from '@stomp/stompjs';
-import { take } from 'rxjs';
 import { CartService } from 'src/app/services/cart.service';
 import { SessionStorageService } from 'src/app/services/session-storage.service';
 import { UserStatusService } from 'src/app/services/user-state.service';
 import { WebSocketService } from 'src/app/services/web-socket/web-socket.service';
+
+import { DialogComponent } from 'src/app/components/dialog-component/dialog-component.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-header-logado-component',
@@ -22,7 +23,8 @@ export class HeaderLogadoComponentComponent implements OnInit {
     private userService: UserStatusService,
     private router: Router,
     private cartService: CartService,
-    private webSocket: WebSocketService) { }
+    private webSocket: WebSocketService,
+    private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.cartService.cartItems$.subscribe(cart => {
@@ -36,6 +38,8 @@ export class HeaderLogadoComponentComponent implements OnInit {
 
 
     this.webSocket.initializeWebSocketConnection(id); 
+
+    
 
   }
 
@@ -87,5 +91,24 @@ export class HeaderLogadoComponentComponent implements OnInit {
       this.pesquisa = "";
     }
   }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      width: '25%',
+      data: {
+        message: 'Você tem certeza que deseja sair?',
+        confirm: 'Continuar',
+        cancel: 'Cancelar',
+        title: 'Sair'
+      }
+    });
+  
+    dialogRef.componentInstance.onConfirm.subscribe(() => {
+      dialogRef.close();
+      this.deslogar();
+    });
+  }
+
+  
 
 }

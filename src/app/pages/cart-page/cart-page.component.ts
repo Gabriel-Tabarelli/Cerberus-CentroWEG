@@ -3,6 +3,11 @@ import { Category } from 'src/app/interfaces/Category';
 import { Product } from 'src/app/interfaces/Product/Product';
 import { CartService } from 'src/app/services/cart.service';
 
+import { DialogComponent } from 'src/app/components/dialog-component/dialog-component.component';
+import { MatDialog } from '@angular/material/dialog';
+import { RequestService } from 'src/app/services/request.service';
+import { SessionStorageService } from 'src/app/services/session-storage.service';
+
 @Component({
   selector: 'app-cart-page',
   templateUrl: './cart-page.component.html',
@@ -12,7 +17,10 @@ export class CartPageComponent implements OnInit {
 
 
   listaDeProdutos: Product[] = []
-  constructor(private cartService: CartService) { }
+  constructor(private cartService: CartService,
+    private dialog: MatDialog,
+    private requestService : RequestService,
+    private sessionStorage: SessionStorageService) { }
 
   ngOnInit(): void {
     this.cartService.cartItems$.subscribe(cart => {
@@ -27,6 +35,26 @@ export class CartPageComponent implements OnInit {
 
   limparCarrinho() {
     this.cartService.cleanCart();
+  }
+
+
+  openDialog() {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      width: '25%',
+      data: {
+        message: 'Você deseja confirmar o pedido?',
+        confirm: 'Confirmar',
+        cancel: 'Cancelar',
+        title: 'Confirmar pedido'
+      }
+    });
+  
+    dialogRef.componentInstance.onConfirm.subscribe(() => {
+      const idCart = this.sessionStorage.getItem("usuario").id
+      console.log(idCart)
+      // this.requestService.saveRequest(idCart) Revisar o código de salvamento do pedido
+      dialogRef.close();
+    });
   }
 
 }
