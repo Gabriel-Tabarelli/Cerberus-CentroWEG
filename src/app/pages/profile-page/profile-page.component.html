@@ -67,7 +67,7 @@
                                 <tr *ngFor="let pedido of listaDePedidos">
                                     <td>#{{pedido.id}}</td>
                                     <td>{{pedido.status}}</td>
-                                    <td>{{pedido.data}}</td>
+                                    <td>{{pedido.dataPedido}}</td>
                                     <td class="detalhes" [routerLink]="'/ordered-page/' + pedido.id">Detalhes do pedido
                                     </td>
                                 </tr>

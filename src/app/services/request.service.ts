@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { CartService } from './cart.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,11 @@ export class RequestService {
   constructor(private httpClient: HttpClient) { }
 
   saveRequest(idCart: any) {
-    this.httpClient.post(this.url + idCart, null).subscribe();
+    this.httpClient.post(this.url + idCart, null).subscribe();  
+  }
+
+  findSomeRequest(id: number, page: number, sort: string) {
+    return this.httpClient.get(this.url + `getAll/${id}?page=${page}&sort=${sort}`)
   }
 
 }

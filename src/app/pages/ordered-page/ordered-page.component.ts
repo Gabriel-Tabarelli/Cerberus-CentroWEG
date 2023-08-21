@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SessionStorageService } from 'src/app/services/session-storage.service';
 
 @Component({
   selector: 'app-ordered-page',
@@ -7,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrderedPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private sessionService: SessionStorageService) { }
 
   ngOnInit(): void {
+   
   }
+
+  id: number;
 
   listaDePedidos: any[] = [
     {

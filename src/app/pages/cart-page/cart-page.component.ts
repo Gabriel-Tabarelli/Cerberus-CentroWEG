@@ -55,8 +55,11 @@ export class CartPageComponent implements OnInit {
       const idCart = this.sessionStorage.getItem("usuario").id
       this.requestService.saveRequest(idCart)
       dialogRef.close();
-      
+      this.limparCarrinho() // Limpando apenas para o elemento visual, após ser direcionado para a página de pedidos, ele irá buscar novamente o carrinho no banco para garantir que esteja vazio
       this.route.navigate(['profile-page'], {fragment: 'pedidos'})
+      setTimeout(() => {
+        this.cartService.findCart();
+      }, 1000);
     });
   }
 

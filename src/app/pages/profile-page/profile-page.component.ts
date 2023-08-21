@@ -4,6 +4,7 @@ import { Product } from 'src/app/interfaces/Product/Product';
 import { SessionStorageService } from 'src/app/services/session-storage.service';
 import { UserService } from 'src/app/services/user.service';
 import { Notificacao } from 'src/app/interfaces/Notificacao';
+import { RequestService } from 'src/app/services/request.service';
 
 @Component({
   selector: 'app-profile-page',
@@ -15,7 +16,8 @@ export class ProfilePageComponent implements OnInit {
   constructor(private sessionService: SessionStorageService,
     private router: Router,
     private userService: UserService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private requestService: RequestService) { }
 
 
   ngOnInit(): void {
@@ -33,6 +35,11 @@ export class ProfilePageComponent implements OnInit {
     this.userService.getNotificationsByUserIdNotVisualized(this.usuario.id).subscribe(notifications => {
       this.notifications = notifications.notificacoes;
       console.log(notifications.notificacoes[0])
+    })
+
+    this.requestService.findSomeRequest(this.usuario.id, 0, "desc").subscribe((data: any) => {
+      this.listaDePedidos = data.content;
+      console.log(data.content)
     })
   }
 
@@ -67,23 +74,7 @@ export class ProfilePageComponent implements OnInit {
   telefone: string;
 
 
-  listaDePedidos: any[] = [
-    {
-      id: 23233,
-      data: '01/01/2021',
-      status: 'Aguardando Pagamento'
-    },
-    {
-      id: 14353,
-      data: '01/01/2021',
-      status: 'Aguardando Pagamento'
-    },
-    {
-      id: 11213,
-      data: '01/01/2021',
-      status: 'Aguardando Pagamento'
-    }
-  ]
+  listaDePedidos: any[] = []
 
   listaDeProdutos: Product[] = []
 
