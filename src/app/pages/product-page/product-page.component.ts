@@ -148,6 +148,7 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
     if (this.usuarioLogado) {
       if (!this.jaAdicionado) {
         this.cartService.addToCart(this.product)
+        console.log("Adicionando ao carrinho")
         this.abrirModal("Produto adicionado ao carrinho")
       } else {
         this.abrirModal("Produto já adicionado")

@@ -25,7 +25,7 @@ export class ProfilePageComponent implements OnInit {
       this.endereco = data.endereco;
       console.log(this.endereco)
     })
-    this.telefone = "(" + this.usuario.telefone[0] + this.usuario.telefone[1] + ") " 
+    this.telefone = "(" + this.usuario.telefone[0] + this.usuario.telefone[1] + ") "
     for (let i = 2; i < this.usuario.telefone.length; i++) {
       this.telefone += this.usuario.telefone[i]
     }
@@ -36,22 +36,29 @@ export class ProfilePageComponent implements OnInit {
     })
   }
 
-  ngAfterViewInit() {
-    this.route.fragment.subscribe(fragment => {
-      if (fragment === 'notificacao') {
-        this.scrollToElement(this.notificacaoElement.nativeElement);
-      }
-    });
-  }
-
-
   @ViewChild('notificacao') notificacaoElement: ElementRef;
+  @ViewChild('pedidos') pedidosElement: ElementRef;
 
   notifications: Notificacao[];
 
-  
+  ngAfterViewInit() {
+    this.route.fragment.subscribe(fragment => {
+      if (fragment === 'notificacao') {
+        setTimeout(() => {
+          this.scrollToElement(this.notificacaoElement.nativeElement);
+        }, 100);
+      }
+      if (fragment === 'pedidos') {
+        setTimeout(() => {
+          this.scrollToElement(this.pedidosElement.nativeElement);
+        }, 100);
+      }
+
+    });
+  }
+
   private scrollToElement(element: any): void {
-    element.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest'  });
+    element.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
   }
 
   userName: string = '';

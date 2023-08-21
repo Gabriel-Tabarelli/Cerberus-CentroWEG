@@ -34,8 +34,8 @@ export class HeaderLogadoComponentComponent implements OnInit {
     this.webSocket.notification$.subscribe(notification => {
       this.notifications = notification;
     })
-    const id = this.sessionService.getItem("usuario").id
 
+    const id = this.sessionService.getItem("usuario").id
 
     this.webSocket.initializeWebSocketConnection(id); 
 
