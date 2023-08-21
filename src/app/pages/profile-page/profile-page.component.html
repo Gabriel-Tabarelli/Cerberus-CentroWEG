@@ -94,16 +94,16 @@
                                 <mat-expansion-panel hideToggle>
                                     <mat-expansion-panel-header (click)="notificacaoChecar(notificacao.id)">
                                         <mat-panel-title [ngClass]="{'notificacao-header': !notificacao.visualizada}">
-                                            {{ notificacao.resposta.respondedor.nome + " respondeu a sua pergunta" }}
+                                            {{ notificacao.resposta ? notificacao.resposta.respondedor.nome + " respondeu a sua pergunta" : notificacao.pergunta.perguntador.nome + " fez uma pergunta" }}
                                         </mat-panel-title>
                                     </mat-expansion-panel-header>
                                     <div class="notificacao-body">
-                                        <div class="notificacao-body-nome">{{ notificacao.resposta.pergunta.perguntador.nome }}
-                                        </div>: {{ notificacao.resposta.pergunta.pergunta }}
+                                        <div class="notificacao-body-nome">{{ notificacao.resposta ? notificacao.resposta.pergunta.perguntador.nome : notificacao.pergunta.perguntador.nome }}
+                                        </div>: {{ notificacao.resposta ? notificacao.resposta.pergunta.pergunta : notificacao.pergunta.pergunta }}
                                     </div>
                                     <div class="notificacao-body">
-                                        <div class="notificacao-body-nome">{{ notificacao.resposta.respondedor.nome }}
-                                        </div>: {{ notificacao.resposta.resposta }}
+                                        <div class="notificacao-body-nome">{{ notificacao.resposta ? notificacao.resposta.respondedor.nome : "" }}
+                                        </div> {{ notificacao.resposta ? ": " + notificacao.resposta.resposta : "" }}
                                     </div>
                                     <mat-action-row>
                                         <button class="notificacao-footer-botao"
@@ -116,7 +116,7 @@
                             <br>
                         </div>
                         <div class="mostrar-mais">
-                            <p (click)="notificacaoMostrarMais()">Mostrar mais</p>
+                            <p (click)="buscarNotificacoes()">{{ stateNotificacoes }}</p>
                         </div>
                     </div>
                 </app-item-frame>
