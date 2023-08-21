@@ -26,7 +26,7 @@ h2  {
 
 .recomendations {
     display: flex;
-    min-height: 72vh;
+    min-height: 71.4vh;
     background: #90c1e3;
     padding: 40px 90px 40px 90px;
     justify-content: space-between;

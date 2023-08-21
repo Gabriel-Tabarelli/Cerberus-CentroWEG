@@ -54,7 +54,7 @@
                                 <div class="blue-line"></div>
                             </div>
                         </div>
-                        <table>
+                        <table *ngIf="listaDePedidos.length != 0; else default">
                             <thead>
                                 <tr>
                                     <th>Número do pedido</th>
@@ -73,7 +73,12 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <div class="mostrar-mais">
+                        <ng-template #default>
+                            <div>
+                                <h2 class="default">Você não tem nenhum pedido ainda</h2>
+                            </div>
+                        </ng-template>
+                        <div class="mostrar-mais" *ngIf="listaDePedidos.length != 0">
                             <p routerLink="/ordered-page">Mostrar mais</p>
                         </div>
                     </div>

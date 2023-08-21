@@ -32,6 +32,7 @@ export class ProfilePageComponent implements OnInit {
   ngOnInit(): void {
     this.usuario = this.sessionService.getItem('usuario');
     this.userName = this.usuario.nome
+
     this.userService.getEnderecoProjection(this.usuario.id).subscribe((data) => {
       this.endereco = data.endereco;
       console.log(this.endereco)
@@ -49,18 +50,10 @@ export class ProfilePageComponent implements OnInit {
       this.telefone += this.usuario.telefone[i]
     }
 
-
-    this.userService.getNotificationsByUserIdNotVisualized(this.usuario.id).subscribe(notifications => {
-      this.notifications = notifications.notificacoes;
-      console.log(notifications.notificacoes[0])
-    })
-
-    this.requestService.findSomeRequest(this.usuario.id, 0, "desc").subscribe((data: any) => {
-      this.listaDePedidos = data.content;
-      console.log(data.content)
-    })
+    
 
     this.buscarNotificacoes();
+    this.buscarPedidos();
 
   }
 
@@ -79,6 +72,7 @@ export class ProfilePageComponent implements OnInit {
       if (fragment === 'pedidos') {
         setTimeout(() => {
           this.scrollToElement(this.pedidosElement.nativeElement);
+          this.buscarPedidos();
         }, 100);
       }
 
@@ -135,4 +129,10 @@ export class ProfilePageComponent implements OnInit {
     })
   }
 
+
+  buscarPedidos(): void {
+    this.requestService.findSomeRequest(this.usuario.id, 0, "desc").subscribe((data: any) => {
+      this.listaDePedidos = data.content;
+    })
+  }
 }

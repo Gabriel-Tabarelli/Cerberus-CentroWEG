@@ -17,4 +17,8 @@ export class RequestService {
     return this.httpClient.get(this.url + `getAll/${id}?page=${page}&sort=${sort}`)
   }
 
+  findOne(id: number){
+    return this.httpClient.get(this.url + `${id}`);
+  }
+
 }
