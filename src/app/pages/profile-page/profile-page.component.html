@@ -44,7 +44,7 @@
                 </app-item-frame>
             </div>
         </div>
-        <div class="div-ultimos-pedidos">
+        <div class="div-ultimos-pedidos" #pedidos>
             <div class="div-pedidos">
                 <app-item-frame>
                     <div class="div-lista-pedidos" item_frame_container>
@@ -54,7 +54,7 @@
                                 <div class="blue-line"></div>
                             </div>
                         </div>
-                        <table>
+                        <table *ngIf="listaDePedidos.length != 0; else default">
                             <thead>
                                 <tr>
                                     <th>Número do pedido</th>
@@ -67,13 +67,18 @@
                                 <tr *ngFor="let pedido of listaDePedidos">
                                     <td>#{{pedido.id}}</td>
                                     <td>{{pedido.status}}</td>
-                                    <td>{{pedido.data}}</td>
+                                    <td>{{pedido.dataPedido}}</td>
                                     <td class="detalhes" [routerLink]="'/ordered-page/' + pedido.id">Detalhes do pedido
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
-                        <div class="mostrar-mais">
+                        <ng-template #default>
+                            <div>
+                                <h2 class="default">Você não tem nenhum pedido ainda</h2>
+                            </div>
+                        </ng-template>
+                        <div class="mostrar-mais" *ngIf="listaDePedidos.length != 0">
                             <p routerLink="/ordered-page">Mostrar mais</p>
                         </div>
                     </div>
@@ -81,7 +86,7 @@
             </div>
         </div>
         <div class="div-ultimos-pedidos">
-            <div class="div-pedidos">
+            <div class="div-pedidos"  >
                 <app-item-frame>
                     <div class="div-lista-pedidos" item_frame_container>
                         <div class="label-inside-container">

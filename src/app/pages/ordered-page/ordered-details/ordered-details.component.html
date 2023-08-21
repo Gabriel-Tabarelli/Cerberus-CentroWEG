@@ -20,7 +20,7 @@
                         <div class="container-item" item_frame_container>
                             <img [src]="produto.urlImagem" alt="" class="foto-prod">
                             <h2 class="nome-produto">{{produto.nome}}</h2>
-                            <button class="ver-detalhes-button">Ver datalhes</button>
+                            <button class="ver-detalhes-button" (click)="navegateTo(produto.id)">Ver datalhes</button>
                         </div>
                     </app-item-frame>
                 </div>
@@ -30,7 +30,7 @@
             <h2>RESUMO</h2> 
             <h2>Quantidade de produtos: {{listaDeProdutos.length}}</h2>
             <h2>Nº pedido: #{{pedido.id}}</h2>
-            <h2>Data: {{pedido.data}}</h2>   
+            <h2>Data: {{pedido.dataPedido}}</h2>   
             <button class="first-button" routerLink="/home-page">Continuar navegando</button>
             <button routerLink="/profile-page">Voltar ao perfil</button>
         </div>

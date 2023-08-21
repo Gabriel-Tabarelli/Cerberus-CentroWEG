@@ -4,7 +4,11 @@ import { Product } from 'src/app/interfaces/Product/Product';
 import { SessionStorageService } from 'src/app/services/session-storage.service';
 import { UserService } from 'src/app/services/user.service';
 import { Notificacao } from 'src/app/interfaces/Notificacao';
+
+import { RequestService } from 'src/app/services/request.service';
+
 import { WebSocketService } from 'src/app/services/web-socket/web-socket.service';
+
 
 @Component({
   selector: 'app-profile-page',
@@ -16,6 +20,8 @@ export class ProfilePageComponent implements OnInit {
   constructor(private sessionService: SessionStorageService,
     private router: Router,
     private userService: UserService,
+    private route: ActivatedRoute,
+    private requestService: RequestService,
     private webSocketService: WebSocketService,
     private route: ActivatedRoute) {}
 
@@ -25,10 +31,12 @@ export class ProfilePageComponent implements OnInit {
   ngOnInit(): void {
     this.usuario = this.sessionService.getItem('usuario');
     this.userName = this.usuario.nome
+
     this.userService.getEnderecoProjection(this.usuario.id).subscribe((data) => {
       this.endereco = data.endereco;
       console.log(this.endereco)
     })
+
     this.webSocketService.notification$.subscribe((data) => {
       if (data) {
         this.stateNotificacoes = "Mostrar menos";
@@ -38,6 +46,7 @@ export class ProfilePageComponent implements OnInit {
         this._buscar = true;
       }
     })
+
     this.telefone = "(" + this.usuario.telefone[0] + this.usuario.telefone[1] + ") "
     for (let i = 2; i < this.usuario.telefone.length; i++) {
       this.telefone += this.usuario.telefone[i]
@@ -45,15 +54,31 @@ export class ProfilePageComponent implements OnInit {
     if (this._buscar) {
       this.buscarNotificacoes();
     }
+    this.buscarPedidos();
   }
+
+  @ViewChild('notificacao') notificacaoElement: ElementRef;
+  @ViewChild('pedidos') pedidosElement: ElementRef;
+
+  notifications: Notificacao[];
 
   ngAfterViewInit() {
     this.route.fragment.subscribe(fragment => {
       if (fragment === 'notificacao') {
-        this.scrollToElement(this.notificacaoElement.nativeElement);
+        setTimeout(() => {
+          this.scrollToElement(this.notificacaoElement.nativeElement);
+        }, 100);
       }
+      if (fragment === 'pedidos') {
+        setTimeout(() => {
+          this.scrollToElement(this.pedidosElement.nativeElement);
+          this.buscarPedidos();
+        }, 100);
+      }
+
     });
   }
+
 
   @ViewChild('notificacao') notificacaoElement: ElementRef;
 
@@ -69,23 +94,7 @@ export class ProfilePageComponent implements OnInit {
   endereco: any = {}
   telefone: string;
 
-  listaDePedidos: any[] = [
-    {
-      id: 23233,
-      data: '01/01/2021',
-      status: 'Aguardando Pagamento'
-    },
-    {
-      id: 14353,
-      data: '01/01/2021',
-      status: 'Aguardando Pagamento'
-    },
-    {
-      id: 11213,
-      data: '01/01/2021',
-      status: 'Aguardando Pagamento'
-    }
-  ]
+  listaDePedidos: any[] = []
 
   listaDeProdutos: Product[] = []
 
@@ -127,4 +136,10 @@ export class ProfilePageComponent implements OnInit {
     })
   }
 
+
+  buscarPedidos(): void {
+    this.requestService.findSomeRequest(this.usuario.id, 0, "desc").subscribe((data: any) => {
+      this.listaDePedidos = data.content;
+    })
+  }
 }

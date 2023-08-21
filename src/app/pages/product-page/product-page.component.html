@@ -15,7 +15,7 @@
                 <p>{{product.descricao}}</p>
             </div>
             <div class="layoult buttons-div">
-                <button>Entrar em contato conosco</button>
+                <button (click)="entrarEmContato()">Entrar em contato conosco</button>
                 <button (click)="adicionarAoCarrinho()">{{ !jaAdicionado ? "Adicionar no carrinho" : "Produto
                     adicionado"}}</button>
             </div>
@@ -113,4 +113,3 @@
     </div>
 </div>
 <br><br><br><br>
-<button (click)="openDialog()">TESTAR DIALOG</button>

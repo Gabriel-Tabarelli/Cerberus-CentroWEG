@@ -16,10 +16,9 @@
                                 <th>Status</th>
                                 <th>Data</th>
                                 <th>
-                                    <select class="filtro">
-                                        <option>Mais recente</option>
-                                        <option>Menos recente</option>
-                                        <option>Status</option>
+                                    <select class="filtro" (change)="onFiltroChange($event)">
+                                        <option selected value="desc">Menos recente</option>
+                                        <option value="asc">Mais recente</option>
                                     </select>
                                 </th>
                             </tr>
@@ -33,8 +32,8 @@
                             </tr>
                         </tbody>
                     </table>
-                    <div class="mostrar-mais">
-                        <p>Mostrar mais</p>
+                    <div class="mostrar-mais" *ngIf="!last">
+                        <p (click)="mostrarMais()">Mostrar mais</p>
                     </div>
                 </div>
             </app-item-frame>

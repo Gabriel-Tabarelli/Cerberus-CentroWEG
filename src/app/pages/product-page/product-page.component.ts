@@ -148,6 +148,7 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
     if (this.usuarioLogado) {
       if (!this.jaAdicionado) {
         this.cartService.addToCart(this.product)
+        console.log("Adicionando ao carrinho")
         this.abrirModal("Produto adicionado ao carrinho")
       } else {
         this.abrirModal("Produto já adicionado")
@@ -273,6 +274,11 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
       data: { message: 'Você tem certeza que deseja sair?', confirm: "Continuar",
        cancel: "Cancelar", title: "Sair" }, // Dados que você quer passar para o diálogo
     });
+  }
+
+  entrarEmContato() {
+    this.cartService.addToCart(this.product)
+    this.router.navigate(['/cart-page']);
   }
 
 }
