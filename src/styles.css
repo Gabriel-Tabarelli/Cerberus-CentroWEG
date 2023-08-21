@@ -67,3 +67,7 @@ mat-label {
 .mat-badge-active {
     background-color: #0090C5;
 }
+
+.mat-badge-content {
+    color: transparent;
+}

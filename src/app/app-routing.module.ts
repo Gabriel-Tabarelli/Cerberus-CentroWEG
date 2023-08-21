@@ -57,11 +57,11 @@ const routes: Route[] = [
     loadChildren: () => import('./pages/edit-page/edit-page.module').then(m => m.EditPageModule),
     canActivate: [AuthenticationGuard]
   },
-  // {
-  //   path: "**",
-  //   redirectTo: 'home-page',
-  //   pathMatch: 'full'
-  // }
+  {
+    path: "**",
+    redirectTo: 'home-page',
+    pathMatch: 'full'
+  }
 ];
 
 @NgModule({

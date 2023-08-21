@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
 import { SessionStorageService } from 'src/app/services/session-storage.service';
 import { UserStatusService } from 'src/app/services/user-state.service';
+import { UserService } from 'src/app/services/user.service';
 import { WebSocketService } from 'src/app/services/web-socket/web-socket.service';
 
 import { DialogComponent } from 'src/app/components/dialog-component/dialog-component.component';
@@ -16,13 +17,14 @@ import { MatDialog } from '@angular/material/dialog';
 export class HeaderLogadoComponentComponent implements OnInit {
 
   pesquisa: any = '';
-  notifications: any = 0;
+  notificationBoolean: boolean;
 
   constructor(private renderer: Renderer2,
     private sessionService: SessionStorageService,
-    private userService: UserStatusService,
+    private userStatusService: UserStatusService,
     private router: Router,
     private cartService: CartService,
+    private userService: UserService,
     private webSocket: WebSocketService,
     private dialog: MatDialog) { }
 
@@ -30,16 +32,19 @@ export class HeaderLogadoComponentComponent implements OnInit {
     this.cartService.cartItems$.subscribe(cart => {
       this.quantidadeProdutos = cart?.produtos?.length ?? 0;
     });
-    
-    this.webSocket.notification$.subscribe(notification => {
-      this.notifications = notification;
+
+    this.webSocket.notification$.subscribe(data => {
+      this.notificationBoolean = data > 0;
     })
 
     const id = this.sessionService.getItem("usuario").id
-
-    this.webSocket.initializeWebSocketConnection(id); 
-
+    const admin = this.sessionService.getItem("usuario").admin
     
+    this.userService.existNotifications(id).subscribe(data => {
+      this.notificationBoolean = data > 0;
+    })
+
+    this.webSocket.initializeWebSocketConnection(id, admin);    
 
   }
 
@@ -70,7 +75,7 @@ export class HeaderLogadoComponentComponent implements OnInit {
 
   deslogar() {
     this.sessionService.clear();
-    this.userService.setUserLoggedOut();
+    this.userStatusService.setUserLoggedOut();
     this.userShow();
     this.router.navigate(['/']);
     this.cartService.cartDefault();

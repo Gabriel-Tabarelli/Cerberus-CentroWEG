@@ -2,7 +2,6 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { ProductMinimized } from "../interfaces/Product/ProdutctMinimized";
 import { Observable } from "rxjs";
-import { Notificacao } from "../interfaces/Notificacao";
 
 @Injectable({
     providedIn: 'root'
@@ -17,21 +16,20 @@ export class UserService {
         return this.httpClient.get<ProductMinimized[]>(`${this.url}?email=${email}&senha=${password}`)
     }
 
-
     getEnderecoProjection(id: any): Observable<any> {
         return this.httpClient.get<any>(`${this.url}/endereco/${id}`)
     }
 
-    getNotificationsByUserIdNotVisualized(id:number): Observable<any> {
-        return this.httpClient.get<any>(`${this.url}/${id}/notificacoes-nao-visualizadas`)
-    }
-
-    getNotificationsByUserIdVisualized(id:number): Observable<any> {
-        return this.httpClient.get<any>(`${this.url}/${id}/notificacoes-visualizadas`)
+    getNotificationsByUserId(id:number, page:number): Observable<any> {
+        return this.httpClient.get<any>(`${this.url}/${id}/notificacoes?page=${page}`)
     }
 
     visualizeNotification(id: number): Observable<any> {
         return this.httpClient.put<any>(`${this.url}/visualizar-comentario`, id)
+    }
+
+    existNotifications(id: number): Observable<any> {
+        return this.httpClient.get<any>(`${this.url}/${id}/notificacoes/existe-nao-visualizada`)
     }
     
 }

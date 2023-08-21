@@ -4,7 +4,11 @@ import { Product } from 'src/app/interfaces/Product/Product';
 import { SessionStorageService } from 'src/app/services/session-storage.service';
 import { UserService } from 'src/app/services/user.service';
 import { Notificacao } from 'src/app/interfaces/Notificacao';
+
 import { RequestService } from 'src/app/services/request.service';
+
+import { WebSocketService } from 'src/app/services/web-socket/web-socket.service';
+
 
 @Component({
   selector: 'app-profile-page',
@@ -17,8 +21,13 @@ export class ProfilePageComponent implements OnInit {
     private router: Router,
     private userService: UserService,
     private route: ActivatedRoute,
-    private requestService: RequestService) { }
+    private requestService: RequestService,
+    private webSocketService: WebSocketService,
+    ) { }
 
+
+  pageNotifications: number = -1;
+  stateNotificacoes: string = "Mostrar mais";
 
   ngOnInit(): void {
     this.usuario = this.sessionService.getItem('usuario');
@@ -27,10 +36,19 @@ export class ProfilePageComponent implements OnInit {
       this.endereco = data.endereco;
       console.log(this.endereco)
     })
+
+    this.webSocketService.notification$.subscribe((data) => {
+      if (data) {
+        this.stateNotificacoes = "Mostrar menos";
+        this.buscarNotificacoes();
+      }
+    })
+
     this.telefone = "(" + this.usuario.telefone[0] + this.usuario.telefone[1] + ") "
     for (let i = 2; i < this.usuario.telefone.length; i++) {
       this.telefone += this.usuario.telefone[i]
     }
+
 
     this.userService.getNotificationsByUserIdNotVisualized(this.usuario.id).subscribe(notifications => {
       this.notifications = notifications.notificacoes;
@@ -41,6 +59,9 @@ export class ProfilePageComponent implements OnInit {
       this.listaDePedidos = data.content;
       console.log(data.content)
     })
+
+    this.buscarNotificacoes();
+
   }
 
   @ViewChild('notificacao') notificacaoElement: ElementRef;
@@ -84,7 +105,13 @@ export class ProfilePageComponent implements OnInit {
   }
 
   notificacaoChecar(idNotificacao: number): void {
-    this.userService.visualizeNotification(idNotificacao).subscribe()
+    this.userService.visualizeNotification(idNotificacao).subscribe(() => {
+      this.userService.existNotifications(this.usuario.id).subscribe((data) => {
+        if (data === 0) {
+          this.webSocketService.nextNotification(false);
+        }
+      })
+    })
     this.notifications.forEach((notification) => {
       if (notification.id == idNotificacao) {
         notification.visualizada = true;
@@ -92,11 +119,20 @@ export class ProfilePageComponent implements OnInit {
     })
   }
 
-  notificacaoMostrarMais(): void {
-    this.userService.getNotificationsByUserIdVisualized(this.usuario.id).subscribe(notifications => {
-      notifications.notificacoes.forEach((notification) => {
-        this.notifications.push(notification)
-      })
+  buscarNotificacoes(): void {
+    if (this.stateNotificacoes == "Mostrar mais") this.pageNotifications++;
+    else {
+      this.pageNotifications = 0;
+      this.notifications = [];
+    }
+    this.userService.getNotificationsByUserId(this.usuario.id, this.pageNotifications).subscribe(notifications => {
+      this.notifications = this.notifications.concat(notifications.content);
+      if (!notifications.last) {
+        this.stateNotificacoes = "Mostrar mais"
+      } else if (notifications.last && this.notifications.length > 0) {
+        this.stateNotificacoes = "Mostar menos"
+      }
     })
   }
+
 }
