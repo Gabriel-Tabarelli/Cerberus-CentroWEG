@@ -15,7 +15,7 @@
     </section>
     <section class="container-fraseLogin">
         <div class="div-iconeLogado" (click)="userShow()">
-            <div [matBadge]="1" matBadgeSize="small" [matBadgeHidden]="notificationBoolean">
+            <div [matBadge]="1" matBadgeSize="small" [matBadgeHidden]="!notificationBoolean">
                 <img class="userIcone" src="/assets/images/logoLogado.png">
             </div>
             <img [ngClass]="{'userSetaOn': isOpenUser, 'userSetaOff': !isOpenUser}"

@@ -28,6 +28,7 @@ export class CartService {
     if (sessionStorage.getItem('usuario') !== null) {
       this.httpClient.get<Cart>(this.url + "/" + JSON.parse(sessionStorage.getItem('usuario')).id).subscribe((data: Cart) => {
         this.cartItems = data;
+        console.log(data)
         this.cartItemsSubject.next(this.cartItems);
       })
     }

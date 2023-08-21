@@ -1,7 +1,5 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
-import { IMessage } from '@stomp/stompjs';
-import { take } from 'rxjs';
 import { CartService } from 'src/app/services/cart.service';
 import { SessionStorageService } from 'src/app/services/session-storage.service';
 import { UserStatusService } from 'src/app/services/user-state.service';
@@ -31,19 +29,18 @@ export class HeaderLogadoComponentComponent implements OnInit {
       this.quantidadeProdutos = cart?.produtos?.length ?? 0;
     });
 
-    this.webSocket.notification$.subscribe(notification => {
-      this.notificationBoolean = !notification; // POR ALGUM MOTIVO NÃO ENTRA AQUI MESMO QUE DE O NEXT 
-      console.log(notification, "sdfljsdfjklfsdkldfsjklsdfjklfdskljsdf")
+    this.webSocket.notification$.subscribe(data => {
+      this.notificationBoolean = data > 0;
     })
     
     const id = this.sessionService.getItem("usuario").id
+    const admin = this.sessionService.getItem("usuario").admin
     
-    this.userService.existNotifications(id).subscribe(boolean => {
-      this.notificationBoolean = !boolean;
-      console.log(boolean)
+    this.userService.existNotifications(id).subscribe(data => {
+      this.notificationBoolean = data > 0;
     })
 
-    this.webSocket.initializeWebSocketConnection(id); 
+    this.webSocket.initializeWebSocketConnection(id, admin); 
 
   }
 

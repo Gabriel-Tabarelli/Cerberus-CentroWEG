@@ -25,7 +25,7 @@ export class WebSocketService {
 
   }
 
-  initializeWebSocketConnection(id: number): void {
+  initializeWebSocketConnection(id: number, admin: any): void {
     const connect = () => {
       const socket = new SockJS(this.webSocketUrl);
       const stomp = Stomp.over(socket);
@@ -33,17 +33,17 @@ export class WebSocketService {
         this.conexao = stomp;
         console.log('Conectado');
 
-        if (id == 1) {
+        if (admin) {
           this.subscribeToAdmTopic((message: IMessage) => {
             const mensagemRecebida = JSON.parse(message.body);
-            this.notificationSubject.next(true)
+            this.nextNotification(true)
             console.log("Mensagem recebida:", mensagemRecebida);
           });
         }
 
         this.subscribeToTopic(id, (message: IMessage) => {
           const mensagemRecebida = JSON.parse(message.body);
-    
+          this.nextNotification(true)
           console.log("Retorno de comentário recebida:", mensagemRecebida);
         });
 
@@ -57,6 +57,10 @@ export class WebSocketService {
     };
     connect();
 
+  }
+
+  nextNotification(bool: boolean) {
+    this.notificationSubject.next(bool)
   }
 
   sendMessage(idUsuario: number, idProd: number, pergunta: string): void {
@@ -82,7 +86,6 @@ export class WebSocketService {
   }
 
   subscribeToTopic(idPessoa: number, callback: (message: IMessage) => void): void {
-    console.log("Normal sht")
     if (this.conexao.connected) {
       const topic = "/topic/" + idPessoa;
       this.conexao.subscribe(topic, (message: IMessage) => { callback(message); }); // Revisar funcão de call back
@@ -92,7 +95,6 @@ export class WebSocketService {
   };
 
   subscribeToAdmTopic(callback: (message: IMessage) => void): void {
-    console.log("ADMIn")
     if (this.conexao.connected) {
       const topic = "/topic/perguntas";
       this.conexao.subscribe(topic, (message: IMessage) => { callback(message); }); // Revisar funcão de call back

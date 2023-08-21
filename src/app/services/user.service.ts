@@ -2,7 +2,6 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { ProductMinimized } from "../interfaces/Product/ProdutctMinimized";
 import { Observable } from "rxjs";
-import { Notificacao } from "../interfaces/Notificacao";
 
 @Injectable({
     providedIn: 'root'
