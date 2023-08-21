@@ -6,6 +6,9 @@ import { UserStatusService } from 'src/app/services/user-state.service';
 import { UserService } from 'src/app/services/user.service';
 import { WebSocketService } from 'src/app/services/web-socket/web-socket.service';
 
+import { DialogComponent } from 'src/app/components/dialog-component/dialog-component.component';
+import { MatDialog } from '@angular/material/dialog';
+
 @Component({
   selector: 'app-header-logado-component',
   templateUrl: './header-logado-component.component.html',
@@ -22,7 +25,8 @@ export class HeaderLogadoComponentComponent implements OnInit {
     private router: Router,
     private cartService: CartService,
     private userService: UserService,
-    private webSocket: WebSocketService) { }
+    private webSocket: WebSocketService,
+    private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.cartService.cartItems$.subscribe(cart => {
@@ -41,6 +45,8 @@ export class HeaderLogadoComponentComponent implements OnInit {
     })
 
     this.webSocket.initializeWebSocketConnection(id, admin); 
+
+    
 
   }
 
@@ -92,5 +98,24 @@ export class HeaderLogadoComponentComponent implements OnInit {
       this.pesquisa = "";
     }
   }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      width: '25%',
+      data: {
+        message: 'Você tem certeza que deseja sair?',
+        confirm: 'Continuar',
+        cancel: 'Cancelar',
+        title: 'Sair'
+      }
+    });
+  
+    dialogRef.componentInstance.onConfirm.subscribe(() => {
+      dialogRef.close();
+      this.deslogar();
+    });
+  }
+
+  
 
 }

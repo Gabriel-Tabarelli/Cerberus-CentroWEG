@@ -28,7 +28,7 @@
                     <div></div>
                     <p (click)="navegateTo('notificacao')">NOTIFICAÇÕES</p>
                     <div></div>
-                    <p (click)="deslogar()">SAIR</p>
+                    <p (click)="openDialog()">SAIR</p>
                 </div>
             </app-item-frame>
         </div>
@@ -44,3 +44,4 @@
     <app-cart-component [isOpen]="isOpenCart" (closeCartEvent)="cartShow()"></app-cart-component> <!-- Cart -->
     <div *ngIf="isOpenUser" (click)="userShow()" class="shadow"></div>
 </header>
+

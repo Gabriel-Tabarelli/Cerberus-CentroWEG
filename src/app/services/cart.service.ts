@@ -67,7 +67,13 @@ export class CartService {
   }
 
   includesInCart(product: Product): boolean {
-    return this.cartItems.produtos.includes(product);
+    console.log(this.cartItems.produtos)
+    for (const cartItem of this.cartItems.produtos) {
+      if (cartItem.id === product.id) {
+        return true; // Produto encontrado no carrinho
+      }
+    }
+    return false;
   }
 
 }

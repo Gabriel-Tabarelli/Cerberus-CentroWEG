@@ -14,7 +14,7 @@
 
     <section class="container-body">
         <section class="container-product" *ngFor="let produto of produtos">
-            <img [src]="produto.urlImagem" alt="">
+            <img [src]="produto.urlImagem" alt="" (click)="navigateToProduct(produto.id)" >
             <div class="product-name">
                 {{ produto.nome }} 
             </div>

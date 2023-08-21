@@ -6,6 +6,9 @@ import { RouterModule } from '@angular/router';
 import { ItemFrameModule } from '../item-frame/item-frame.module';
 import { FormsModule } from '@angular/forms';
 import {MatBadgeModule} from '@angular/material/badge';
+import { DialogComponentModule } from '../dialog-component/dialog-component.module';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -18,10 +21,13 @@ import {MatBadgeModule} from '@angular/material/badge';
     RouterModule,
     ItemFrameModule,
     FormsModule,
-    MatBadgeModule
+    MatBadgeModule,
+    DialogComponentModule,
+    MatSnackBarModule
   ],
   exports: [
     HeaderLogadoComponentComponent
   ]
+ 
 })
 export class HeaderLogadoComponentModule { }

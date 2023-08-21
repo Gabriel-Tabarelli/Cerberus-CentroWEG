@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IMessage } from '@stomp/stompjs';
@@ -10,6 +11,9 @@ import { ProductService } from 'src/app/services/product.service';
 import { SessionStorageService } from 'src/app/services/session-storage.service';
 import { UserStatusService } from 'src/app/services/user-state.service';
 import { WebSocketService } from 'src/app/services/web-socket/web-socket.service';
+
+import { DialogComponent } from 'src/app/components/dialog-component/dialog-component.component';
+
 @Component({
   selector: 'app-product-page',
   templateUrl: './product-page.component.html',
@@ -24,7 +28,8 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
     private productService: ProductService,
     private webSocket: WebSocketService,
     private _snackBar: MatSnackBar,
-    private sessionService: SessionStorageService) { }
+    private sessionService: SessionStorageService,
+    private dialog: MatDialog) { }
 
   listaDeProdutos: Product[] = []
 
@@ -34,8 +39,15 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
       this.admin = logado[1];
     });
     
-    const id = this.routeSnap.snapshot.paramMap.get("id")
-    this.findProduct(id);
+   
+     this.routeSnap.params.subscribe(params => {
+      const productId = params['id'];
+      this.findProduct(productId);
+    });
+
+    this.cartService.cartItems$.subscribe(cart => {
+      this.jaAdicionado = this.includesInCart(this.product);
+    });
     
   }
   
@@ -44,7 +56,7 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
   @ViewChild('pergunta') perguntaElement: ElementRef;
 
   ngAfterViewInit(): void {
-    
+    window.scrollTo(0, 0);
     this.routeSnap.fragment.subscribe(fragment => {
       if (fragment === 'pergunta') {
         this.scrollToElement(this.perguntaElement.nativeElement);
@@ -53,13 +65,14 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
   }
 
   private scrollToElement(element: any): void {
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    element.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
   }
 
   findProduct(id: string) {
     this.productService.getProductById(id).subscribe((data: any) => {
       this.product = data;
       let aux = data.categoria;
+      this.links = [];
       this.links.push({ link: data.nome, nomeLink: data.nome });
       while (aux.categoria != null) {
         this.links.push({ link: "/category-page/" + aux.nome, nomeLink: aux.nome });
@@ -68,6 +81,7 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
       this.links.push({ link: "/home-page", nomeLink: "Home" });
       this.links.reverse();
       this.buscarComentarios(id);
+      this.jaAdicionado = this.includesInCart(this.product);
     },
       (error) => {
         console.error(error);
@@ -75,6 +89,8 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
       });
 
   }
+
+  jaAdicionado: boolean = false;
 
   links: PathBar[] = [];
 
@@ -99,8 +115,8 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
 
   answersList: string[] = [""]
 
-  includesInCart(): boolean {
-    return this.cartService.includesInCart(this.product);
+  includesInCart(product : Product): boolean {
+    return this.cartService.includesInCart(product);
   }
 
   nextPageComment() {
@@ -130,8 +146,9 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
 
   adicionarAoCarrinho() {
     if (this.usuarioLogado) {
-      if (!this.includesInCart()) {
+      if (!this.jaAdicionado) {
         this.cartService.addToCart(this.product)
+        this.abrirModal("Produto adicionado ao carrinho")
       } else {
         this.abrirModal("Produto já adicionado")
       }
@@ -218,7 +235,6 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
 
   }
 
-
   scrollToResposta(index: number) {
     this.showAnswers(index);
     if (this.answersVisibles.includes(index)) {
@@ -249,6 +265,14 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
     setTimeout(() => {
       this._snackBar.dismiss();
     }, 3000);
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      width: 'fit-content',
+      data: { message: 'Você tem certeza que deseja sair?', confirm: "Continuar",
+       cancel: "Cancelar", title: "Sair" }, // Dados que você quer passar para o diálogo
+    });
   }
 
 }
