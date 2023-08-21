@@ -36,7 +36,7 @@ export class HeaderLogadoComponentComponent implements OnInit {
     this.webSocket.notification$.subscribe(data => {
       this.notificationBoolean = data > 0;
     })
-    
+
     const id = this.sessionService.getItem("usuario").id
     const admin = this.sessionService.getItem("usuario").admin
     
@@ -44,9 +44,7 @@ export class HeaderLogadoComponentComponent implements OnInit {
       this.notificationBoolean = data > 0;
     })
 
-    this.webSocket.initializeWebSocketConnection(id, admin); 
-
-    
+    this.webSocket.initializeWebSocketConnection(id, admin);    
 
   }
 

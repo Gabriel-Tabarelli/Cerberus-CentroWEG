@@ -4,7 +4,11 @@ import { Product } from 'src/app/interfaces/Product/Product';
 import { SessionStorageService } from 'src/app/services/session-storage.service';
 import { UserService } from 'src/app/services/user.service';
 import { Notificacao } from 'src/app/interfaces/Notificacao';
+
+import { RequestService } from 'src/app/services/request.service';
+
 import { WebSocketService } from 'src/app/services/web-socket/web-socket.service';
+
 
 @Component({
   selector: 'app-profile-page',
@@ -16,8 +20,11 @@ export class ProfilePageComponent implements OnInit {
   constructor(private sessionService: SessionStorageService,
     private router: Router,
     private userService: UserService,
+    private route: ActivatedRoute,
+    private requestService: RequestService,
     private webSocketService: WebSocketService,
-    private route: ActivatedRoute) { }
+    ) { }
+
 
   pageNotifications: number = -1;
   stateNotificacoes: string = "Mostrar mais";
@@ -29,35 +36,57 @@ export class ProfilePageComponent implements OnInit {
       this.endereco = data.endereco;
       console.log(this.endereco)
     })
+
     this.webSocketService.notification$.subscribe((data) => {
       if (data) {
         this.stateNotificacoes = "Mostrar menos";
         this.buscarNotificacoes();
       }
     })
+
     this.telefone = "(" + this.usuario.telefone[0] + this.usuario.telefone[1] + ") "
     for (let i = 2; i < this.usuario.telefone.length; i++) {
       this.telefone += this.usuario.telefone[i]
     }
+
+
+    this.userService.getNotificationsByUserIdNotVisualized(this.usuario.id).subscribe(notifications => {
+      this.notifications = notifications.notificacoes;
+      console.log(notifications.notificacoes[0])
+    })
+
+    this.requestService.findSomeRequest(this.usuario.id, 0, "desc").subscribe((data: any) => {
+      this.listaDePedidos = data.content;
+      console.log(data.content)
+    })
+
     this.buscarNotificacoes();
+
   }
+
+  @ViewChild('notificacao') notificacaoElement: ElementRef;
+  @ViewChild('pedidos') pedidosElement: ElementRef;
+
+  notifications: Notificacao[];
 
   ngAfterViewInit() {
     this.route.fragment.subscribe(fragment => {
       if (fragment === 'notificacao') {
-        this.scrollToElement(this.notificacaoElement.nativeElement);
+        setTimeout(() => {
+          this.scrollToElement(this.notificacaoElement.nativeElement);
+        }, 100);
       }
+      if (fragment === 'pedidos') {
+        setTimeout(() => {
+          this.scrollToElement(this.pedidosElement.nativeElement);
+        }, 100);
+      }
+
     });
   }
 
-
-  @ViewChild('notificacao') notificacaoElement: ElementRef;
-
-  notifications: Notificacao[] = [];
-
-
   private scrollToElement(element: any): void {
-    element.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest'  });
+    element.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
   }
 
   userName: string = '';
@@ -66,23 +95,7 @@ export class ProfilePageComponent implements OnInit {
   telefone: string;
 
 
-  listaDePedidos: any[] = [
-    {
-      id: 23233,
-      data: '01/01/2021',
-      status: 'Aguardando Pagamento'
-    },
-    {
-      id: 14353,
-      data: '01/01/2021',
-      status: 'Aguardando Pagamento'
-    },
-    {
-      id: 11213,
-      data: '01/01/2021',
-      status: 'Aguardando Pagamento'
-    }
-  ]
+  listaDePedidos: any[] = []
 
   listaDeProdutos: Product[] = []
 

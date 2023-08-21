@@ -44,7 +44,7 @@
                 </app-item-frame>
             </div>
         </div>
-        <div class="div-ultimos-pedidos">
+        <div class="div-ultimos-pedidos" #pedidos>
             <div class="div-pedidos">
                 <app-item-frame>
                     <div class="div-lista-pedidos" item_frame_container>
@@ -67,7 +67,7 @@
                                 <tr *ngFor="let pedido of listaDePedidos">
                                     <td>#{{pedido.id}}</td>
                                     <td>{{pedido.status}}</td>
-                                    <td>{{pedido.data}}</td>
+                                    <td>{{pedido.dataPedido}}</td>
                                     <td class="detalhes" [routerLink]="'/ordered-page/' + pedido.id">Detalhes do pedido
                                     </td>
                                 </tr>
@@ -81,11 +81,11 @@
             </div>
         </div>
         <div class="div-ultimos-pedidos">
-            <div class="div-pedidos">
+            <div class="div-pedidos"  >
                 <app-item-frame>
                     <div class="div-lista-pedidos" item_frame_container>
-                        <div>
-                            <h2 #notificacao id="notificacao">NOTIFICAÇÕES</h2>
+                        <div #notificacao>
+                            <h2>NOTIFICAÇÕES</h2>
                             <div class="blue-line"></div>
                         </div>
                         <br>
@@ -124,3 +124,40 @@
         </div>
     </div>
 </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
