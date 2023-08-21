@@ -17,7 +17,7 @@ export class ProfilePageComponent implements OnInit {
     private router: Router,
     private userService: UserService,
     private webSocketService: WebSocketService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute) {}
 
   pageNotifications: number = -1;
   stateNotificacoes: string = "Mostrar mais";
