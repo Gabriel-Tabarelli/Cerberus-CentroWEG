@@ -195,6 +195,10 @@ th {
     margin-right: 10px;
 }
 
+.noNotification-container {
+    margin: 20px;
+}
+
 @media screen and (max-width:850px) {
 
     .div-edicoes {

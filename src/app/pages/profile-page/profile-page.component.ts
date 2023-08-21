@@ -32,14 +32,19 @@ export class ProfilePageComponent implements OnInit {
     this.webSocketService.notification$.subscribe((data) => {
       if (data) {
         this.stateNotificacoes = "Mostrar menos";
+        this._buscar = false;
         this.buscarNotificacoes();
+      } else {
+        this._buscar = true;
       }
     })
     this.telefone = "(" + this.usuario.telefone[0] + this.usuario.telefone[1] + ") "
     for (let i = 2; i < this.usuario.telefone.length; i++) {
       this.telefone += this.usuario.telefone[i]
     }
-    this.buscarNotificacoes();
+    if (this._buscar) {
+      this.buscarNotificacoes();
+    }
   }
 
   ngAfterViewInit() {
@@ -50,21 +55,19 @@ export class ProfilePageComponent implements OnInit {
     });
   }
 
-
   @ViewChild('notificacao') notificacaoElement: ElementRef;
 
   notifications: Notificacao[] = [];
-
+  private _buscar: boolean = false;
 
   private scrollToElement(element: any): void {
-    element.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest'  });
+    element.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
   }
 
   userName: string = '';
   usuario: any = {}
   endereco: any = {}
   telefone: string;
-
 
   listaDePedidos: any[] = [
     {
@@ -109,15 +112,17 @@ export class ProfilePageComponent implements OnInit {
   buscarNotificacoes(): void {
     if (this.stateNotificacoes == "Mostrar mais") this.pageNotifications++;
     else {
-      this.pageNotifications = 0;
+      this.pageNotifications = 1;
       this.notifications = [];
     }
     this.userService.getNotificationsByUserId(this.usuario.id, this.pageNotifications).subscribe(notifications => {
       this.notifications = this.notifications.concat(notifications.content);
       if (!notifications.last) {
         this.stateNotificacoes = "Mostrar mais"
-      } else if (notifications.last && this.notifications.length > 0) {
+      } else if (notifications.last && this.notifications.length > 5) {
         this.stateNotificacoes = "Mostar menos"
+      } else {
+        this.stateNotificacoes = ""
       }
     })
   }
