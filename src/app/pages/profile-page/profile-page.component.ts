@@ -20,7 +20,6 @@ export class ProfilePageComponent implements OnInit {
   constructor(private sessionService: SessionStorageService,
     private router: Router,
     private userService: UserService,
-    private route: ActivatedRoute,
     private requestService: RequestService,
     private webSocketService: WebSocketService,
     private route: ActivatedRoute) {}
@@ -78,11 +77,6 @@ export class ProfilePageComponent implements OnInit {
 
     });
   }
-
-
-  @ViewChild('notificacao') notificacaoElement: ElementRef;
-
-  notifications: Notificacao[] = [];
   private _buscar: boolean = false;
 
   private scrollToElement(element: any): void {
