@@ -277,8 +277,12 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
   }
 
   entrarEmContato() {
-    this.cartService.addToCart(this.product)
-    this.router.navigate(['/cart-page']);
+    if (this.usuarioLogado) {
+      this.cartService.addToCart(this.product)
+      this.router.navigate(['/cart-page']);
+    } else {
+      this.usuarioDeslogado();
+    }
   }
 
 }
