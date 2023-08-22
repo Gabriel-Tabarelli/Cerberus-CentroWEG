@@ -30,29 +30,14 @@ export class ProfilePageComponent implements OnInit {
   ngOnInit(): void {
     this.usuario = this.sessionService.getItem('usuario');
     this.userName = this.usuario.nome
-
     this.userService.getEnderecoProjection(this.usuario.id).subscribe((data) => {
       this.endereco = data.endereco;
-      console.log(this.endereco)
     })
-
-    this.webSocketService.notification$.subscribe((data) => {
-      if (data) {
-        this.stateNotificacoes = "Mostrar menos";
-        this._buscar = false;
-        this.buscarNotificacoes();
-      } else {
-        this._buscar = true;
-      }
-    })
-
     this.telefone = "(" + this.usuario.telefone[0] + this.usuario.telefone[1] + ") "
     for (let i = 2; i < this.usuario.telefone.length; i++) {
       this.telefone += this.usuario.telefone[i]
     }
-    if (this._buscar) {
-      this.buscarNotificacoes();
-    }
+    this.buscarNotificacoes();
     this.buscarPedidos();
   }
 
@@ -77,7 +62,6 @@ export class ProfilePageComponent implements OnInit {
 
     });
   }
-  private _buscar: boolean = false;
 
   private scrollToElement(element: any): void {
     element.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
@@ -115,11 +99,12 @@ export class ProfilePageComponent implements OnInit {
   buscarNotificacoes(): void {
     if (this.stateNotificacoes == "Mostrar mais") this.pageNotifications++;
     else {
-      this.pageNotifications = 1;
+      this.pageNotifications = 0;
       this.notifications = [];
     }
     this.userService.getNotificationsByUserId(this.usuario.id, this.pageNotifications).subscribe(notifications => {
       this.notifications = this.notifications.concat(notifications.content);
+      console.log(this.notifications)
       if (!notifications.last) {
         this.stateNotificacoes = "Mostrar mais"
       } else if (notifications.last && this.notifications.length > 5) {
