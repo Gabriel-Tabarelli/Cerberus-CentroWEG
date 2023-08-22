@@ -5,34 +5,10 @@
     <div id="categories-container">
         <app-main-menu-categories></app-main-menu-categories>
     </div>
-    <div id="recomendation-container">
-        <div id="label-container">
-            <div>
-                <h2>PRODUTOS MAIS VENDIDOS</h2>
-                <div></div>
-            </div>
-        </div>
-        <div id="recomendations">
-            <div class="frame-container" *ngFor="let produto of listaDeProdutos" (click)="navigateTo(produto.id)">
-                <app-item-frame>
-                    <div class="frame-content" item_frame_container>
-                        <div class="img-container">
-                            <img [src]="produto.urlImagem">
-                        </div>
-                        <div class="label-container">
-                            <p>{{produto.nome}}</p>
-                        </div>
-                    </div>
-                </app-item-frame>
-                <button class="frame-button">
-                    <span>VER MAIS</span>
-                    <img src="/assets/images/carrinhoWEG.png">
-                </button>
-            </div>
-        </div>
-    </div>
+    <app-sales titulo="Mais vendidos" busca="maisVendidos"></app-sales>
     <div id="ad-container">
         <img src="/assets/homeImages/ad_image.png">
     </div>
+    <app-sales titulo="Mais vendidos" busca="maisVendidos"></app-sales>
 </section>
 <app-footer-component></app-footer-component>

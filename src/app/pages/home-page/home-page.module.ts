@@ -6,8 +6,7 @@ import { FooterModule } from 'src/app/components/footer-component/footer.module'
 import { MainMenuCategoriesModule } from 'src/app/components/main-menu-categories/main-menu-categories.module';
 import { CarouselModule } from 'src/app/components/carousel/carousel.module';
 import { HomePageRoutingModule } from './home-page-routing.module';
-
-
+import { SalesModule } from 'src/app/components/sales/sales.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +18,8 @@ import { HomePageRoutingModule } from './home-page-routing.module';
     ItemFrameModule,
     FooterModule,
     CarouselModule,
-    MainMenuCategoriesModule
+    MainMenuCategoriesModule,
+    SalesModule
   ],
   exports: [
     HomePageComponent

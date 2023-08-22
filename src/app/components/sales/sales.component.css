@@ -1,0 +1,96 @@
+#recomendation-container {
+    margin: 25px 0 25px 0;
+}
+
+#recomendation-container > div {
+    padding-left: 90px;
+    padding-right: 90px;
+}
+
+#recomendation-container #label-container {
+    width: fit-content;
+}
+
+#recomendation-container #label-container h2 {
+    padding: 0 10px 5px 10px;
+    font-size: 18px;
+    font-family: sans-serif;
+    font-weight: 500;
+}
+
+#recomendation-container #label-container > div > div  {
+    width: 100%;
+    height: 5px;
+    background: #0090c5;
+    border-radius: 10px;
+}
+
+#recomendations {
+    display: flex;
+    width: calc(100% - 180px);
+    min-height: 400px;
+    background: #90c1e3;
+    align-items: center;
+    justify-content: center;
+    gap: 42px;
+    flex-flow: row wrap;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+#recomendations .frame-container .frame-content {
+    width: 196px;
+    height: 274px;
+    background: white;
+    border-radius: 10px;
+    margin-top: -22px;
+}
+
+#recomendations .frame-container .frame-content .img-container {
+    width: 100%;
+    height: 170px;
+    margin-top: 22px;
+    display: flex;
+    justify-content: center;
+}
+
+#recomendations .frame-container .frame-content .img-container > img {
+    margin-top: 10px;
+}
+
+#recomendations .frame-container .frame-content .label-container {
+    width: 100%;
+    height: 82px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+}
+
+#recomendations .frame-container .frame-content .label-container p {
+    margin: 0 18px;
+    text-align: center;
+}
+
+#recomendations .frame-container .frame-button {
+    display: flex;
+    width: 196px;
+    height: 42px;
+    border-radius: 15px;
+    background: #0090c5;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+#recomendations .frame-container .frame-button span  {
+    font-size: 16px;
+    font-weight: bold;
+    font-family: sans-serif;
+    color: white;
+}
+
+#recomendations .frame-container .frame-button img {
+    width: 40px;
+}
