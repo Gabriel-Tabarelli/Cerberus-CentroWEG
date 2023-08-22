@@ -59,7 +59,7 @@ export class ProfilePageComponent implements OnInit {
   @ViewChild('notificacao') notificacaoElement: ElementRef;
   @ViewChild('pedidos') pedidosElement: ElementRef;
 
-  notifications: Notificacao[];
+  notifications: Notificacao[] = [];
 
   ngAfterViewInit() {
     this.route.fragment.subscribe(fragment => {
@@ -134,6 +134,7 @@ export class ProfilePageComponent implements OnInit {
   buscarPedidos(): void {
     this.requestService.findSomeRequest(this.usuario.id, 0, "desc").subscribe((data: any) => {
       this.listaDePedidos = data.content;
+      console.log(this.listaDePedidos)
     })
   }
 }
