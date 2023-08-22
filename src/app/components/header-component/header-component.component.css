@@ -139,3 +139,12 @@
     }
 
 }
+
+.search-icon:hover {
+    scale: 1.15;
+    transition-duration: .2s;
+}
+
+.search-icon { 
+    transition-duration: .2s;
+}
