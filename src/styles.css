@@ -25,9 +25,11 @@ button {
 }
 
 .no-scrollbar {
-    overflow: hidden;
+    position: fixed; 
+    top: var(--st, 0);
+    inline-size: 100%;
+    overflow-y:scroll;
 }
-
 
 mat-icon {
     color: #00569D;
@@ -40,6 +42,9 @@ button:hover {
 
 mat-form-fild {
     color: #00569D;
+}
+ .mat-form-field-ripple {
+    background-color: #00569D !important;
 }
 
 

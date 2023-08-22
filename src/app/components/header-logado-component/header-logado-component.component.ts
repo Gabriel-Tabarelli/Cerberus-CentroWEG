@@ -95,6 +95,9 @@ export class HeaderLogadoComponentComponent implements OnInit {
       this.router.navigate(['/search-page/' + this.pesquisa]);
       this.pesquisa = "";
     }
+    if (this.isOpenUser) {
+      this.userShow();
+    }
   }
 
   openDialog() {
