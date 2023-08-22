@@ -89,30 +89,42 @@
             <div class="div-pedidos"  >
                 <app-item-frame>
                     <div class="div-lista-pedidos" item_frame_container>
-                        <div #notificacao>
-                            <h2>NOTIFICAÇÕES</h2>
+                        <div class="label-inside-container">
+                            <h2 #notificacao id="notificacao">NOTIFICAÇÕES</h2>
                             <div class="blue-line"></div>
                         </div>
                         <br>
+                        <div *ngIf="notifications.length == 0">
+                            <div class="noNotification-container">
+                                <h2>Você não tem nenhuma notificação.</h2>
+                            </div>
+                        </div>
                         <div *ngFor="let notificacao of notifications">
                             <mat-accordion>
                                 <mat-expansion-panel hideToggle>
                                     <mat-expansion-panel-header (click)="notificacaoChecar(notificacao.id)">
                                         <mat-panel-title [ngClass]="{'notificacao-header': !notificacao.visualizada}">
-                                            {{ notificacao.resposta ? notificacao.resposta.respondedor.nome + " respondeu a sua pergunta" : notificacao.pergunta.perguntador.nome + " fez uma pergunta" }}
+                                            {{ notificacao.resposta ? notificacao.resposta.respondedor.nome + "
+                                            respondeu a sua pergunta" : notificacao.pergunta.perguntador.nome + " fez
+                                            uma pergunta" }}
                                         </mat-panel-title>
                                     </mat-expansion-panel-header>
                                     <div class="notificacao-body">
-                                        <div class="notificacao-body-nome">{{ notificacao.resposta ? notificacao.resposta.pergunta.perguntador.nome : notificacao.pergunta.perguntador.nome }}
-                                        </div>: {{ notificacao.resposta ? notificacao.resposta.pergunta.pergunta : notificacao.pergunta.pergunta }}
+                                        <div class="notificacao-body-nome">{{ notificacao.resposta ?
+                                            notificacao.resposta.pergunta.perguntador.nome :
+                                            notificacao.pergunta.perguntador.nome }}
+                                        </div>: {{ notificacao.resposta ? notificacao.resposta.pergunta.pergunta :
+                                        notificacao.pergunta.pergunta }}
                                     </div>
                                     <div class="notificacao-body">
-                                        <div class="notificacao-body-nome">{{ notificacao.resposta ? notificacao.resposta.respondedor.nome : "" }}
+                                        <div class="notificacao-body-nome">{{ notificacao.resposta ?
+                                            notificacao.resposta.respondedor.nome : "" }}
                                         </div> {{ notificacao.resposta ? ": " + notificacao.resposta.resposta : "" }}
                                     </div>
                                     <mat-action-row>
                                         <button class="notificacao-footer-botao"
-                                            (click)="notificacaoVisualizar(notificacao.resposta.pergunta.produto.id)">
+                                            (click)="notificacaoVisualizar(notificacao.resposta ? 
+                                            notificacao.resposta.pergunta.produto.id : notificacao.pergunta.produto.id)">
                                             Visualizar
                                         </button>
                                     </mat-action-row>
@@ -129,40 +141,3 @@
         </div>
     </div>
 </div>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br><br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
