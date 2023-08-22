@@ -14,8 +14,20 @@ export class ProductService {
 
   constructor( private httpClient: HttpClient) { }
 
-  getAllMinimizado(page: Number): Observable<ProductMinimized[]> {
-    return this.httpClient.get<ProductMinimized[]>(`${this.url}get/minimizados?page=${page}`);
+  getAllMinimizadoMaisVendidos(page: Number): Observable<ProductMinimized[]> {
+    return this.httpClient.get<ProductMinimized[]>(`${this.url}get/minimizados/mais-vendidos?page=${page}`);
+  }
+
+  getAllMinimizadoMaisRecentes(page: Number): Observable<ProductMinimized[]> {
+    return this.httpClient.get<ProductMinimized[]>(`${this.url}get/minimizados/mais-recentes?page=${page}`);
+  }
+
+  getAllMinimizadoMaisSimilares(nome: string, page: Number): Observable<ProductMinimized[]> {
+    return this.httpClient.get<ProductMinimized[]>(`${this.url}get/minimizados/similares?nome=${nome}&page=${page}`);
+  }
+
+  getAllMinimizadoMaisDestaques(page: Number): Observable<ProductMinimized[]> {
+    return this.httpClient.get<ProductMinimized[]>(`${this.url}get/minimizados/destaques?page=${page}`);
   }
 
   getAllProduct(): Observable<Product[]> {

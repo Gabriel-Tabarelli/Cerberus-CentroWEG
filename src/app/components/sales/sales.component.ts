@@ -31,28 +31,28 @@ export class SalesComponent implements OnInit {
   getProducts() {
     switch (this.busca) {
       case "maisVendidos":
-        this.productService.getAllMinimizado(0).subscribe((data: any) => {
+        this.productService.getAllMinimizadoMaisVendidos(0).subscribe((data: any) => {
           this.listaDeProdutos = data.content
           this.listaDeProdutos.concat(data.content)
         });
         break;
 
       case "maisRecentes":
-        this.productService.getAllMinimizado(0).subscribe((data: any) => {
+        this.productService.getAllMinimizadoMaisRecentes(0).subscribe((data: any) => {
           this.listaDeProdutos = data.content
           this.listaDeProdutos.concat(data.content)
         });
         break;
 
       case "destaques":
-        this.productService.getAllMinimizado(0).subscribe((data: any) => {
+        this.productService.getAllMinimizadoMaisSimilares("o", 0).subscribe((data: any) => {
           this.listaDeProdutos = data.content
           this.listaDeProdutos.concat(data.content)
         });
         break;
-        
+
       case "similares":
-        this.productService.getAllMinimizado(0).subscribe((data: any) => {
+        this.productService.getAllMinimizadoMaisDestaques(0).subscribe((data: any) => {
           this.listaDeProdutos = data.content
           this.listaDeProdutos.concat(data.content)
         });
