@@ -7,6 +7,7 @@ import { ItemFrameModule } from 'src/app/components/item-frame/item-frame.module
 import { FormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
+import { SalesModule } from 'src/app/components/sales/sales.module';
 
 
 
@@ -21,7 +22,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     ProductPageRoutingModule,
     FormsModule,
     MatSnackBarModule,
-    MatDialogModule
+    MatDialogModule,
+    SalesModule
   ],
   exports: [
     ProductPageComponent
