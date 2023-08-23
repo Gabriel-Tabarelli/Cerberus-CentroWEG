@@ -14,7 +14,8 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "allowedCommonJsDependencies": [
-              "sockjs-client"
+              "sockjs-client",
+              "aos"
             ],
             "outputPath": "dist/cerberus",
             "index": "src/index.html",
@@ -27,6 +28,7 @@
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "./node_modules/aos/dist/aos.css",
               "src/styles.css"
             ],
             "scripts": []

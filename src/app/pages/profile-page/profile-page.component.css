@@ -32,7 +32,7 @@ h2 {
 .div-perfil {
     display: flex;
     flex-direction: column;
-    min-height: 72vh;
+    min-height: 71.4vh;
     background: #90c1e3;
     padding: 40px 90px 40px 90px;
 }
