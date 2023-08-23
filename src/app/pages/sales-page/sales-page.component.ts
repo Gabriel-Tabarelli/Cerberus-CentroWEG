@@ -10,6 +10,10 @@ export class SalesPageComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    setInterval(() => {
+      this.carregado = true;
+    }, 2000);
   }
+  carregado: boolean = false;
 
 }

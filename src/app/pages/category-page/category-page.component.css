@@ -71,6 +71,7 @@ section {
     border-radius: 10px;
     align-items: center;
     padding: 10px;
+    cursor: pointer;
 }
 
 #recomendations .frame-container .frame-content .img-container {

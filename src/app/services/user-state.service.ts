@@ -24,4 +24,8 @@ export class UserStatusService {
   setUserLoggedOut() {
     this.userLoggedInSubject.next([false, false]);
   }
+
+  isAdmin(){
+    return JSON.parse(sessionStorage.getItem('usuario')) !== null ? JSON.parse(sessionStorage.getItem('usuario')).admin : false;
+  }
 }

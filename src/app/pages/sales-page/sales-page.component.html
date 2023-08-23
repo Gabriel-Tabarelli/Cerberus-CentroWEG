@@ -1,11 +1,69 @@
-<p>sales-page works!</p>
-<p>sales-page works!</p>
-<p>sales-page works!</p>
-<p>sales-page works!</p>
-<p>sales-page works!</p>
-<p>sales-page works!</p>
-<p>sales-page works!</p>
-<p>sales-page works!</p>
-<p>sales-page works!</p>
-<p>sales-page works!</p>
-<p>sales-page works!</p>
+
+  <mat-tab-group>
+
+    <mat-tab label="Vendas" >
+      <div class="background-div">
+        <div class="centro-div" *ngIf="carregado; else loading">
+          <img src="./assets/images/dashboard1.png" alt="" class="dashboard-1">
+          <div class="dashboards-div">
+            <div class="pais-div">
+              <img src="./assets/images/mapaDash.png" alt="">
+            </div>
+
+            <div class="pizza-div">
+              <img src="./assets/images/pizza.png" alt="">
+              <img src="./assets/footer/footer_image.png" alt="">
+              <div class="barra"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Análise de Clientes">
+      <div class="background-div">
+        <div class="centro-div" *ngIf="false; else loading">
+          <img src="./assets/images/dashboard1.png" alt="" class="dashboard-1">
+          <div class="dashboards-div">
+            <div class="pais-div">
+              <img src="./assets/images/mapaDash.png" alt="">
+            </div>
+
+            <div class="pizza-div">
+              <img src="./assets/images/pizza.png" alt="">
+              <img src="./assets/footer/footer_image.png" alt="">
+              <div class="barra"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Tendências de Mercado">
+     <div class="background-div">
+        <div class="centro-div" *ngIf="false; else loading">
+          <img src="./assets/images/dashboard1.png" alt="" class="dashboard-1">
+          <div class="dashboards-div">
+            <div class="pais-div">
+              <img src="./assets/images/mapaDash.png" alt="">
+            </div>
+
+            <div class="pizza-div">
+              <img src="./assets/images/pizza.png" alt="">
+              <img src="./assets/footer/footer_image.png" alt="">
+              <div class="barra"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+
+  </mat-tab-group>
+
+
+  <ng-template #loading>
+    <div class="loading">
+      <p>CARREGANDO</p>
+      <mat-spinner></mat-spinner>
+    </div>
+  </ng-template>

@@ -147,4 +147,5 @@
 
 .search-icon { 
     transition-duration: .2s;
+    cursor: pointer;
 }

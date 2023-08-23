@@ -76,3 +76,21 @@ mat-label {
 .mat-badge-content {
     color: transparent;
 }
+
+.mat-tab-labels {
+    display: flex;
+    justify-content: center;
+}
+
+.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+    background-color: #00569D;
+    height: 3px;
+}
+
+ .mat-tab-header {
+    border-bottom: none;
+}
+
+.mat-progress-spinner circle, .mat-spinner circle {
+    stroke: #ffffff;
+}

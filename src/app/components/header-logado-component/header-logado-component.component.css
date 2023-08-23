@@ -243,7 +243,7 @@
     height: fit-content;
 }
 .vendas>p {
-    padding-top: 10px;
+    padding-top: 12px;
 }
 
 .vendas>p:hover,
@@ -266,6 +266,16 @@
 
 .vendas-div {
     width: fit-content;
+}
+
+.search-icon:hover {
+    scale: 1.15;
+    transition-duration: .2s;
+}
+
+.search-icon { 
+    transition-duration: .2s;
+    cursor: pointer;
 }
 
 

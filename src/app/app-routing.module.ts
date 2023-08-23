@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
+import { AdminGuard } from './guards/admin.guard';
 import { AuthenticationGuard } from './guards/authentication.guard';
 
 const routes: Route[] = [
@@ -60,7 +61,7 @@ const routes: Route[] = [
   {
     path: 'sales-page',
     loadChildren: () => import('./pages/sales-page/sales-page.module').then(m => m.SalesPageModule),
-    canActivate: [AuthenticationGuard]
+    canActivate: [AuthenticationGuard, AdminGuard ]
   },
   {
     path: "**",
