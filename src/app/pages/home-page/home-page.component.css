@@ -4,6 +4,11 @@ section {
     font-family: sans-serif;
     font-weight: 100;
 }
+
+#categories-container {
+    margin-top: 10px;
+}
+
 #ad-container {
     display: flex;
     width: 100%;
@@ -12,7 +17,6 @@ section {
 }
 
 #ad-container img {
-    margin: 40px 0 40px 0;
     max-height: 330px;
 }
 
