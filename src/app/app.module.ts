@@ -19,6 +19,8 @@ import { ProfilePageModule } from './pages/profile-page/profile-page.module';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { SearchPageModule } from './pages/search-page/search-page.module';
+import { SalesModule } from './components/sales/sales.module';
+import { SalesPageModule } from './pages/sales-page/sales-page.module';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,8 @@ import { SearchPageModule } from './pages/search-page/search-page.module';
     CartPageModule,
     ProfilePageModule,
     HttpClientModule,
-    SearchPageModule
+    SearchPageModule,
+    SalesPageModule
   ], 
   providers: [],
   bootstrap: [

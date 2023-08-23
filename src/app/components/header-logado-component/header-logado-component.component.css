@@ -212,26 +212,45 @@
     border-radius: 10px;
     width: 215px;
     height: 130px;
+    padding: 10px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    padding-top: 10px;
     animation: userOpen 300ms ease;
 }
 
-.div-modalUsuario>p {
-    margin-left: 20%;
-    margin-right: 20%;
+.div-modalUsuario>p,
+.div-modalUsuario>div>p {
+    margin-left: 10%;
+    margin-right: 10%;
     font-size: 12px;
     cursor: pointer;
 }
 
-.div-modalUsuario>div {
+.line {
     height: 1px;
     width: 80%;
     background-color: rgba(0, 0, 0, 0.40);
 }
+
+.vendas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    height: fit-content;
+}
+.vendas>p {
+    padding-top: 10px;
+}
+
+.vendas>p:hover,
+.div-modalUsuario>p:hover{
+    color: #00579D;
+}
+
 
 .shadow {
     position: fixed;
@@ -245,11 +264,9 @@
     
 }
 
-.search-icon:hover {
-    scale: 1.15;
-    transition-duration: .2s;
+.vendas-div {
+    width: fit-content;
 }
 
-.search-icon { 
-    transition-duration: .2s;
-}
+
+
