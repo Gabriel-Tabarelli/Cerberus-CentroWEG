@@ -82,8 +82,12 @@ export class HeaderLogadoComponentComponent implements OnInit {
   }
 
   navegateTo(scroll: string) {
-    this.userShow();
-    this.router.navigate(['/profile-page'], { fragment: scroll });
+    this.userShow(); 
+    if (scroll === 'vendas') {
+      this.router.navigate(['/sales-page']);
+    } else {
+      this.router.navigate(['/profile-page'], { fragment: scroll });
+    }
   }
 
   onEnter(event: KeyboardEvent | Boolean) {

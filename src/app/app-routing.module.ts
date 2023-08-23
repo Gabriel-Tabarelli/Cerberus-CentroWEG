@@ -58,6 +58,11 @@ const routes: Route[] = [
     canActivate: [AuthenticationGuard]
   },
   {
+    path: 'sales-page',
+    loadChildren: () => import('./pages/sales-page/sales-page.module').then(m => m.SalesPageModule),
+    canActivate: [AuthenticationGuard]
+  },
+  {
     path: "**",
     redirectTo: 'home-page',
     pathMatch: 'full'
