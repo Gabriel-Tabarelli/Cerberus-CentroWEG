@@ -38,19 +38,19 @@ export class HeaderLogadoComponentComponent implements OnInit {
     })
 
     const id = this.sessionService.getItem("usuario").id
-    const admin = this.sessionService.getItem("usuario").admin
+    this.admin = this.sessionService.getItem("usuario").admin
     
     this.userService.existNotifications(id).subscribe(data => {
       this.notificationBoolean = data > 0;
     })
 
-    this.webSocket.initializeWebSocketConnection(id, admin);    
-
+    this.webSocket.initializeWebSocketConnection(id, this.admin);    
   }
 
   quantidadeProdutos: number = 0;
   isOpenCart: boolean = false;
   isOpenUser: boolean = false;
+  admin: boolean = false;
 
   cartShow() {
     this.isOpenCart = !this.isOpenCart;

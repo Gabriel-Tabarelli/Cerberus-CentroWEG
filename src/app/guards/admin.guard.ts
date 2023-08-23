@@ -7,23 +7,18 @@ import { UserStatusService } from '../services/user-state.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthenticationGuard implements CanActivate {
+export class AdminGuard implements CanActivate {
 
   constructor(private userStatus: UserStatusService, private route: Router){}
 
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return this.userStatus.userLoggedIn$.pipe(
-      take(1),
-      map(loggedIn => {
-        if (!loggedIn[0]) {  
-          this.route.navigate(['/signin-page'], { queryParams: { returnUrl: state.url}}); 
-          return false; 
-        } 
-        return true;
-      })
-    );
+    if (!this.userStatus.isAdmin()) {
+        this.route.navigate(['/home-page']); 
+        return false;
+    }
+    return true;
   }
   
 }

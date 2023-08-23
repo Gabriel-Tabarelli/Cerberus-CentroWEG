@@ -27,7 +27,7 @@
                     <p (click)="navegateTo('')">MINHA CONTA</p>
                     <div class="line"></div>
                     <p (click)="navegateTo('notificacao')">NOTIFICAÇÕES</p>
-                    <div class="vendas">
+                    <div class="vendas" *ngIf="admin">
                         <div class="line"></div>
                         <p (click)="navegateTo('vendas')">ESTRATÉGIA DE VENDAS</p>
                     </div>
