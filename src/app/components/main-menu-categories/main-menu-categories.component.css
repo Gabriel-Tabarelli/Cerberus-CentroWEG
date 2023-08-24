@@ -40,6 +40,11 @@
     height: 60px;
 }
 
+.item-category:hover {
+    scale: 1.05;
+    transition-duration: .1s;
+}
+
 
 .item-category .item-name-container {
     display: flex;
@@ -54,4 +59,8 @@
     font-family: sans-serif;
     font-size: 15px;
     text-align: center;
+}
+
+.item-category:hover .item-name {
+    color: #00579D;
 }

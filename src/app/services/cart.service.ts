@@ -28,7 +28,6 @@ export class CartService {
     if (sessionStorage.getItem('usuario') !== null) {
       this.httpClient.get<Cart>(this.url + "/" + JSON.parse(sessionStorage.getItem('usuario')).id).subscribe((data: Cart) => {
         this.cartItems = data;
-        console.log(data)
         this.cartItemsSubject.next(this.cartItems);
       })
     }
@@ -67,7 +66,6 @@ export class CartService {
   }
 
   includesInCart(product: Product): boolean {
-    console.log(this.cartItems.produtos)
     for (const cartItem of this.cartItems.produtos) {
       if (cartItem.id === product.id) {
         return true; // Produto encontrado no carrinho

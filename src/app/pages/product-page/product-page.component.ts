@@ -192,7 +192,6 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
   buscarComentarios(id: string) {
     this.productService.getProductQuestions(id, this.currentPageComment).subscribe((data: any) => {
       const questions: Question[] = data.content;
-      console.log(questions)
       if (!this.product.listaDeComentarios) {
         this.product.listaDeComentarios = [];
       }
