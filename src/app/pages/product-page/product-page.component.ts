@@ -14,6 +14,8 @@ import { WebSocketService } from 'src/app/services/web-socket/web-socket.service
 
 import { DialogComponent } from 'src/app/components/dialog-component/dialog-component.component';
 
+import AOS from 'aos';
+
 @Component({
   selector: 'app-product-page',
   templateUrl: './product-page.component.html',
@@ -34,6 +36,7 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
   listaDeProdutos: Product[] = []
 
   ngOnInit(): void {
+    AOS.init();
     this.userStatusService.userLoggedIn$.subscribe((logado) => {
       this.usuarioLogado = logado[0];
       this.admin = logado[1];
@@ -41,6 +44,7 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
     
    
      this.routeSnap.params.subscribe(params => {
+      window.scrollTo(0, 0);
       const productId = params['id'];
       this.findProduct(productId);
     });

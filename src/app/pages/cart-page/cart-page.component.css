@@ -130,6 +130,7 @@ h2  {
 .foto-prod {
     width: 100px;
     margin-left: 20px;
+    cursor: pointer;
 }
 .header-div {
     width: 100%;

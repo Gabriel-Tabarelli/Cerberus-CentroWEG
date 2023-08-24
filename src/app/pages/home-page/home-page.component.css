@@ -17,6 +17,8 @@ section {
 }
 
 #ad-container img {
+    margin: 40px 0 40px 0; 
     max-height: 330px;
+    /* width: 100%; */
 }
 

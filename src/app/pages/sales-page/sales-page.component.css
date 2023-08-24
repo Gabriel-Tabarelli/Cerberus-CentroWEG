@@ -15,25 +15,26 @@
 
 .centro-div {
     width: 90%;
-    /* height: fit-content; */
     background-color: #D9D9D9;
     padding: 2rem;
 }
 
 .centro-div > img { 
     width: 100%;
+    height: 100%;
 }
 
 .dashboards-div {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    align-items: center;
     margin-top: 2rem;
 }
 
 .pais-div {
     width: 55%;
+    display: flex;
+    justify-content: flex-start;
 }
 
 .pais-div > img{
@@ -42,14 +43,11 @@
 
 .pizza-div > img {
     width: 100%;
-    margin-bottom: 2.1rem;
+    margin-bottom: 2rem;
 }
 
 .pizza-div  {
     width: 42%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
 }
 .barra {
     width: 100%;
@@ -60,4 +58,16 @@
 .loading > p {
     color: #ffffff;
     margin-bottom: 1rem;
+}
+
+.dashboard-1:hover {
+    scale: 1.02;
+} 
+
+.dashboard-1 {
+    transition-duration: .3s;
+    cursor: pointer;
+}
+.pizza-div>img { 
+    width: 100%;
 }
