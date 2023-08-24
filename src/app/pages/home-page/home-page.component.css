@@ -19,6 +19,9 @@ section {
 #ad-container img {
     margin: 40px 0 40px 0; 
     max-height: 330px;
-    /* width: 100%; */
+    transition: 0.2s;
 }
-
+#ad-container img:hover {
+    scale: 1.01;
+    transition: 0.2s;
+}
