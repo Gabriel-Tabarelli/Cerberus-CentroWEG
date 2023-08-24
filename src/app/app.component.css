@@ -1,4 +1,9 @@
 *{
     padding: 0%;
     margin: 0;
+    
+}
+
+footer {
+    height: fit-content;
 }
