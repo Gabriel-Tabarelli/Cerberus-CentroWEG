@@ -38,6 +38,11 @@
     padding-bottom: 20px;
 }
 
+.frame-container:hover {
+    scale: 1.01;
+    transition: 0.1s;
+}
+
 #recomendations .frame-container .frame-content {
     width: 196px;
     height: 274px;
