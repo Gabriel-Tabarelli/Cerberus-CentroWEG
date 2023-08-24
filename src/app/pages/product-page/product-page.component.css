@@ -194,6 +194,7 @@ button {
     padding-top: 20px;
     padding-bottom: 20px;
     grid-template-columns: 60% 40%;
+    margin-bottom: 2rem;
 }
 
 .first-column {

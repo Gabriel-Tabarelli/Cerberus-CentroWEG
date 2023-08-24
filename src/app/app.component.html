@@ -20,13 +20,10 @@
 <app-header-login-component *ngIf="naPaginaLogin()"></app-header-login-component>
 <app-header-logado-component *ngIf="usuarioLogado && !naPaginaLogin()"></app-header-logado-component>
 
-<main>
-    <router-outlet></router-outlet>
-</main>
+<router-outlet></router-outlet>
 
-<footer>
-    <img src="/assets/footer/footerWEG.png" alt="">
-</footer>
+<img src="/assets/footer/footerWEG.png" alt="">
+
 
 
 
