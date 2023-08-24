@@ -19,8 +19,8 @@ import { ProfilePageModule } from './pages/profile-page/profile-page.module';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { SearchPageModule } from './pages/search-page/search-page.module';
-import { SalesModule } from './components/sales/sales.module';
 import { SalesPageModule } from './pages/sales-page/sales-page.module';
+import { NotFoundModule } from './pages/not-found-page/not-found.module';
 
 @NgModule({
   declarations: [
@@ -45,7 +45,8 @@ import { SalesPageModule } from './pages/sales-page/sales-page.module';
     ProfilePageModule,
     HttpClientModule,
     SearchPageModule,
-    SalesPageModule
+    SalesPageModule,
+    NotFoundModule
   ], 
   providers: [],
   bootstrap: [

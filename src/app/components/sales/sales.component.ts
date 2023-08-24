@@ -44,14 +44,14 @@ export class SalesComponent implements OnInit {
         });
         break;
 
-      case "destaques":
+      case "similares":
         this.productService.getAllMinimizadoMaisSimilares("o", 0).subscribe((data: any) => {
           this.listaDeProdutos = data.content
           this.listaDeProdutos.concat(data.content)
         });
         break;
 
-      case "similares":
+      case "destaques":
         this.productService.getAllMinimizadoMaisDestaques(0).subscribe((data: any) => {
           this.listaDeProdutos = data.content
           this.listaDeProdutos.concat(data.content)
