@@ -63,6 +63,11 @@ section {
     justify-content: center;
 }
 
+#recomendations .frame-container:hover {
+    scale: 1.02;
+    transition: 0.1s;
+}
+
 #recomendations .frame-container .frame-content {
     display: flex;
     width: 320px;

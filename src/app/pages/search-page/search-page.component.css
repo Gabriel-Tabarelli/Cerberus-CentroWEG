@@ -13,6 +13,11 @@ section {
     padding-right: 90px;
 }
 
+#recomendations .frame-container:hover {
+    scale: 1.02;
+    transition: 0.1s;
+}
+
 #recomendation-container #label-container {
     width: fit-content;
 }
