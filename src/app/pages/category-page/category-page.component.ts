@@ -12,10 +12,7 @@ import { Router } from '@angular/router';
 export class CategoryPageComponent implements OnInit {
 
     id: any;
-    listaDeProdutos: any[] = [{
-        nome: "Home",
-        urlIcone: "http://localhost:4200/assets/icons/motorEletricoIcon.png"
-    }]
+    listaDeProdutos: any[] = []
     pathBar: PathBar[] = [];
 
     constructor(private routeSnap: ActivatedRoute,
@@ -39,17 +36,7 @@ export class CategoryPageComponent implements OnInit {
         window.scrollTo(0, 0)
       }
 
-    buscarProdutos(id: any) {
-        this.categoryService.findOne("Controls").subscribe((data: any) => {
-            this.listaDeProdutos = data.produtos
-        }
-        )
-    }
-
-   
     categoriaIcon: string = ""
-
-
 
     pathBarConstructor(categoria: any) {
         let link: PathBar;

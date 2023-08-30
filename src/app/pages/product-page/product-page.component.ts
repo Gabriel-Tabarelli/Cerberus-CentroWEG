@@ -275,7 +275,7 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
     const dialogRef = this.dialog.open(DialogComponent, {
       width: 'fit-content',
       data: { message: 'Você tem certeza que deseja sair?', confirm: "Continuar",
-       cancel: "Cancelar", title: "Sair" }, // Dados que você quer passar para o diálogo
+       cancel: "Cancelar", title: "Sair" },
     });
   }
 
