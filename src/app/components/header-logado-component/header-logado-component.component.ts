@@ -79,6 +79,7 @@ export class HeaderLogadoComponentComponent implements OnInit {
     this.userShow();
     this.router.navigate(['/']);
     this.cartService.cartDefault();
+    this.webSocket.disconnectWebSocket();
   }
 
   navegateTo(scroll: string) {

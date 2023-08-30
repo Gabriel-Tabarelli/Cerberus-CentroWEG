@@ -104,4 +104,7 @@ export class WebSocketService {
   };
 
 
+  disconnectWebSocket() {
+    if (this.conexao.connected) this.conexao.deactivate();
+  }
 }
