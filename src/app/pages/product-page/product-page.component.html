@@ -23,7 +23,7 @@
     </div>
 </div>
 
-<div *ngIf="product.especificacoes.length > 0;">
+<div *ngIf="product.especificacoes.length > 0; else bar">
     <div class="sobre-produto-div" (click)="openMoreInfo()">
         <p>Sobre o produto</p>
         <img src="/assets/icons/setaIcon.png" alt="" [ngClass]="{'open' : moreInfo}" class="seta-img">
@@ -34,6 +34,52 @@
         <ul>
             <li *ngFor="let item of product.especificacoes">{{ item.especificacao }}</li>
         </ul>
+    </div>
+
+</div>
+
+<ng-template #bar>
+    <div class="all">
+        <div class="line"></div>
+    </div>
+</ng-template>
+
+
+<div id="recomendation-container">
+    <div id="label-container">
+        <div>
+            <h2>TESTE</h2>
+            <div></div>
+        </div>
+    </div>
+    <div id="recomendations">
+        <div class="frame-container">
+            <app-item-frame>
+                <div class="frame-content" item_frame_container>
+                    <div class="img-container">
+                        <img [src]="product.urlImagem">
+                    </div>
+                    <div class="label-container">
+                        <p>{{ product.nome }}</p>
+                    </div>
+                </div>
+            </app-item-frame>
+            
+        </div>
+        <div class="mais">
+            <img src="assets/images/mais.png" alt="">
+        </div>
+        <div class="lista-produtos-div">
+            <div class="produtos-div" *ngFor="let a of count">    
+                <app-item-frame>
+                    <div class="container-item" item_frame_container>
+                        <img [src]="product.urlImagem" alt="" class="foto-prod" routerLink='/product-page/{{product.id}}'>
+                        <h2 class="nome-produto">{{product.nome}}</h2>
+                        <!-- <mat-icon class="delete-icon">delete_outline</mat-icon> -->
+                    </div>
+                </app-item-frame>
+            </div>
+        </div>
     </div>
 </div>
 

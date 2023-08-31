@@ -1,9 +1,9 @@
 
 .item-frame {
     height: fit-content;
-    background-color: white;
     box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, .25);
     border-radius: 15px;
+    background-color: white;
 }
 
 .item-frame > div {

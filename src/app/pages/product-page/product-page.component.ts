@@ -288,4 +288,6 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
     }
   }
 
+
+  count: any = [{},{},{}]
 }
