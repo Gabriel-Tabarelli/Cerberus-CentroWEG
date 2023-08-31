@@ -21,6 +21,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { SearchPageModule } from './pages/search-page/search-page.module';
 import { SalesPageModule } from './pages/sales-page/sales-page.module';
 import { NotFoundModule } from './pages/not-found-page/not-found.module';
+import { InterceptorModule } from './interceptor/interceptor.module';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { NotFoundModule } from './pages/not-found-page/not-found.module';
     HttpClientModule,
     SearchPageModule,
     SalesPageModule,
-    NotFoundModule
+    NotFoundModule,
+    InterceptorModule
   ], 
   providers: [],
   bootstrap: [

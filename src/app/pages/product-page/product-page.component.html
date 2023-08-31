@@ -22,6 +22,7 @@
         </div>
     </div>
 </div>
+
 <div *ngIf="product.especificacoes.length > 0;">
     <div class="sobre-produto-div" (click)="openMoreInfo()">
         <p>Sobre o produto</p>
@@ -35,6 +36,8 @@
         </ul>
     </div>
 </div>
+
+
 
 <div class="sales-container">
     <app-sales titulo="Produtos similares" busca="similares"  data-aos="fade-top" data-aos-duration="1000"></app-sales>
