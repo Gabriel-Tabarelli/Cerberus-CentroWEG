@@ -41,9 +41,9 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
       this.usuarioLogado = logado[0];
       this.admin = logado[1];
     });
-    
-   
-     this.routeSnap.params.subscribe(params => {
+
+
+    this.routeSnap.params.subscribe(params => {
       window.scrollTo(0, 0);
       const productId = params['id'];
       this.findProduct(productId);
@@ -52,9 +52,9 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
     this.cartService.cartItems$.subscribe(cart => {
       this.jaAdicionado = this.includesInCart(this.product);
     });
-    
+
   }
-  
+
   admin: boolean = false;
 
   @ViewChild('pergunta') perguntaElement: ElementRef;
@@ -86,9 +86,11 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
       this.links.reverse();
       this.buscarComentarios(id);
       this.jaAdicionado = this.includesInCart(this.product);
+      this.listaDeProdutos = []
+      this.listaDeProdutos.push(this.product)
+      this.listaDeProdutos.push(...this.count)
     },
       (error) => {
-        console.error(error);
         this.router.navigate(['/home-page']);
       });
 
@@ -119,7 +121,7 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
 
   answersList: string[] = [""]
 
-  includesInCart(product : Product): boolean {
+  includesInCart(product: Product): boolean {
     return this.cartService.includesInCart(product);
   }
 
@@ -179,7 +181,7 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
           this.product.listaDeComentarios = [];
           this.buscarComentarios(this.product.id.toString());
         }, 3000);
-        
+
 
       } else {
         this.abrirModal("Comentário não pode estar vazio")
@@ -274,8 +276,10 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
   openDialog() {
     const dialogRef = this.dialog.open(DialogComponent, {
       width: 'fit-content',
-      data: { message: 'Você tem certeza que deseja sair?', confirm: "Continuar",
-       cancel: "Cancelar", title: "Sair" },
+      data: {
+        message: 'Você tem certeza que deseja sair?', confirm: "Continuar",
+        cancel: "Cancelar", title: "Sair"
+      },
     });
   }
 
@@ -289,5 +293,20 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
   }
 
 
-  count: any = [{},{},{}]
+  count: Product[] = [
+    {
+      id: 1,
+      nome: "W22",
+      urlImagem: "https://static.weg.net/medias/images/h39/hf5/BRASIL_W22_Plus_Premium_225_355_IE3_B3Dnew_1200Wx1200H.jpg",
+      descricao: "",
+      categoriaId: 1,
+      especificacoes: [],
+      listaDeComentarios: []
+    }
+  ]
+
+
+  upsell() {
+    console.log(this.listaDeProdutos)
+  }
 }

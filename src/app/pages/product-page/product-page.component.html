@@ -45,10 +45,10 @@
 </ng-template>
 
 
-<div id="recomendation-container">
+<div id="recomendation-container" *ngIf="count.length != 0">
     <div id="label-container">
         <div>
-            <h2>TESTE</h2>
+            <h2 class="nome-produto">UPSELL</h2>
             <div></div>
         </div>
     </div>
@@ -67,18 +67,26 @@
             
         </div>
         <div class="mais">
-            <img src="assets/images/mais.png" alt="">
+            <mat-icon>add</mat-icon>
         </div>
         <div class="lista-produtos-div">
             <div class="produtos-div" *ngFor="let a of count">    
                 <app-item-frame>
                     <div class="container-item" item_frame_container>
-                        <img [src]="product.urlImagem" alt="" class="foto-prod" routerLink='/product-page/{{product.id}}'>
-                        <h2 class="nome-produto">{{product.nome}}</h2>
-                        <!-- <mat-icon class="delete-icon">delete_outline</mat-icon> -->
+                        <img [src]="a.urlImagem" alt="" class="foto-prod" routerLink='/product-page/{{a.id}}'>
+                        <p>{{a.nome}}</p>
+                         <mat-checkbox class="example-margin checkbox" [checked]="true"></mat-checkbox>
                     </div>
                 </app-item-frame>
             </div>
+        </div>
+        <div class="mais">
+            <mat-icon>drag_handle</mat-icon>
+        </div>
+        <div class="resumo-div">
+            <h2>RESUMO</h2> 
+            <h2>Quantidade de produtos: {{listaDeProdutos.length}}</h2>
+            <button class="first-button" (click)="upsell()">Entrar em contato</button>
         </div>
     </div>
 </div>

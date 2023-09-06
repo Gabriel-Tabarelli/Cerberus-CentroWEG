@@ -373,9 +373,6 @@ button {
 }
 
 
-
-
-
 #recomendation-container {
     margin: 40px 0 40px 0;
 }
@@ -389,7 +386,8 @@ button {
     width: fit-content;
 }
 
-h2 {
+#comment-container #label-container h2, .nome-produto,
+.resumo-div > h2 {
     padding: 0 10px 5px 10px;
     font-size: 18px;
     font-family: sans-serif;
@@ -409,8 +407,7 @@ h2 {
     min-height: 400px;
     background: #90c1e3;
     align-items: center;
-    /* justify-content: center; */
-    gap: 42px;
+    gap: 40px;
     flex-flow: row wrap;
     padding-top: 20px;
     padding-bottom: 20px;
@@ -457,9 +454,7 @@ h2 {
 }
 
 
-.mais > img{
-    width: 2rem;
-}
+
 
 .container-item { 
     display: flex;
@@ -469,6 +464,10 @@ h2 {
     width: 100%;
     height: 140px;
     justify-content: space-between;
+}
+
+.container-item > p  {
+    text-align: center;
 }
 
 .foto-prod {
@@ -485,6 +484,10 @@ h2 {
     margin-bottom: 20px;
 }
 
+.produtos-div:last-child {
+    margin-bottom: 0px;
+}
+
 .delete-icon {
     margin-right: 20px;
     transition-duration: .3s;
@@ -496,6 +499,54 @@ h2 {
     transition-duration: .3s;
     scale: 1.2;
 }
-.nome-produto {
-    width: 70%;
+.checkbox {
+    margin-right: 20px;
+}
+
+.lista-produtos-div {
+    width: 30%;
+}
+
+.mais > mat-icon{
+    font-size: 3rem;
+    width: fit-content;
+}
+.mais {
+    width: fit-content;
+}
+
+
+
+.resumo-div {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    height: 100%;
+    background-color: #fff;
+    padding: 20px;
+    align-items: center;
+    border-radius: 10px;
+
+    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, .25);
+    border-radius: 10px;
+    border-right: 3px solid #0090C5;
+    border-bottom: 5px solid #0090C5;
+}
+
+.resumo-div  h2 {
+    text-align: center;
+}
+
+.resumo-div > button {
+    border: none;
+    color: white;
+    padding: 12px 22px;
+    border-radius: 10px;
+    width: 80%;
+    font-size: 0.9rem;
+    background-color: #00579D;
+}
+
+.resumo-div > h2{
+    margin-bottom: 30px;
 }

@@ -9,6 +9,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { SalesModule } from 'src/app/components/sales/sales.module';
 
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import { SalesModule } from 'src/app/components/sales/sales.module';
     FormsModule,
     MatSnackBarModule,
     MatDialogModule,
-    SalesModule
+    SalesModule,
+    MatCheckboxModule,
+    MatIconModule
   ],
   exports: [
     ProductPageComponent
