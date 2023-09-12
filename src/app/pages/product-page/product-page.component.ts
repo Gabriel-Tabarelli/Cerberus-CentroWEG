@@ -327,11 +327,10 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
     }
   }
 
-  onCheckboxChange(event: any, item: Product) { // Substitua "string" pelo tipo de objeto que você está usando.
+  onCheckboxChange(event: any, item: Product) { 
     if (event.checked) {
       this.listaDeProdutos.push(item);
     } else {
-      // Checkbox foi desmarcado, remova o item da lista
       const index = this.listaDeProdutos.indexOf(item);
       if (index !== -1) {
         this.listaDeProdutos.splice(index, 1);
