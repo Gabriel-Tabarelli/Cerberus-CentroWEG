@@ -78,6 +78,11 @@ button {
     background-color: #00579D;
 }
 
+.first-button[disabled] {
+    opacity: .5;
+    cursor: unset;
+}
+
 @media (max-width: 768px) {
     .button {
         padding: 8px 16px;
@@ -359,3 +364,207 @@ button {
     width: 150px;
 }
 
+.all {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.line {
+    width: 80%;
+    height: 4px;
+    background-color: #00579D;
+    border-radius: 4px;
+}
+
+
+#recomendation-container {
+    margin: 40px 0 40px 0;
+}
+
+#recomendation-container > div {
+    padding-left: 90px;
+    padding-right: 90px;
+}
+
+#recomendation-container #label-container {
+    width: fit-content;
+}
+
+#comment-container #label-container h2, .nome-produto,
+.resumo-div > h2 {
+    padding: 0 10px 5px 10px;
+    font-size: 18px;
+    font-family: sans-serif;
+    font-weight: 500;
+}
+
+#recomendation-container #label-container > div > div  {
+    width: 100%;
+    height: 5px;
+    background: #0090c5;
+    border-radius: 10px;
+}
+
+#recomendations {
+    display: flex;
+    width: calc(100% - 180px);
+    min-height: 400px;
+    background: #90c1e3;
+    align-items: center;
+    gap: 40px;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+
+#recomendations .frame-container .frame-content {
+    width: 196px;
+    height: 274px;
+    background: #ffff;
+    border-radius: 10px;
+    margin-top: -22px;
+    cursor: pointer;
+}
+
+#recomendations .frame-container .frame-content .img-container {
+    width: 100%;
+    height: 170px;
+    margin-top: 22px;
+    display: flex;
+    justify-content: center;
+}
+
+#recomendations .frame-container .frame-content .img-container > img {
+    margin-top: 10px;
+}
+
+#recomendations .frame-container .frame-content .label-container {
+    width: 100%;
+    height: 82px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+}
+
+#recomendations .frame-container .frame-content .label-container p {
+    margin: 0 18px;
+    text-align: center;
+}
+
+
+
+
+.container-item { 
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 10px;
+    width: 100%;
+    height: 140px;
+    justify-content: space-between;
+}
+
+.container-item > p  {
+    text-align: center;
+}
+
+.foto-prod {
+    width: 100px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+.header-div {
+    width: 100%;
+    margin-bottom: 20px;
+}   
+
+.produtos-div {
+    margin-bottom: 20px;
+}
+
+.produtos-div:last-child {
+    margin-bottom: 0px;
+}
+
+.delete-icon {
+    margin-right: 20px;
+    transition-duration: .3s;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.delete-icon:hover {
+    transition-duration: .3s;
+    scale: 1.2;
+}
+.checkbox {
+    margin-right: 20px;
+}
+
+.lista-produtos-div {
+    width: 30%;
+}
+
+.mais > mat-icon{
+    font-size: 3rem;
+    width: fit-content;
+}
+.mais {
+    width: fit-content;
+}
+
+
+
+.resumo-div {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    height: 100%;
+    background-color: #fff;
+    padding: 20px;
+    align-items: center;
+    border-radius: 10px;
+
+    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, .25);
+    border-radius: 10px;
+    border-right: 3px solid #0090C5;
+    border-bottom: 5px solid #0090C5;
+}
+
+.resumo-div  h2 {
+    text-align: center;
+}
+
+.resumo-div > button {
+    border: none;
+    color: white;
+    padding: 12px 22px;
+    border-radius: 10px;
+    width: 80%;
+    font-size: 0.9rem;
+    background-color: #00579D;
+}
+
+.resumo-div > h2{
+    margin-bottom: 30px;
+}
+
+@media screen and (max-width:1000px) {
+
+    .lista-produtos-div {
+        width: 40%;
+    }
+   
+}
+
+@media screen and (max-width:880px) {
+
+    .resumo-div {
+        width: 33%;
+    }
+   
+}
