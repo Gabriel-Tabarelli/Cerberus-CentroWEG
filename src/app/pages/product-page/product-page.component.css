@@ -78,6 +78,11 @@ button {
     background-color: #00579D;
 }
 
+.first-button[disabled] {
+    opacity: .5;
+    cursor: unset;
+}
+
 @media (max-width: 768px) {
     .button {
         padding: 8px 16px;
@@ -409,14 +414,11 @@ button {
     align-items: center;
     gap: 40px;
     flex-flow: row wrap;
+    justify-content: space-between;
     padding-top: 20px;
     padding-bottom: 20px;
 }
 
-/* .frame-content:hover {
-    scale: 1.01;
-    transition: 0.1s;
-} */
 
 #recomendations .frame-container .frame-content {
     width: 196px;
@@ -549,4 +551,20 @@ button {
 
 .resumo-div > h2{
     margin-bottom: 30px;
+}
+
+@media screen and (max-width:1000px) {
+
+    .lista-produtos-div {
+        width: 40%;
+    }
+   
+}
+
+@media screen and (max-width:880px) {
+
+    .resumo-div {
+        width: 33%;
+    }
+   
 }

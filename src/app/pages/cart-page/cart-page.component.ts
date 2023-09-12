@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Category } from 'src/app/interfaces/Category';
 import { Product } from 'src/app/interfaces/Product/Product';
 import { CartService } from 'src/app/services/cart.service';
@@ -7,7 +7,7 @@ import { DialogComponent } from 'src/app/components/dialog-component/dialog-comp
 import { MatDialog } from '@angular/material/dialog';
 import { RequestService } from 'src/app/services/request.service';
 import { SessionStorageService } from 'src/app/services/session-storage.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart-page',
@@ -22,13 +22,32 @@ export class CartPageComponent implements OnInit {
     private dialog: MatDialog,
     private requestService : RequestService,
     private sessionStorage: SessionStorageService,
-    private route: Router) { }
+    private route: Router,
+    private activactedRouter: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.cartService.cartItems$.subscribe(cart => {
       this.listaDeProdutos = cart?.produtos ?? [];
     });
 
+  }
+
+  @ViewChild('resumo') resumoElement: ElementRef;
+
+  ngAfterViewInit() {
+    window.scroll(0,0)
+    this.activactedRouter.fragment.subscribe(fragment => {
+      if (fragment === 'resumo') {
+        setTimeout(() => {
+          this.scrollToElement(this.resumoElement.nativeElement);
+        }, 100);
+      }
+
+    });
+  }
+
+  private scrollToElement(element: any): void {
+    element.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
   }
 
   removeProduto(produto: Product) {

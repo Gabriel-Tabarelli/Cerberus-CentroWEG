@@ -286,14 +286,14 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
   entrarEmContato() {
     if (this.usuarioLogado) {
       this.cartService.addToCart(this.product)
-      this.router.navigate(['/cart-page']);
+      this.router.navigate(['/cart-page'], {fragment: "resumo"});
     } else {
       this.usuarioDeslogado();
     }
   }
+  
 
-
-  count: Product[] = [
+  count: Product[] = [ // Esses são os produtos que devem voltar para serem recomendados   
     {
       id: 1,
       nome: "W22",
@@ -302,11 +302,45 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
       categoriaId: 1,
       especificacoes: [],
       listaDeComentarios: []
+    },
+    {
+      id: 2,
+      nome: "WCG50",
+      urlImagem: "https://static.weg.net/medias/images/h54/ha2/MKT_WCES_IMAGE_WCG50_FE_4_ESTAGIOS_FIX_CARC_EIXO_MACICO_PARALELO_1200Wx1200H.jpg",
+      descricao: "",
+      categoriaId: 1,
+      especificacoes: [],
+      listaDeComentarios: []
     }
   ]
 
-
-  upsell() {
-    console.log(this.listaDeProdutos)
+  crossSell() {
+    if (this.usuarioLogado) {
+        this.listaDeProdutos.forEach(produto => {
+          if (!this.includesInCart(produto)) {
+            this.cartService.addToCart(produto)
+          }
+        });
+        this.router.navigate(['/cart-page'], {fragment : "resumo"});
+    } else {
+      this.usuarioDeslogado();
+    }
   }
+
+  onCheckboxChange(event: any, item: Product) { // Substitua "string" pelo tipo de objeto que você está usando.
+    if (event.checked) {
+      this.listaDeProdutos.push(item);
+    } else {
+      // Checkbox foi desmarcado, remova o item da lista
+      const index = this.listaDeProdutos.indexOf(item);
+      if (index !== -1) {
+        this.listaDeProdutos.splice(index, 1);
+      }
+    }
+  }
+  
+  
+  
+  
+  
 }
