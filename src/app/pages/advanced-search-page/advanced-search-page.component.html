@@ -1,0 +1,114 @@
+<div class="advanced-search-container">
+    <section class="title-container">
+        <div>
+            <div>
+                <div class="icon-container">
+                    <mat-icon class="icon">build</mat-icon>
+                </div>
+                <h3>Pesquisa avançada</h3>
+            </div>
+            <div></div>
+        </div>
+    </section>
+    <section class="form-container">
+        <h4>Motor</h4>
+        <div class="form">
+            <div>
+                <div>
+                    <mat-form-field class="input-small">
+                        <mat-label>Tesão de alimentação</mat-label>
+                        <input matInput [(ngModel)]="tensao_de_alimentacao">
+                    </mat-form-field>
+                    <mat-form-field class="input-small">
+                        <mat-label>Frequência da rede</mat-label>
+                        <input matInput [(ngModel)]="frequencia_da_rede">
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field class="input-medium">
+                        <mat-label>Acoplamento</mat-label>
+                        <mat-select [(ngModel)]="acoplamento" (selectionChange)="onSelectAcoplamentoChange()">
+                            <mat-option value="Normal">Normal</mat-option>
+                            <mat-option value="Engrenagem">Engrenagem</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <mat-form-field class="input-medium">
+                        <mat-label>Tipo de partida</mat-label>
+                        <mat-select [(ngModel)]="tipo_da_partida">
+                            <mat-option value="one">Direta</mat-option>
+                            <mat-option value="two">Estrela</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div style="justify-content: flex-end;">
+                    <mat-form-field class="input-small">
+                        <mat-label>Relação de transmissão</mat-label>
+                        <input matInput type="number" [disabled]="!isRelacaoTransmissaoEnabled"
+                            [(ngModel)]="relacao_de_transmissao">
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+        <h4>Ambiente</h4>
+        <div class="form">
+            <div>
+                <div>
+                    <mat-form-field class="input-small">
+                        <mat-label>Altitude</mat-label>
+                        <input matInput [(ngModel)]="altitude">
+                    </mat-form-field>
+                    <mat-form-field class="input-small">
+                        <mat-label>Temperatura</mat-label>
+                        <input matInput [(ngModel)]="temperatura_ambiente">
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+        <h4>Carga</h4>
+        <div class="form">
+            <div>
+                <div>
+                    <mat-form-field class="input-small">
+                        <mat-label>Rotação</mat-label>
+                        <input matInput [(ngModel)]="rotacao_da_carga">
+                    </mat-form-field>
+                    <mat-form-field class="input-small">
+                        <mat-label>Inércia estimada</mat-label>
+                        <input matInput [(ngModel)]="inercia_estimada_da_carga">
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field class="input-small">
+                        <mat-label>Conjugado nominal</mat-label>
+                        <input matInput [(ngModel)]="conjugado_nominal_da_carga">
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+        <button>Buscar</button>
+    </section>
+    <section class="divs-container">
+        <div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+        </div>
+        <div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+        </div>
+        <div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+        </div>
+    </section>
+</div>

@@ -22,6 +22,7 @@ import { SearchPageModule } from './pages/search-page/search-page.module';
 import { SalesPageModule } from './pages/sales-page/sales-page.module';
 import { NotFoundModule } from './pages/not-found-page/not-found.module';
 import { InterceptorModule } from './interceptor/interceptor.module';
+import { AdvancedSearchPageModule } from './pages/advanced-search-page/advanced-search-page.module';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { InterceptorModule } from './interceptor/interceptor.module';
     SearchPageModule,
     SalesPageModule,
     NotFoundModule,
-    InterceptorModule
+    InterceptorModule,
+    AdvancedSearchPageModule
   ], 
   providers: [],
   bootstrap: [

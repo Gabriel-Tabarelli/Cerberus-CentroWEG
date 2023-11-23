@@ -34,6 +34,10 @@ const routes: Route[] = [
     loadChildren: () => import('./pages/search-page/search-page.module').then(m => m.SearchPageModule)
   },
   {
+    path: 'advanced-search-page',
+    loadChildren: () => import('./pages/advanced-search-page/advanced-search-page.module').then(m => m.AdvancedSearchPageModule)
+  },
+  {
     path: 'cart-page',
     loadChildren: () => import('./pages/cart-page/cart-page.module').then(m => m.CartPageModule),
     canActivate: [AuthenticationGuard]
